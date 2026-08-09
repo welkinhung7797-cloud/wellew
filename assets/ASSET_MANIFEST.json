@@ -7,9 +7,9 @@
       "role": "deliverable",
       "canonical_path": "index.html",
       "original_path": "index.html",
-      "provenance": "Redesigned in the canonical project and reconciled against the original live site on 2026-08-09",
-      "sha256": "30FD424C39F4EA30FC0D37F9D84CF5C1CCCF05EB7DCD070E6DD212009439C645",
-      "size": 61782,
+      "provenance": "Redesigned in the canonical project; original dog identity and CSS mascot added on 2026-08-09",
+      "sha256": "45A5C7314386D01042B29978644ECC5EA99E46F7B9652BB85A989ECA75B05384",
+      "size": 60586,
       "approved": true,
       "status": "approved"
     },
@@ -274,105 +274,6 @@
       "provenance": "Existing approved project asset",
       "sha256": "7E9024A90307F44D8B753750F991758E6FDFFF7495F0EB217059662424961C18",
       "size": 109806,
-      "approved": true,
-      "status": "approved"
-    },
-    "third_party_notices": {
-      "kind": "document",
-      "role": "license_notice",
-      "canonical_path": "THIRD_PARTY_NOTICES.md",
-      "original_path": "https://github.com/andrewwoan/mr-pandas-psychologically-safe-portfolio/blob/main/LICENSE.md",
-      "provenance": "MIT notice retained for the adapted Mr. Panda assets",
-      "sha256": "CB86B3465FC8E3B13C574F6E16DEB09A17B6F56B29FDCF418C630272D774FFC3",
-      "size": 979,
-      "approved": true,
-      "status": "approved"
-    },
-    "mr_panda_basis_js": {
-      "kind": "javascript",
-      "role": "texture_transcoder",
-      "canonical_path": "assets/vendor/mr-panda/basis/basis_transcoder.js",
-      "original_path": "public/basis/basis_transcoder.js",
-      "provenance": "Andrew Woan mr-pandas-psychologically-safe-portfolio, MIT License, commit b99508de7a34d06666f5582e094a6557335e3577",
-      "sha256": "9042FACFFA0B63EC1C897919C5DB43F000C3DEE03D9698B6B2465BB06446D298",
-      "size": 57548,
-      "approved": true,
-      "status": "approved"
-    },
-    "mr_panda_basis_wasm": {
-      "kind": "wasm",
-      "role": "texture_transcoder",
-      "canonical_path": "assets/vendor/mr-panda/basis/basis_transcoder.wasm",
-      "original_path": "public/basis/basis_transcoder.wasm",
-      "provenance": "Andrew Woan mr-pandas-psychologically-safe-portfolio, MIT License, commit b99508de7a34d06666f5582e094a6557335e3577",
-      "sha256": "6CF17DC889352C42E9ACF8897107978D127005FE3386C36A0E3845E27967630A",
-      "size": 527333,
-      "approved": true,
-      "status": "approved"
-    },
-    "mr_panda_model": {
-      "kind": "model",
-      "role": "scroll_guide_character",
-      "canonical_path": "assets/vendor/mr-panda/models/Panda.glb",
-      "original_path": "public/models/Panda.glb",
-      "provenance": "Andrew Woan mr-pandas-psychologically-safe-portfolio, MIT License, commit b99508de7a34d06666f5582e094a6557335e3577",
-      "sha256": "B2BE82BAFEB2C37307DEC2FE140EABDFA45A5570EACBBD2F34FB02D768A2ECA2",
-      "size": 1680,
-      "approved": true,
-      "status": "approved"
-    },
-    "mr_panda_regular_texture": {
-      "kind": "texture",
-      "role": "panda_costume_regular",
-      "canonical_path": "assets/vendor/mr-panda/textures/regular.ktx2",
-      "original_path": "public/textures/regular.ktx2",
-      "provenance": "Andrew Woan mr-pandas-psychologically-safe-portfolio, MIT License, commit b99508de7a34d06666f5582e094a6557335e3577",
-      "sha256": "118960BBD3AAEEDF8BF4135EA89A5931003537DCABFF123020B6B2A6C71F8EED",
-      "size": 121464,
-      "approved": true,
-      "status": "approved"
-    },
-    "mr_panda_samurai_texture": {
-      "kind": "texture",
-      "role": "panda_costume_samurai",
-      "canonical_path": "assets/vendor/mr-panda/textures/samurai.ktx2",
-      "original_path": "public/textures/samurai.ktx2",
-      "provenance": "Andrew Woan mr-pandas-psychologically-safe-portfolio, MIT License, commit b99508de7a34d06666f5582e094a6557335e3577",
-      "sha256": "E7115AE28F9F7A124432C2B7C76C50A458E3D292369C40C3369C55D98C1931C3",
-      "size": 136981,
-      "approved": true,
-      "status": "approved"
-    },
-    "mr_panda_pirate_texture": {
-      "kind": "texture",
-      "role": "panda_costume_pirate",
-      "canonical_path": "assets/vendor/mr-panda/textures/pirate.ktx2",
-      "original_path": "public/textures/pirate.ktx2",
-      "provenance": "Andrew Woan mr-pandas-psychologically-safe-portfolio, MIT License, commit b99508de7a34d06666f5582e094a6557335e3577",
-      "sha256": "D78150B2AEFC8DEE7E43A6FCC4F1CA520498668A121D4B4E4307E81FCAA82E8B",
-      "size": 135139,
-      "approved": true,
-      "status": "approved"
-    },
-    "mr_panda_desert_texture": {
-      "kind": "texture",
-      "role": "panda_costume_desert",
-      "canonical_path": "assets/vendor/mr-panda/textures/desert.ktx2",
-      "original_path": "public/textures/desert.ktx2",
-      "provenance": "Andrew Woan mr-pandas-psychologically-safe-portfolio, MIT License, commit b99508de7a34d06666f5582e094a6557335e3577",
-      "sha256": "974F7947120373F3032F448A3BBE77A59AD48B29216EBB1C84325D596E8F275E",
-      "size": 128990,
-      "approved": true,
-      "status": "approved"
-    },
-    "mr_panda_zombie_texture": {
-      "kind": "texture",
-      "role": "panda_costume_zombie",
-      "canonical_path": "assets/vendor/mr-panda/textures/zombie.ktx2",
-      "original_path": "public/textures/zombie.ktx2",
-      "provenance": "Andrew Woan mr-pandas-psychologically-safe-portfolio, MIT License, commit b99508de7a34d06666f5582e094a6557335e3577",
-      "sha256": "EC9B84919A2B13A29F214D82F2444836DDEDA8A1625D79659A84B83A7DAB6037",
-      "size": 128002,
       "approved": true,
       "status": "approved"
     }

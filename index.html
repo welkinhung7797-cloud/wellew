@@ -9,14 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&amp;family=Noto+Sans+TC:wght@400;500;700;900&amp;family=Noto+Serif+TC:wght@700;900&amp;display=swap" rel="stylesheet">
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/"
-    }
-  }
-  </script>
   <style>
     :root {
       --paper: #f4ecd6;
@@ -76,10 +68,12 @@
     }
     .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: -.04em; font-size: 20px; }
-    .brand-stamp { width: 27px; height: 27px; position: relative; transform: rotate(-7deg); }
-    .brand-stamp::before, .brand-stamp::after { content: ""; position: absolute; border: 2px solid var(--ink); background: var(--paper-light); }
-    .brand-stamp::before { width: 15px; height: 18px; left: 6px; top: 5px; border-radius: 48% 48% 42% 42%; }
-    .brand-stamp::after { width: 6px; height: 6px; left: 2px; top: 3px; border-radius: 50%; box-shadow: 15px 1px 0 -1px var(--ink), 15px 1px 0 1px var(--ink); }
+    .brand-dog { width: 32px; height: 32px; overflow: visible; transform: rotate(-5deg); transition: transform .25s var(--ease); }
+    .brand:hover .brand-dog { transform: rotate(3deg) translateY(-2px); }
+    .brand-dog .dog-logo-head { fill: var(--yellow); stroke: var(--ink); stroke-width: 2.4; }
+    .brand-dog .dog-logo-ear { fill: var(--ink); stroke: var(--ink); stroke-width: 2; }
+    .brand-dog .dog-logo-muzzle { fill: var(--paper-light); stroke: var(--ink); stroke-width: 1.7; }
+    .brand-dog .dog-logo-eye, .brand-dog .dog-logo-nose { fill: var(--ink); }
     .nav-links { display: flex; align-items: center; gap: 30px; font-size: 13px; font-weight: 700; letter-spacing: .08em; }
     .nav-links a { position: relative; }
     .nav-links a::after { content: ""; position: absolute; left: 0; bottom: -7px; width: 100%; height: 4px; background: var(--red); transform: scaleX(0) rotate(-2deg); transform-origin: left; transition: transform .25s var(--ease); }
@@ -119,9 +113,12 @@
     .hero-ticket span { display: block; margin-top: 8px; font-size: 12px; letter-spacing: .08em; }
     .scribble-arrow { position: absolute; left: 15%; top: 7%; width: 120px; height: 80px; transform: rotate(12deg); }
     .scribble-arrow path { fill: none; stroke: var(--red); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-    .sun-cutout { position: absolute; right: 2%; bottom: 1%; width: 122px; aspect-ratio: 1; border-radius: 48% 52% 46% 54%; background: var(--yellow); border: 2px solid var(--ink); transform: rotate(8deg); box-shadow: 8px 9px 0 rgba(41,39,32,.16); }
-    .sun-cutout::before, .sun-cutout::after { content: ""; position: absolute; top: 43%; width: 12px; height: 18px; border-radius: 50%; background: var(--ink); }
-    .sun-cutout::before { left: 30%; }.sun-cutout::after { right: 30%; }
+    .paw-cutout { position: absolute; right: 2%; bottom: 1%; width: 122px; aspect-ratio: 1; border-radius: 48% 52% 46% 54%; background: var(--yellow); border: 2px solid var(--ink); transform: rotate(8deg); box-shadow: 8px 9px 0 rgba(41,39,32,.16); }
+    .paw-cutout i, .paw-cutout b { position: absolute; display: block; background: var(--ink); }
+    .paw-cutout i { width: 16px; height: 22px; border-radius: 55% 55% 48% 48%; top: 28%; }
+    .paw-cutout i:nth-child(1) { left: 20%; transform: rotate(-25deg); }.paw-cutout i:nth-child(2) { left: 38%; top: 21%; transform: rotate(-8deg); }
+    .paw-cutout i:nth-child(3) { right: 27%; top: 22%; transform: rotate(9deg); }.paw-cutout i:nth-child(4) { right: 12%; transform: rotate(27deg); }
+    .paw-cutout b { width: 54px; height: 45px; left: 34px; bottom: 22px; border-radius: 48% 48% 42% 42%; transform: rotate(-3deg); }
 
     .journey { height: 900vh; position: relative; background: #e8ddbf; }
     .journey-sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; background: repeating-linear-gradient(0deg, #eee4cb 0 38px, rgba(67,116,145,.20) 38px 39px); isolation: isolate; }
@@ -163,24 +160,43 @@
     .system-num { font-family: "LXGW WenKai TC", cursive; font-size: 24px; font-weight: 700; color: var(--red); }
     .system-card b { font-size: 15px; }.system-card small { color: var(--ink-soft); }
     .system-card i { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 5px rgba(127,157,121,.18); }
-    .panda-dock { position: absolute; z-index: 36; right: max(16px, 3vw); bottom: 2.5vh; width: clamp(210px, 24vw, 360px); height: clamp(170px, 27vh, 280px); pointer-events: none; filter: drop-shadow(0 13px 12px rgba(41,39,32,.22)); }
-    #pandaCanvas { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; opacity: 0; transition: opacity .4s ease; }
-    .panda-dock.model-ready #pandaCanvas { opacity: 1; }
-    .panda-dock.model-ready .panda-fallback { opacity: 1; }
-    .panda-fallback { position: absolute; z-index: 2; width: 130px; height: 145px; left: 50%; bottom: 6px; transform: translateX(-50%) rotate(-3deg); transition: opacity .3s ease; }
-    .panda-fallback::after { content: ""; position: absolute; z-index: 5; opacity: 0; transition: opacity .25s ease; }
-    .panda-head { position: absolute; width: 110px; height: 96px; left: 10px; top: 9px; border: 3px solid var(--ink); border-radius: 48% 52% 45% 46%; background: #fbf8e9; }
-    .panda-ear { position: absolute; top: 0; width: 38px; height: 38px; border-radius: 50%; background: var(--ink); }.panda-ear.left { left: 4px; }.panda-ear.right { right: 4px; }
-    .panda-eye { position: absolute; top: 39px; width: 31px; height: 38px; border-radius: 52%; background: var(--ink); transform: rotate(15deg); }.panda-eye.left { left: 23px; }.panda-eye.right { right: 23px; transform: rotate(-15deg); }
-    .panda-eye::after { content: ""; position: absolute; width: 8px; height: 11px; background: white; border-radius: 50%; left: 12px; top: 10px; }
-    .panda-body { position: absolute; width: 82px; height: 73px; left: 25px; bottom: 0; border: 3px solid var(--ink); border-radius: 48% 52% 20% 22%; background: #fbf8e9; }
-    body[data-scene="1"] .panda-fallback::after { opacity: 1; left: 4px; top: 12px; width: 122px; height: 28px; background: var(--red); clip-path: polygon(0 30%, 88% 0, 100% 55%, 12% 100%); }
-    body[data-scene="2"] .panda-fallback::after { opacity: 1; right: 21px; top: 45px; width: 28px; height: 22px; border-radius: 50%; background: var(--ink); box-shadow: -19px -43px 0 8px var(--blue-dark), -3px -49px 0 6px var(--blue-dark); }
-    body[data-scene="3"] .panda-head { background: #f3c46e; }
-    body[data-scene="3"] .panda-fallback::after { opacity: 1; left: 18px; top: 8px; width: 93px; height: 40px; border-radius: 50% 50% 10% 10%; background: var(--yellow); border: 2px solid var(--ink); }
-    body[data-scene="4"] .panda-head, body[data-scene="4"] .panda-body { background: #a8bd8a; }
-    body[data-scene="4"] .panda-fallback::after { opacity: 1; left: 28px; top: 29px; width: 72px; height: 6px; background: var(--red); transform: rotate(-10deg); }
-    .model-status { position: absolute; z-index: 3; right: 0; bottom: 0; padding: 4px 8px; background: rgba(244,236,214,.8); font-size: 9px; letter-spacing: .08em; }
+    .dog-dock { position: absolute; z-index: 36; right: max(12px, 2.5vw); bottom: 1.5vh; width: clamp(220px, 25vw, 360px); height: clamp(175px, 27vh, 275px); pointer-events: none; filter: drop-shadow(0 13px 12px rgba(41,39,32,.19)); }
+    .dog-shadow { position: absolute; left: 18%; right: 7%; bottom: 8px; height: 24px; border-radius: 50%; background: rgba(41,39,32,.16); transform: rotate(-2deg); }
+    .dog-character { --dog-x: 52%; --dog-tilt: -2deg; --dog-scale: 1; position: absolute; left: var(--dog-x); bottom: 11px; width: 220px; height: 166px; transform: translateX(-50%) rotate(var(--dog-tilt)) scale(var(--dog-scale)); transform-origin: 50% 100%; transition: left .65s var(--ease), filter .35s ease; animation: dog-bob 2.8s ease-in-out infinite; }
+    .dog-tail { position: absolute; z-index: 0; right: 5px; bottom: 64px; width: 76px; height: 28px; border: 3px solid var(--ink); border-left: 0; border-radius: 0 70% 70% 0; background: #bd7b45; transform: rotate(-29deg); transform-origin: 0 50%; animation: dog-tail-wag .56s ease-in-out infinite alternate; }
+    .dog-body { position: absolute; z-index: 2; right: 27px; bottom: 24px; width: 132px; height: 82px; border: 3px solid var(--ink); border-radius: 50% 54% 39% 42%; background: #bd7b45; transform: rotate(2deg); box-shadow: inset -19px -12px 0 rgba(104,64,35,.13); }
+    .dog-body::before { content: ""; position: absolute; width: 48px; height: 43px; right: 9px; top: 13px; border-radius: 47% 53% 45% 55%; background: #f5e7c8; transform: rotate(-11deg); }
+    .dog-leg { position: absolute; z-index: 1; bottom: 3px; width: 27px; height: 51px; border: 3px solid var(--ink); border-radius: 8px 8px 45% 45%; background: #bd7b45; }
+    .dog-leg.front { left: 74px; transform: rotate(3deg); }.dog-leg.back { right: 39px; transform: rotate(-3deg); }
+    .dog-leg::after { content: ""; position: absolute; left: 3px; right: 3px; bottom: 5px; height: 7px; border-top: 2px solid rgba(41,39,32,.6); border-radius: 50%; }
+    .dog-head { position: absolute; z-index: 5; left: 13px; bottom: 55px; width: 101px; height: 94px; border: 3px solid var(--ink); border-radius: 47% 53% 44% 48%; background: #c98a52; transform: rotate(-5deg); animation: dog-head-tilt 2.8s ease-in-out infinite; box-shadow: inset -11px -9px 0 rgba(104,64,35,.11); }
+    .dog-ear { position: absolute; z-index: -1; top: -12px; width: 42px; height: 68px; border: 3px solid var(--ink); background: #514338; }
+    .dog-ear.left { left: -14px; border-radius: 75% 38% 65% 38%; transform: rotate(21deg); animation: dog-ear-flop 1.9s ease-in-out infinite alternate; }
+    .dog-ear.right { right: -9px; border-radius: 38% 74% 38% 68%; transform: rotate(-18deg); }
+    .dog-blaze { position: absolute; left: 39px; top: 1px; width: 25px; height: 48px; background: #f5e7c8; border-radius: 20% 50% 55% 40%; transform: rotate(4deg); }
+    .dog-eye { position: absolute; top: 38px; width: 10px; height: 12px; border-radius: 50%; background: var(--ink); }
+    .dog-eye.left { left: 26px; }.dog-eye.right { right: 25px; }
+    .dog-eye::after { content: ""; position: absolute; width: 3px; height: 3px; left: 2px; top: 2px; border-radius: 50%; background: white; }
+    .dog-muzzle { position: absolute; left: 29px; bottom: 9px; width: 55px; height: 39px; border: 2px solid var(--ink); border-radius: 51% 49% 44% 48%; background: #f5e7c8; }
+    .dog-nose { position: absolute; left: 19px; top: 2px; width: 18px; height: 13px; border-radius: 52% 48% 60% 55%; background: var(--ink); }
+    .dog-mouth { position: absolute; left: 27px; top: 14px; width: 2px; height: 12px; background: var(--ink); }
+    .dog-mouth::after { content: ""; position: absolute; left: -10px; top: 7px; width: 22px; height: 9px; border-bottom: 2px solid var(--ink); border-radius: 50%; }
+    .dog-tongue { position: absolute; left: 21px; bottom: -13px; width: 15px; height: 18px; border: 2px solid var(--ink); border-top: 0; border-radius: 0 0 50% 50%; background: var(--red); opacity: 0; transition: opacity .25s ease; }
+    .dog-tag { position: absolute; z-index: 7; left: 103px; bottom: 55px; width: 20px; height: 20px; border: 2px solid var(--ink); border-radius: 50%; background: var(--yellow); }
+    body[data-scene="1"] .dog-character { --dog-x: 45%; --dog-tilt: 2deg; }
+    body[data-scene="2"] .dog-character { --dog-x: 57%; --dog-tilt: -1deg; }
+    body[data-scene="3"] .dog-character { --dog-x: 48%; --dog-tilt: 3deg; }
+    body[data-scene="4"] .dog-character { --dog-x: 55%; --dog-tilt: -3deg; }
+    body[data-scene="5"] .dog-character { --dog-x: 46%; --dog-tilt: 1deg; }
+    body[data-scene="6"] .dog-character { --dog-x: 56%; --dog-tilt: -2deg; }
+    body[data-scene="7"] .dog-character { --dog-x: 49%; --dog-tilt: 2deg; }
+    body[data-scene="1"] .dog-tongue, body[data-scene="4"] .dog-tongue, body[data-scene="7"] .dog-tongue { opacity: 1; }
+    body[data-scene="2"] .dog-tag, body[data-scene="5"] .dog-tag { background: var(--blue); }
+    body[data-scene="3"] .dog-tag, body[data-scene="6"] .dog-tag { background: var(--green); }
+    @keyframes dog-tail-wag { from { transform: rotate(-42deg); } to { transform: rotate(-8deg); } }
+    @keyframes dog-bob { 0%,100% { transform: translateX(-50%) translateY(0) rotate(var(--dog-tilt)) scale(var(--dog-scale)); } 50% { transform: translateX(-50%) translateY(-7px) rotate(calc(var(--dog-tilt) + 1deg)) scale(var(--dog-scale)); } }
+    @keyframes dog-head-tilt { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(-1deg); } }
+    @keyframes dog-ear-flop { from { transform: rotate(17deg); } to { transform: rotate(26deg); } }
     .journey-hint { position: absolute; left: max(25px, 4vw); bottom: 28px; z-index: 30; font-family: "LXGW WenKai TC", cursive; font-size: 13px; transform: rotate(-1deg); }
 
     .archive { position: relative; padding: 150px 0; background: var(--ink); color: var(--paper-light); overflow: hidden; }
@@ -268,8 +284,8 @@
       .nav-links { display: none; position: absolute; left: 16px; right: 16px; top: 68px; padding: 20px; background: var(--paper-light); border: 1px solid var(--ink); box-shadow: 7px 8px 0 var(--ink); flex-direction: column; align-items: stretch; gap: 0; }
       .nav-links.open { display: flex; }.nav-links a { padding: 11px 4px; }.nav-contact { margin-top: 7px; text-align: center; }
       .menu-toggle { display: block; }
-      .intro { padding-top: 84px; }.intro-grid { min-height: auto; gap: 18px; min-width: 0; }.intro-grid > * { min-width: 0; }.intro-copy { padding-left: 0; }.kicker { max-width: calc(100% - 8px); font-size: 14px; }.wordmark { font-size: clamp(52px, 14.8vw, 64px); }.intro-copy h1 { margin-top: 30px; font-size: 37px; }.intro-lead { font-size: 14px; }.intro-actions { align-items: flex-start; flex-direction: column; }.hero-collage { justify-self: center; height: 420px; width: 100%; }.hero-video-card { width: 87%; right: 2%; }.hero-ticket { left: 0; width: 76%; bottom: 8%; }.sun-cutout { width: 84px; }
-      .journey { height: 980vh; }.journey-ui { top: 78px; left: 18px; right: 18px; }.journey-title { display: none; }.scene-card { top: 50%; width: calc(100vw - 30px); height: 77svh; min-height: 0; max-height: none; padding: 25px 22px; }.scene-grid { display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 14px; min-height: 0; height: 100%; }.scene-copy h2 { font-size: clamp(25px,7vw,34px); }.scene-copy p { display: none; }.scene-index { margin-bottom: 8px; }.scene-tags { margin-top: 12px; }.scene-media { min-height: 0; height: 100%; }.paper-shot { padding: 6px 6px 28px; }.triple-media { gap: 4px; }.triple-media .paper-shot { height: 74%; }.system-stack { gap: 8px; }.system-card { padding: 11px 13px; grid-template-columns: 40px 1fr 8px; }.system-card small { display: none; }.panda-dock { width: 160px; height: 145px; right: -8px; bottom: -4px; }.journey-hint { bottom: 14px; left: 18px; font-size: 11px; max-width: 180px; }
+      .intro { padding-top: 84px; }.intro-grid { min-height: auto; gap: 18px; min-width: 0; }.intro-grid > * { min-width: 0; }.intro-copy { padding-left: 0; }.kicker { max-width: calc(100% - 8px); font-size: 14px; }.wordmark { font-size: clamp(52px, 14.8vw, 64px); }.intro-copy h1 { margin-top: 30px; font-size: 37px; }.intro-lead { font-size: 14px; }.intro-actions { align-items: flex-start; flex-direction: column; }.hero-collage { justify-self: center; height: 420px; width: 100%; }.hero-video-card { width: 87%; right: 2%; }.hero-ticket { left: 0; width: 76%; bottom: 8%; }.paw-cutout { width: 84px; }.paw-cutout i { width: 11px; height: 15px; }.paw-cutout b { width: 38px; height: 32px; left: 23px; bottom: 15px; }
+      .journey { height: 980vh; }.journey-ui { top: 78px; left: 18px; right: 18px; }.journey-title { display: none; }.scene-card { top: 50%; width: calc(100vw - 30px); height: 77svh; min-height: 0; max-height: none; padding: 25px 22px; }.scene-grid { display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 14px; min-height: 0; height: 100%; }.scene-copy h2 { font-size: clamp(25px,7vw,34px); }.scene-copy p { display: none; }.scene-index { margin-bottom: 8px; }.scene-tags { margin-top: 12px; }.scene-media { min-height: 0; height: 100%; }.paper-shot { padding: 6px 6px 28px; }.triple-media { gap: 4px; }.triple-media .paper-shot { height: 74%; }.system-stack { gap: 8px; }.system-card { padding: 11px 13px; grid-template-columns: 40px 1fr 8px; }.system-card small { display: none; }.dog-dock { width: 178px; height: 142px; right: 6px; bottom: 2px; }.dog-character { --dog-scale: .78; }.journey-hint { bottom: 14px; left: 18px; font-size: 11px; max-width: 180px; }
       .archive, .workshop { padding: 100px 0; }.section-head { grid-template-columns: 1fr; gap: 20px; }.section-head p { justify-self: start; }.archive-card { grid-column: 1/-1; }
       .workshop-grid { grid-template-columns: 1fr; }.workshop-copy { position: relative; top: auto; }.compare { max-height: 540px; }.discord-body { grid-template-columns: 1fr; }.discord-tabs { grid-template-columns: repeat(2,1fr); }.discord-screen { min-height: 310px; }
       .cap-head, .about-grid { grid-template-columns: 1fr; gap: 34px; }.cap-row { grid-template-columns: 46px 1fr; }.cap-row span { grid-column: 2; text-align: left; }.about { padding: 105px 0 70px; }.about-copy > p { font-size: 16px; }.contact { margin-top: 75px; }.footer-line { flex-direction: column; }
@@ -278,7 +294,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      .journey { height: auto; padding: 95px 0; }.journey-sticky { position: relative; height: auto; overflow: visible; padding: 40px 0; }.journey-ui, .journey-hint, .panda-dock { display: none; }.scene-card { position: relative; left: auto; top: auto; transform: none !important; opacity: 1 !important; margin: 25px auto; pointer-events: auto; max-height: none; }.scene-grid { min-height: 620px; }.reveal { opacity: 1; transform: none; }
+      .journey { height: auto; padding: 95px 0; }.journey-sticky { position: relative; height: auto; overflow: visible; padding: 40px 0; }.journey-ui, .journey-hint, .dog-dock { display: none; }.scene-card { position: relative; left: auto; top: auto; transform: none !important; opacity: 1 !important; margin: 25px auto; pointer-events: auto; max-height: none; }.scene-grid { min-height: 620px; }.reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -286,7 +302,7 @@
   <a class="skip-link" href="#main">跳到主要內容</a>
   <header class="site-nav">
     <div class="shell nav-inner">
-      <a class="brand" href="#top" aria-label="WelleW 回到首頁"><span class="brand-stamp" aria-hidden="true"></span>WelleW</a>
+      <a class="brand" href="#top" aria-label="WelleW 回到首頁"><svg class="brand-dog" viewBox="0 0 36 36" aria-hidden="true"><path class="dog-logo-ear" d="M9 8C4 5 2 9 4 16c1 4 4 6 7 4Z"/><path class="dog-logo-ear" d="M27 8c5-3 7 1 5 8-1 4-4 6-7 4Z"/><path class="dog-logo-head" d="M8 13c1-6 6-9 10-9s9 3 10 9v8c0 7-4 11-10 11S8 28 8 21Z"/><circle class="dog-logo-eye" cx="14" cy="17" r="1.8"/><circle class="dog-logo-eye" cx="22" cy="17" r="1.8"/><path class="dog-logo-muzzle" d="M12 21c0-3 3-4 6-4s6 1 6 4-2 7-6 7-6-4-6-7Z"/><ellipse class="dog-logo-nose" cx="18" cy="20" rx="3.1" ry="2.2"/></svg>WelleW</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navLinks">MENU ＋</button>
       <nav class="nav-links" id="navLinks" aria-label="主要導覽">
         <a href="#work">作品</a>
@@ -317,7 +333,7 @@
             <figcaption>WELLEW STUDIO / SHOWREEL</figcaption>
           </figure>
           <div class="hero-ticket"><b>負責人 Welkin</b><span>節目企劃 / 剪輯 / 直播系統 / Discord 架設 / 新聞稿</span></div>
-          <div class="sun-cutout" aria-hidden="true"></div>
+          <div class="paw-cutout" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
         </div>
       </div>
     </section>
@@ -453,10 +469,15 @@
           </div>
         </article>
 
-        <div class="panda-dock" id="pandaDock" aria-hidden="true">
-          <canvas id="pandaCanvas"></canvas>
-          <div class="panda-fallback"><i class="panda-ear left"></i><i class="panda-ear right"></i><div class="panda-head"><i class="panda-eye left"></i><i class="panda-eye right"></i></div><div class="panda-body"></div></div>
-          <span class="model-status" id="modelStatus">PANDA / LOADING</span>
+        <div class="dog-dock" aria-hidden="true">
+          <div class="dog-shadow"></div>
+          <div class="dog-character">
+            <i class="dog-tail"></i>
+            <i class="dog-leg front"></i><i class="dog-leg back"></i>
+            <div class="dog-body"></div>
+            <i class="dog-tag"></i>
+            <div class="dog-head"><i class="dog-ear left"></i><i class="dog-ear right"></i><i class="dog-blaze"></i><i class="dog-eye left"></i><i class="dog-eye right"></i><div class="dog-muzzle"><i class="dog-nose"></i><i class="dog-mouth"></i><i class="dog-tongue"></i></div></div>
+          </div>
         </div>
         <p class="journey-hint">繼續向下捲動</p>
       </div>
@@ -526,7 +547,7 @@
   </main>
 
   <footer>
-    <div class="shell footer-line"><span>WELLEW / WELKIN PORTFOLIO © 2026</span><span>3D PANDA ADAPTED UNDER MIT LICENSE FROM <a href="https://github.com/andrewwoan/mr-pandas-psychologically-safe-portfolio" target="_blank" rel="noopener">ANDREW WOAN'S MR. PANDA PORTFOLIO</a></span></div>
+    <div class="shell footer-line"><span>WELLEW / WELKIN PORTFOLIO © 2026</span></div>
   </footer>
 
   <script>
@@ -657,109 +678,5 @@
     })();
   </script>
 
-  <script type="module">
-    import * as THREE from 'three';
-    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-    import { KTX2Loader } from 'three/addons/loaders/KTX2Loader.js';
-    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
-
-    const canvas = document.getElementById('pandaCanvas');
-    const dock = document.getElementById('pandaDock');
-    const status = document.getElementById('modelStatus');
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (!reducedMotion && canvas && dock) {
-      try {
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'low-power' });
-        renderer.outputColorSpace = THREE.SRGBColorSpace;
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
-        renderer.setClearColor(0x000000, 0);
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(32, 1, .1, 100);
-        camera.position.set(0, .15, 6);
-        const pandaGroup = new THREE.Group();
-        scene.add(pandaGroup);
-
-        const ktxLoader = new KTX2Loader();
-        ktxLoader.setTranscoderPath('assets/vendor/mr-panda/basis/');
-        ktxLoader.detectSupport(renderer);
-        const textureNames = ['regular','samurai','pirate','desert','zombie'];
-        const texturePromises = textureNames.map(name => ktxLoader.loadAsync(`assets/vendor/mr-panda/textures/${name}.ktx2`));
-        const dracoLoader = new DRACOLoader();
-        dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/libs/draco/gltf/');
-        const gltfLoader = new GLTFLoader();
-        gltfLoader.setDRACOLoader(dracoLoader);
-        const [gltf, textures] = await Promise.all([
-          gltfLoader.loadAsync('assets/vendor/mr-panda/models/Panda.glb'),
-          Promise.all(texturePromises)
-        ]);
-
-        const materials = textures.map(texture => {
-          texture.colorSpace = THREE.SRGBColorSpace;
-          return new THREE.MeshBasicMaterial({ map: texture, transparent: true, alphaTest: .55, side: THREE.DoubleSide });
-        });
-        let sourceMesh = null;
-        gltf.scene.traverse(child => {
-          if (child.isMesh) {
-            sourceMesh = child;
-          }
-        });
-        if (!sourceMesh) throw new Error('Panda mesh missing.');
-        const pandaMesh = new THREE.Mesh(sourceMesh.geometry, materials[0]);
-        pandaMesh.rotation.set(Math.PI, 0, Math.PI);
-        pandaGroup.add(pandaMesh);
-
-        const box = new THREE.Box3().setFromObject(pandaMesh);
-        const center = box.getCenter(new THREE.Vector3());
-        const size = box.getSize(new THREE.Vector3());
-        pandaMesh.position.sub(center);
-        const scale = 3.15 / Math.max(size.y, .001);
-        pandaMesh.scale.set(scale * 9.6, scale * 3, scale * 3);
-        dock.classList.add('model-ready');
-        status.textContent = 'PANDA / READY';
-
-        let targetScene = Number(document.body.dataset.scene || 0);
-        let currentScene = targetScene;
-        window.addEventListener('wellew:scene', event => {
-          targetScene = event.detail.index;
-          if (pandaMesh) pandaMesh.material = materials[targetScene % materials.length];
-        });
-
-        const positions = [-.55, .38, -.16, .52, -.34, .18, -.44, .42];
-        const clock = new THREE.Clock();
-        function resize() {
-          const width = Math.max(1, dock.clientWidth);
-          const height = Math.max(1, dock.clientHeight);
-          renderer.setSize(width, height, false);
-          camera.aspect = width / height;
-          camera.updateProjectionMatrix();
-        }
-        const resizeObserver = new ResizeObserver(resize);
-        resizeObserver.observe(dock);
-        resize();
-
-        function animate() {
-          const elapsed = clock.getElapsedTime();
-          currentScene = THREE.MathUtils.lerp(currentScene, targetScene, .055);
-          const from = Math.floor(currentScene);
-          const to = Math.min(positions.length - 1, Math.ceil(currentScene));
-          const mix = currentScene - from;
-          const targetX = THREE.MathUtils.lerp(positions[from] ?? 0, positions[to] ?? 0, mix);
-          pandaGroup.position.x = THREE.MathUtils.lerp(pandaGroup.position.x, targetX, .08);
-          pandaGroup.position.y = Math.sin(elapsed * 2.1) * .07 - 2.15;
-          pandaGroup.rotation.z = Math.sin(elapsed * 1.35) * .025 + (targetScene % 2 ? -.035 : .035);
-          renderer.render(scene, camera);
-          requestAnimationFrame(animate);
-        }
-        animate();
-      } catch (error) {
-        console.warn('Panda model fallback active.', error);
-        status.textContent = 'PANDA / LIGHT MODE';
-      }
-    } else if (status) {
-      status.textContent = 'PANDA / STILL MODE';
-    }
-  </script>
 </body>
 </html>

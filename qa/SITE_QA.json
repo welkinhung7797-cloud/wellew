@@ -1,27 +1,28 @@
 {
   "checked_on": "2026-08-09",
   "source": "http://127.0.0.1:4173/",
-  "content_authority": "https://wellewkin.pages.dev/",
   "status": "PASS",
-  "content_fidelity": {
-    "original_sections_reconciled": 8,
-    "required_phrases_checked": 7,
-    "missing_required_phrases": 0,
-    "forbidden_invented_phrases_checked": 15,
-    "present_forbidden_invented_phrases": 0,
-    "huzi_canonical_references": 1,
-    "stale_huzi_medical_references": 0,
-    "huzi_canonical_path": "assets/yt_short_huzi.webm",
-    "medical_device_video_path": "assets/yt_ugym.webm"
+  "identity_redesign": {
+    "dog_logo_instances": 1,
+    "dog_mascot_instances": 1,
+    "paw_mark_instances": 1,
+    "legacy_mascot_dom_instances": 0,
+    "legacy_status_text_instances": 0,
+    "legacy_module_references_in_index": 0,
+    "legacy_asset_references_in_manifest": 0,
+    "tail_animation_transform_changed": true,
+    "scene_reactive_pose": true
   },
   "static_asset_checks": {
+    "manifest_assets": 25,
     "local_references_checked": 17,
     "missing_local_references": 0,
     "webm_files_full_decoded_with_ffmpeg": 14,
     "image_files_full_decoded_with_ffmpeg": 10,
     "media_decode_errors": 0,
-    "inline_script_blocks_checked": 2,
-    "javascript_syntax_errors": 0
+    "inline_script_blocks_checked": 1,
+    "javascript_syntax_errors": 0,
+    "json_parse_errors": 0
   },
   "desktop": {
     "viewport": [1280, 720],
@@ -33,7 +34,8 @@
     "missing_image_alt": 0,
     "unnamed_interactive_controls": 0,
     "console_warnings_or_errors": 0,
-    "panda_model_status": "PANDA / READY"
+    "dog_within_viewport": true,
+    "dog_overlaps_scene_copy": false
   },
   "mobile": {
     "viewport": [390, 844],
@@ -43,10 +45,10 @@
     "duplicate_ids": 0,
     "broken_in_page_anchors": 0,
     "console_warnings_or_errors": 0,
+    "dog_bounds_px": [195, 695, 370, 829],
+    "dog_within_viewport": true,
     "menu_opened": true,
-    "menu_closed_after_navigation": true,
-    "live_component_cards_within_scene": true,
-    "panda_model_status": "PANDA / READY"
+    "menu_closed_after_navigation": true
   },
   "interaction": {
     "journey_scene_cards": 8,
