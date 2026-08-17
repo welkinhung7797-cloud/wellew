@@ -120,7 +120,7 @@
     .paw-cutout i:nth-child(3) { right: 27%; top: 22%; transform: rotate(9deg); }.paw-cutout i:nth-child(4) { right: 12%; transform: rotate(27deg); }
     .paw-cutout b { width: 54px; height: 45px; left: 34px; bottom: 22px; border-radius: 48% 48% 42% 42%; transform: rotate(-3deg); }
 
-    .journey { height: 900vh; position: relative; background: #e8ddbf; }
+    .journey { height: 1125vh; position: relative; background: #e8ddbf; }
     .journey-sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; background: repeating-linear-gradient(0deg, #eee4cb 0 38px, rgba(67,116,145,.20) 38px 39px); isolation: isolate; }
     .journey-sticky::before { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, transparent 0 7.5%, rgba(219,111,92,.42) 7.5% calc(7.5% + 2px), transparent calc(7.5% + 2px)); }
     .journey-sticky::after { content: ""; position: absolute; z-index: -1; left: -5%; right: -5%; bottom: -13vh; height: 38vh; background: var(--blue); clip-path: polygon(0 29%, 6% 22%, 12% 30%, 20% 18%, 29% 28%, 38% 16%, 47% 26%, 56% 14%, 65% 27%, 75% 17%, 84% 28%, 92% 20%, 100% 30%, 100% 100%, 0 100%); opacity: .72; }
@@ -190,9 +190,11 @@
     body[data-scene="5"] .dog-character { --dog-x: 46%; --dog-tilt: 1deg; }
     body[data-scene="6"] .dog-character { --dog-x: 56%; --dog-tilt: -2deg; }
     body[data-scene="7"] .dog-character { --dog-x: 49%; --dog-tilt: 2deg; }
+    body[data-scene="8"] .dog-character { --dog-x: 58%; --dog-tilt: -2deg; }
+    body[data-scene="9"] .dog-character { --dog-x: 47%; --dog-tilt: 3deg; }
     body[data-scene="1"] .dog-tongue, body[data-scene="4"] .dog-tongue, body[data-scene="7"] .dog-tongue { opacity: 1; }
-    body[data-scene="2"] .dog-tag, body[data-scene="5"] .dog-tag { background: var(--blue); }
-    body[data-scene="3"] .dog-tag, body[data-scene="6"] .dog-tag { background: var(--green); }
+    body[data-scene="2"] .dog-tag, body[data-scene="5"] .dog-tag, body[data-scene="8"] .dog-tag { background: var(--blue); }
+    body[data-scene="3"] .dog-tag, body[data-scene="6"] .dog-tag, body[data-scene="9"] .dog-tag { background: var(--green); }
     @keyframes dog-tail-wag { from { transform: rotate(-42deg); } to { transform: rotate(-8deg); } }
     @keyframes dog-bob { 0%,100% { transform: translateX(-50%) translateY(0) rotate(var(--dog-tilt)) scale(var(--dog-scale)); } 50% { transform: translateX(-50%) translateY(-7px) rotate(calc(var(--dog-tilt) + 1deg)) scale(var(--dog-scale)); } }
     @keyframes dog-head-tilt { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(-1deg); } }
@@ -285,7 +287,7 @@
       .nav-links.open { display: flex; }.nav-links a { padding: 11px 4px; }.nav-contact { margin-top: 7px; text-align: center; }
       .menu-toggle { display: block; }
       .intro { padding-top: 84px; }.intro-grid { min-height: auto; gap: 18px; min-width: 0; }.intro-grid > * { min-width: 0; }.intro-copy { padding-left: 0; }.kicker { max-width: calc(100% - 8px); font-size: 14px; }.wordmark { font-size: clamp(52px, 14.8vw, 64px); }.intro-copy h1 { margin-top: 30px; font-size: 37px; }.intro-lead { font-size: 14px; }.intro-actions { align-items: flex-start; flex-direction: column; }.hero-collage { justify-self: center; height: 420px; width: 100%; }.hero-video-card { width: 87%; right: 2%; }.hero-ticket { left: 0; width: 76%; bottom: 8%; }.paw-cutout { width: 84px; }.paw-cutout i { width: 11px; height: 15px; }.paw-cutout b { width: 38px; height: 32px; left: 23px; bottom: 15px; }
-      .journey { height: 980vh; }.journey-ui { top: 78px; left: 18px; right: 18px; }.journey-title { display: none; }.scene-card { top: 50%; width: calc(100vw - 30px); height: 77svh; min-height: 0; max-height: none; padding: 25px 22px; }.scene-grid { display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 14px; min-height: 0; height: 100%; }.scene-copy h2 { font-size: clamp(25px,7vw,34px); }.scene-copy p { display: none; }.scene-index { margin-bottom: 8px; }.scene-tags { margin-top: 12px; }.scene-media { min-height: 0; height: 100%; }.paper-shot { padding: 6px 6px 28px; }.triple-media { gap: 4px; }.triple-media .paper-shot { height: 74%; }.system-stack { gap: 8px; }.system-card { padding: 11px 13px; grid-template-columns: 40px 1fr 8px; }.system-card small { display: none; }.dog-dock { width: 178px; height: 142px; right: 6px; bottom: 2px; }.dog-character { --dog-scale: .78; }.journey-hint { bottom: 14px; left: 18px; font-size: 11px; max-width: 180px; }
+      .journey { height: 1230vh; }.journey-ui { top: 78px; left: 18px; right: 18px; }.journey-title { display: none; }.scene-card { top: 50%; width: calc(100vw - 30px); height: 77svh; min-height: 0; max-height: none; padding: 25px 22px; }.scene-grid { display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 14px; min-height: 0; height: 100%; }.scene-copy h2 { font-size: clamp(25px,7vw,34px); }.scene-copy p { display: none; }.scene-index { margin-bottom: 8px; }.scene-tags { margin-top: 12px; }.scene-media { min-height: 0; height: 100%; }.paper-shot { padding: 6px 6px 28px; }.triple-media { gap: 4px; }.triple-media .paper-shot { height: 74%; }.system-stack { gap: 8px; }.system-card { padding: 11px 13px; grid-template-columns: 40px 1fr 8px; }.system-card small { display: none; }.dog-dock { width: 178px; height: 142px; right: 6px; bottom: 2px; }.dog-character { --dog-scale: .78; }.journey-hint { bottom: 14px; left: 18px; font-size: 11px; max-width: 180px; }
       .archive, .workshop { padding: 100px 0; }.section-head { grid-template-columns: 1fr; gap: 20px; }.section-head p { justify-self: start; }.archive-card { grid-column: 1/-1; }
       .workshop-grid { grid-template-columns: 1fr; }.workshop-copy { position: relative; top: auto; }.compare { max-height: 540px; }.discord-body { grid-template-columns: 1fr; }.discord-tabs { grid-template-columns: repeat(2,1fr); }.discord-screen { min-height: 310px; }
       .cap-head, .about-grid { grid-template-columns: 1fr; gap: 34px; }.cap-row { grid-template-columns: 46px 1fr; }.cap-row span { grid-column: 2; text-align: left; }.about { padding: 105px 0 70px; }.about-copy > p { font-size: 16px; }.contact { margin-top: 75px; }.footer-line { flex-direction: column; }
@@ -319,8 +321,8 @@
         <div class="intro-copy">
           <p class="kicker">影音製作工作室</p>
           <div class="wordmark" aria-label="WelleW">Welle<span>W</span></div>
-          <h1 id="intro-title">影音製作工作室・<mark>跨界節目與社群系統打造者</mark></h1>
-          <p class="intro-lead">我是 Welkin，WelleW 是我的一人工作室。技能包橫跨企劃、剪輯、特效合成、直播元件到社群系統架設，依專案需求彈性組成協作陣容，從 0 到 1 獨立完成整條產製線。</p>
+          <h1 id="intro-title">影音製作工作室・<mark>節目、剪輯與社群系統</mark></h1>
+          <p class="intro-lead">我是 Welkin，WelleW 是我的一人工作室。做的範圍是節目企劃、剪輯、特效合成、直播元件與社群系統架設，需要協作時再依專案找人。</p>
           <div class="intro-actions">
             <a class="paper-button" href="#work">查看作品 <span aria-hidden="true">↓</span></a>
             <span class="intro-note">向下捲動</span>
@@ -338,10 +340,10 @@
       </div>
     </section>
 
-    <section class="journey" id="work" data-journey aria-label="WelleW 八項作品與服務">
+    <section class="journey" id="work" data-journey aria-label="WelleW 十項作品與服務">
       <div class="journey-sticky">
         <div class="journey-ui" aria-live="polite">
-          <span class="journey-count" id="journeyCount">01 / 08</span>
+          <span class="journey-count" id="journeyCount">01 / 10</span>
           <span class="journey-rail" aria-hidden="true"><i></i></span>
           <span class="journey-title" id="journeyTitle">節目企劃</span>
         </div>
@@ -351,7 +353,7 @@
             <div class="scene-copy">
               <span class="scene-index">01 / SHOW PLANNING</span>
               <h2>節目企劃</h2>
-              <p>從選題、腳本結構到播出節奏的整體設計，橫跨多種節目類型。</p>
+              <p>負責選題、腳本結構與播出節奏的設計。</p>
               <div class="scene-tags"><span>Yahoo Esports</span><span>AI VTuber「親親子」</span><span>打造 VTuber 虎子</span></div>
             </div>
             <div class="scene-media">
@@ -367,7 +369,7 @@
             <div class="scene-copy">
               <span class="scene-index">02 / EDITING SHOWREEL</span>
               <h2>影音剪輯</h2>
-              <p>影片是一個能讓大家好好認識你的敘事手法。</p>
+              <p>16:9 長片、直播精華與 9:16 短影音。</p>
             </div>
             <div class="scene-media">
               <figure class="paper-shot shot-main"><video src="assets/showreel.webm" muted loop playsinline preload="metadata" aria-label="綜藝節目風剪輯"></video><figcaption>16:9・綜藝節目風剪輯</figcaption></figure>
@@ -377,12 +379,28 @@
           </div>
         </article>
 
+        <article class="scene-card" data-scene data-title="AI VTuber 親親子">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">03 / AI VTUBER</span>
+              <h2>AI VTuber 親親子</h2>
+              <p>人設、立繪狀態機、語音合成與直播推流。操作員打一行字，她在直播間用自己的聲音講出來。</p>
+              <div class="scene-tags"><span>角色企劃</span><span>PNGTuber 狀態機</span><span>語音合成</span><span>跨網直播推流</span><span>短影音經營</span></div>
+            </div>
+            <div class="scene-media">
+              <figure class="paper-shot vertical-shot"><video src="assets/plan_kissko_short.webm" muted loop playsinline preload="metadata" aria-label="親親子直播剪輯短影音"></video><figcaption>直播剪輯・短影音</figcaption></figure>
+              <figure class="paper-shot"><img src="assets/vt_kissko_states.jpg" alt="親親子 14 種立繪狀態對照表"><figcaption>14 種立繪狀態</figcaption></figure>
+              <figure class="paper-shot"><video src="assets/vt_kissko_talk.webm" muted loop playsinline preload="metadata" aria-label="親親子說話循環動畫"></video><figcaption>說話循環</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
         <article class="scene-card" data-scene data-title="3D 資訊動畫">
           <div class="scene-grid">
             <div class="scene-copy">
-              <span class="scene-index">03 / 3D DATA VISUALIZATION</span>
+              <span class="scene-index">04 / 3D DATA VISUALIZATION</span>
               <h2>3D 資訊動畫</h2>
-              <p>地形、範圍、路線都用真實座標算出來，比例正確、位置正確——不是示意圖。</p>
+              <p>地形、範圍與路線用真實座標和高程資料計算。</p>
               <div class="scene-tags"><span>真實高程</span><span>衛星影像</span><span>路線考據</span><span>4K 60fps</span></div>
             </div>
             <div class="scene-media triple-media">
@@ -396,9 +414,9 @@
         <article class="scene-card" data-scene data-title="虛實整合影片">
           <div class="scene-grid">
             <div class="scene-copy">
-              <span class="scene-index">04 / VIRTUAL × REAL</span>
+              <span class="scene-index">05 / VIRTUAL × REAL</span>
               <h2>虛實整合影片</h2>
-              <p>虛擬走進現實，宛如美夢成真。</p>
+              <p>實拍素材與虛擬角色、場景合成。</p>
             </div>
             <div class="scene-media">
               <figure class="paper-shot shot-main"><img src="assets/before_train.jpg" alt="汐科站月台實拍原始照片"><figcaption>實拍原始素材</figcaption></figure>
@@ -410,9 +428,9 @@
         <article class="scene-card" data-scene data-title="客製化直播元件">
           <div class="scene-grid">
             <div class="scene-copy">
-              <span class="scene-index">05 / LIVE & MOTION</span>
+              <span class="scene-index">06 / LIVE & MOTION</span>
               <h2>客製化直播元件</h2>
-              <p>為你的直播風格量身打造客製化元件，簡單好用、大家開心最重要。</p>
+              <p>依直播內容製作需要的畫面元件。</p>
             </div>
             <div class="scene-media system-stack">
               <div class="system-card"><span class="system-num">01</span><span><b>聊天室留言疊圖</b></span><i aria-hidden="true"></i></div>
@@ -427,9 +445,9 @@
         <article class="scene-card" data-scene data-title="Discord 架設">
           <div class="scene-grid">
             <div class="scene-copy">
-              <span class="scene-index">06 / COMMUNITY</span>
+              <span class="scene-index">07 / COMMUNITY</span>
               <h2>Discord 架設</h2>
-              <p>喜歡打造讓社群動起來的 BOT 與互動工具。</p>
+              <p>身分組、頻道結構、互動指令與自動化。</p>
             </div>
             <div class="scene-media system-stack">
               <div class="system-card"><span class="system-num">01</span><span><b>身分組與權限架構設計</b><small>對應不同社群動線</small></span><i aria-hidden="true"></i></div>
@@ -440,12 +458,28 @@
           </div>
         </article>
 
+        <article class="scene-card" data-scene data-title="自動剪輯軟體">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">08 / EDITING SOFTWARE</span>
+              <h2>自動剪輯軟體</h2>
+              <p>貼一條直播連結進去，影片、聊天室與逐字稿一起抓回來；標記完輸出字幕檔與渲染工單。</p>
+              <div class="scene-tags"><span>直播自動下載</span><span>聊天室對時</span><span>逐字稿自動生成</span><span>9:16 裁切</span><span>一鍵出片</span></div>
+            </div>
+            <div class="scene-media">
+              <figure class="paper-shot shot-main"><img src="assets/tool_edit_main.jpg" alt="剪輯工作站主畫面：PIP 圈、9:16 裁切框與多軌時間軸"><figcaption>工作站主畫面・標記與時間軸</figcaption></figure>
+              <figure class="paper-shot shot-small-a"><img src="assets/tool_edit_menu.jpg" alt="畫面點一下就叫出的效果選單"><figcaption>畫面點一下＝加效果</figcaption></figure>
+              <figure class="paper-shot shot-small-b"><img src="assets/tool_edit_triage.jpg" alt="卡片式整理挑段與成品清單"><figcaption>挑段整理・成品清單</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
         <article class="scene-card" data-scene data-title="新聞稿撰寫">
           <div class="scene-grid">
             <div class="scene-copy">
-              <span class="scene-index">07 / PRESS</span>
+              <span class="scene-index">09 / PRESS</span>
               <h2>新聞稿撰寫</h2>
-              <p>實戰經驗豐富，各類稿件都熟悉——活動通稿、品牌敘事都寫得出來。</p>
+              <p>活動通稿、專訪與品牌敘事。</p>
             </div>
             <div class="scene-media system-stack">
               <div class="system-card"><span class="system-num">經歷</span><span><b>Yahoo 遊戲電競主編</b></span><i aria-hidden="true"></i></div>
@@ -459,12 +493,15 @@
         <article class="scene-card" data-scene data-title="獨立遊戲">
           <div class="scene-grid">
             <div class="scene-copy">
-              <span class="scene-index">08 / INDIE GAME</span>
+              <span class="scene-index">10 / INDIE GAME</span>
               <h2>獨立遊戲</h2>
-              <p>手繪風格的物理對戰遊戲，從玩法、美術到實作的完整獨立製作。</p>
+              <p>《PENGUIN CAN FIGHT》：武器自動攻擊，走位本身就是搓招。另有《塗鴉大戰》。</p>
+              <div class="scene-tags"><span>16 種功夫企鵝</span><span>27 把近戰武器</span><span>20 波生存</span><span>純前端零依賴</span></div>
             </div>
             <div class="scene-media">
-              <figure class="paper-shot shot-main"><a href="https://welkin87.itch.io/graffiti-fight" target="_blank" rel="noopener"><img src="assets/game_graffiti.jpg" alt="塗鴉大戰 Graffiti Fight"></a><figcaption>塗鴉大戰 Graffiti Fight / itch.io・免費試玩</figcaption></figure>
+              <figure class="paper-shot shot-main"><img src="assets/game_penguin_battle.jpg" alt="PENGUIN CAN FIGHT 戰鬥畫面：奧義追擊側摔與多種敵人"><figcaption>PENGUIN CAN FIGHT / 第 14 波・奧義發動</figcaption></figure>
+              <figure class="paper-shot shot-small-a"><img src="assets/game_penguin_menu.jpg" alt="PENGUIN CAN FIGHT 標題畫面"><figcaption>像素格鬥・標題畫面</figcaption></figure>
+              <figure class="paper-shot shot-small-b"><a href="https://welkin87.itch.io/graffiti-fight" target="_blank" rel="noopener"><img src="assets/game_graffiti.jpg" alt="塗鴉大戰 Graffiti Fight"></a><figcaption>塗鴉大戰 / itch.io・免費試玩</figcaption></figure>
             </div>
           </div>
         </article>
@@ -485,7 +522,7 @@
 
     <section class="archive" id="archive" aria-labelledby="archive-title">
       <div class="shell">
-        <div class="section-head reveal"><div><p class="section-no">02 / EDITING SHOWREEL</p><h2 id="archive-title">影音剪輯</h2></div><p>影片是一個能讓大家好好認識你的敘事手法。</p></div>
+        <div class="section-head reveal"><div><p class="section-no">02 / EDITING SHOWREEL</p><h2 id="archive-title">影音剪輯</h2></div><p>16:9 長片、直播精華與 9:16 短影音。</p></div>
         <div class="archive-grid">
           <article class="archive-card reveal"><div class="archive-media"><video src="assets/showreel.webm" muted loop playsinline preload="metadata" aria-label="綜藝節目風剪輯"></video></div><div class="archive-meta"><small>16:9</small><h3>綜藝節目風剪輯</h3></div></article>
           <article class="archive-card reveal"><div class="archive-media"><video src="assets/yt_yahoo_react.webm" muted loop playsinline preload="metadata" aria-label="95.5 萬觀看影片"></video></div><div class="archive-meta"><small>16:9</small><h3>95.5萬觀看</h3></div></article>
@@ -501,9 +538,9 @@
     <section class="workshop" aria-labelledby="workshop-title">
       <div class="shell workshop-grid">
         <div class="workshop-copy reveal">
-          <p class="section-no" style="color:var(--red)">04 / VIRTUAL × REAL</p>
+          <p class="section-no" style="color:var(--red)">05 / VIRTUAL × REAL</p>
           <h2 id="workshop-title">虛實整合影片</h2>
-          <p>虛擬走進現實，宛如美夢成真。</p>
+          <p>實拍素材與虛擬角色、場景合成。</p>
           <div class="compare-card">
             <div class="compare" id="compare">
               <img src="assets/before_train.jpg" alt="虛實整合前的原始火車畫面">
@@ -516,7 +553,7 @@
         </div>
 
         <div class="systems-panel reveal">
-          <div class="systems-intro"><h3>Discord 架設</h3><p>喜歡打造讓社群動起來的 BOT 與互動工具。</p></div>
+          <div class="systems-intro"><h3>Discord 架設</h3><p>身分組、頻道結構、互動指令與自動化。</p></div>
           <div class="discord-demo" id="discordDemo">
             <div class="discord-head"><span>WELLEW / COMMUNITY LAB</span><span id="discordCounter">01 / 07</span></div>
             <div class="discord-body">
@@ -535,7 +572,7 @@
 
     <section class="about" id="about" aria-labelledby="about-title">
       <div class="shell about-grid">
-        <div class="about-copy reveal"><p class="section-no" style="color:var(--red)">07 / PRESS</p><h2 id="about-title">新聞稿撰寫</h2><p>實戰經驗豐富，各類稿件都熟悉——活動通稿、品牌敘事都寫得出來。</p></div>
+        <div class="about-copy reveal"><p class="section-no" style="color:var(--red)">09 / PRESS</p><h2 id="about-title">新聞稿撰寫</h2><p>活動通稿、專訪與品牌敘事。</p></div>
         <div class="stats reveal" aria-label="新聞與編輯經歷"><div class="stat"><b>Yahoo</b><span>遊戲電競主編</span></div><div class="stat"><b>魔方網</b><span>遊戲編輯</span></div><div class="stat"><b>100+</b><span>專訪經驗</span></div><div class="stat"><b>1,000+</b><span>新聞稿／公關稿撰寫</span></div></div>
       </div>
       <div class="shell contact" id="contact">
