@@ -29,6 +29,7 @@ def main():
     register = None
     if "--register" in sys.argv:
         register = sys.argv[sys.argv.index("--register") + 1]
+    refresh = "--refresh" in sys.argv
     m = json.load(io.open(MANIFEST, encoding="utf-8"))
     assets = m["assets"]
     issues = []
@@ -45,7 +46,14 @@ def main():
             k = by_path[rel]
             real = sha256(full)
             if assets[k].get("sha256") != real or assets[k].get("size") != os.path.getsize(full):
-                issues.append("manifest drift: %s" % rel)
+                if refresh:
+                    assets[k]["sha256"] = real
+                    assets[k]["size"] = os.path.getsize(full)
+                    if register:
+                        assets[k]["provenance"] = (assets[k].get("provenance", "") + "；" + register).strip("；")
+                    print("refreshed", rel)
+                else:
+                    issues.append("manifest drift: %s (檔案換過但沒重新登記；確認換得對就跑 --refresh)" % rel)
             continue
         if register:
             key = os.path.splitext(name)[0]
