@@ -1,13 +1,14 @@
 {
   "gate": "PASS",
-  "project_root": "C:\\工作用\\APP開發\\wellew",
-  "manifest": "C:\\工作用\\APP開發\\wellew\\assets\\ASSET_MANIFEST.json",
-  "asset_count": 25,
+  "project_root": "C:\\工作用\\APP開發\\網站與履歷\\wellew",
+  "manifest": "C:\\工作用\\APP開發\\網站與履歷\\wellew\\assets\\ASSET_MANIFEST.json",
+  "asset_count": 36,
   "deliverable_canonical_count": 1,
   "duplicate_sha256_groups": 0,
   "unregistered_project_files": 0,
   "candidate_residue_files": 0,
   "prohibited_external_references": 0,
+  "missing_local_references": 0,
   "issue_count": 0,
   "issues": []
 }

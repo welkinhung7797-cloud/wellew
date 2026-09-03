@@ -7,9 +7,9 @@
       "role": "deliverable",
       "canonical_path": "index.html",
       "original_path": "index.html",
-      "provenance": "Redesigned in the canonical project; original dog identity and CSS mascot added on 2026-08-09; 2026-08-17 加入 AI VTuber 親親子／自動剪輯軟體兩幕、獨立遊戲改掛 PENGUIN CAN FIGHT，並把全站文案改成中性描述；2026-08-17 user 指示直接上線，據此標記 approved",
-      "sha256": "F840F299EFD89E4A142CF3164292EB4F21385049EADB847ED82E2FA2AC5213DD",
-      "size": 63801,
+      "provenance": "Redesigned in the canonical project; original dog identity and CSS mascot added on 2026-08-09; 2026-08-17 加入 AI VTuber 親親子／自動剪輯軟體兩幕、獨立遊戲改掛 PENGUIN CAN FIGHT，並把全站文案改成中性描述；2026-08-17 user 指示直接上線，據此標記 approved；2026-09-03 加入社群管理站（緣結五平台收件匣，YouTube 實接）與 GAKEY 演繹模式錄影（234 顆素材 AI 放 205／人工鎖 29）；自動剪輯軟體幕改為 AI 剪輯工作站 GAKEY",
+      "sha256": "2C726E124484D91B282B3993AC66AA5B214E8146CB5E433E6B6777C7E4AEC243",
+      "size": 65633,
       "approved": true,
       "status": "approved"
     },
@@ -351,6 +351,50 @@
       "provenance": "PENGUIN CAN FIGHT 標題畫面，取自專案 renders/review/game_brand_rename_20260813/menu_1280x720.png（2026-08-17）；2026-08-17 user 指示直接上線，據此標記 approved",
       "sha256": "B307325124463A8B960B78C74AA537BDB8B89EEB0075E334693EE176DD16C0EB",
       "size": 58892,
+      "approved": true,
+      "status": "approved"
+    },
+    "community_inbox_ranking": {
+      "kind": "image",
+      "role": "portfolio_media",
+      "canonical_path": "assets/community_inbox_ranking.jpg",
+      "original_path": "assets/community_inbox_ranking.jpg",
+      "provenance": "2026-09-03 加入社群管理站（緣結五平台收件匣，YouTube 實接）與 GAKEY 演繹模式錄影（234 顆素材 AI 放 205／人工鎖 29）；自動剪輯軟體幕改為 AI 剪輯工作站 GAKEY",
+      "sha256": "280B9A1885D3B4643ABB3910FEC74F990AD4059E2A5928F70E2C01E162F58EBB",
+      "size": 62282,
+      "approved": true,
+      "status": "approved"
+    },
+    "community_inbox_youtube": {
+      "kind": "image",
+      "role": "portfolio_media",
+      "canonical_path": "assets/community_inbox_youtube.jpg",
+      "original_path": "assets/community_inbox_youtube.jpg",
+      "provenance": "2026-09-03 加入社群管理站（緣結五平台收件匣，YouTube 實接）與 GAKEY 演繹模式錄影（234 顆素材 AI 放 205／人工鎖 29）；自動剪輯軟體幕改為 AI 剪輯工作站 GAKEY",
+      "sha256": "FE843D1D850458BE1801AE2CB90CE82250C41FB38D9C666306097BB009F6DE2A",
+      "size": 78443,
+      "approved": true,
+      "status": "approved"
+    },
+    "tool_gakey_replay": {
+      "kind": "video",
+      "role": "portfolio_media",
+      "canonical_path": "assets/tool_gakey_replay.webm",
+      "original_path": "assets/tool_gakey_replay.webm",
+      "provenance": "2026-09-03 加入社群管理站（緣結五平台收件匣，YouTube 實接）與 GAKEY 演繹模式錄影（234 顆素材 AI 放 205／人工鎖 29）；自動剪輯軟體幕改為 AI 剪輯工作站 GAKEY",
+      "sha256": "243BC53732E4EC7CD19F0172E2E5CEFE0D3E99DE199EA2C0CE13260E1939946C",
+      "size": 2513621,
+      "approved": true,
+      "status": "approved"
+    },
+    "tool_gakey_replay_cover": {
+      "kind": "image",
+      "role": "portfolio_media",
+      "canonical_path": "assets/tool_gakey_replay_cover.jpg",
+      "original_path": "assets/tool_gakey_replay_cover.jpg",
+      "provenance": "2026-09-03 加入社群管理站（緣結五平台收件匣，YouTube 實接）與 GAKEY 演繹模式錄影（234 顆素材 AI 放 205／人工鎖 29）；自動剪輯軟體幕改為 AI 剪輯工作站 GAKEY",
+      "sha256": "96EDB56FB05A86C78B6B421F24270292C09E3B73A8C00593FDDDB847D11E4922",
+      "size": 79248,
       "approved": true,
       "status": "approved"
     }
