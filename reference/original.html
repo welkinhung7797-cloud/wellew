@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f1e8cf">
+  <title>WelleW｜影音製作工作室</title>
+  <meta name="description" content="WelleW 是 Welkin 的一人影音製作工作室，提供節目企劃、剪輯、AI 剪輯工作站、直播元件、社群管理系統與新聞稿服務。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&amp;family=Noto+Sans+TC:wght@400;500;700;900&amp;family=Noto+Serif+TC:wght@700;900&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f4ecd6;
+      --paper-deep: #dfd0ad;
+      --paper-light: #fffaf0;
+      --ink: #292720;
+      --ink-soft: #5d584c;
+      --blue: #78aeca;
+      --blue-dark: #356a84;
+      --red: #db6f5c;
+      --yellow: #e9b750;
+      --green: #7f9d79;
+      --line: rgba(70, 121, 151, .22);
+      --shadow: 0 22px 52px rgba(67, 55, 32, .18);
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 78px; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Noto Sans TC", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      pointer-events: none;
+      opacity: .14;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    img, video { display: block; max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--blue-dark); outline-offset: 4px; }
+    .skip-link { position: fixed; top: -80px; left: 16px; z-index: 200; background: var(--ink); color: white; padding: 10px 16px; }
+    .skip-link:focus { top: 16px; }
+    .shell { width: min(1180px, calc(100% - 72px)); margin-inline: auto; }
+    .hand { font-family: "LXGW WenKai TC", cursive; }
+    .serif { font-family: "Noto Serif TC", serif; }
+
+    .site-nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 80;
+      height: 72px;
+      border-bottom: 1px solid rgba(41, 39, 32, .16);
+      background: rgba(244, 236, 214, .88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: -.04em; font-size: 20px; }
+    .brand-dog { width: 32px; height: 32px; overflow: visible; transform: rotate(-5deg); transition: transform .25s var(--ease); }
+    .brand:hover .brand-dog { transform: rotate(3deg) translateY(-2px); }
+    .brand-dog .dog-logo-head { fill: var(--yellow); stroke: var(--ink); stroke-width: 2.4; }
+    .brand-dog .dog-logo-ear { fill: var(--ink); stroke: var(--ink); stroke-width: 2; }
+    .brand-dog .dog-logo-muzzle { fill: var(--paper-light); stroke: var(--ink); stroke-width: 1.7; }
+    .brand-dog .dog-logo-eye, .brand-dog .dog-logo-nose { fill: var(--ink); }
+    .nav-links { display: flex; align-items: center; gap: 30px; font-size: 13px; font-weight: 700; letter-spacing: .08em; }
+    .nav-links a { position: relative; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: -7px; width: 100%; height: 4px; background: var(--red); transform: scaleX(0) rotate(-2deg); transform-origin: left; transition: transform .25s var(--ease); }
+    .nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1) rotate(-2deg); }
+    .nav-contact { background: var(--ink); color: var(--paper-light); padding: 10px 14px; transform: rotate(1deg); box-shadow: 4px 4px 0 var(--yellow); }
+    .nav-contact::after { display: none; }
+    .menu-toggle { display: none; border: 0; background: transparent; font-weight: 900; color: var(--ink); cursor: pointer; }
+
+    .intro {
+      min-height: 100svh;
+      padding: 112px 0 58px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, transparent 0 8.8%, rgba(219, 111, 92, .48) 8.8% calc(8.8% + 2px), transparent calc(8.8% + 2px)),
+        repeating-linear-gradient(0deg, var(--paper) 0 34px, rgba(70, 121, 151, .20) 34px 35px);
+    }
+    .intro::after { content: ""; position: absolute; right: -8vw; top: 18%; width: 42vw; height: 42vw; max-width: 560px; max-height: 560px; border: 2px solid rgba(41,39,32,.16); border-radius: 50%; box-shadow: inset 0 0 0 32px rgba(233,183,80,.16); }
+    .intro-grid { position: relative; z-index: 2; min-height: calc(100svh - 170px); display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 38px; }
+    .intro-copy { align-self: center; padding-left: clamp(22px, 5vw, 76px); }
+    .kicker { display: inline-block; margin-bottom: 22px; padding: 7px 13px; background: var(--yellow); border: 1px solid var(--ink); font-family: "LXGW WenKai TC", cursive; font-weight: 700; transform: rotate(-2deg); box-shadow: 5px 5px 0 rgba(41,39,32,.18); }
+    .wordmark { font-size: clamp(82px, 11.6vw, 156px); line-height: .76; letter-spacing: -.09em; font-weight: 900; text-transform: uppercase; position: relative; z-index: 2; white-space: nowrap; }
+    .wordmark span { display: inline-block; color: var(--blue-dark); transform: translateY(-.03em) rotate(2deg); text-shadow: 4px 4px 0 var(--paper-light), 7px 7px 0 var(--ink); }
+    .intro-copy h1 { max-width: 690px; margin-top: 42px; font-family: "Noto Serif TC", serif; font-size: clamp(36px, 5.2vw, 70px); line-height: 1.12; letter-spacing: .02em; }
+    .intro-copy h1 mark { color: inherit; background: linear-gradient(transparent 60%, rgba(233,183,80,.72) 60%); }
+    .intro-lead { max-width: 610px; margin-top: 25px; font-size: 16px; color: var(--ink-soft); }
+    .intro-actions { display: flex; align-items: center; gap: 18px; margin-top: 34px; }
+    .paper-button { display: inline-flex; align-items: center; gap: 12px; border: 1px solid var(--ink); padding: 13px 18px; background: var(--paper-light); font-weight: 900; box-shadow: 6px 6px 0 var(--ink); transform: rotate(-1deg); transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+    .paper-button:hover { transform: translate(4px,4px) rotate(0); box-shadow: 2px 2px 0 var(--ink); }
+    .intro-note { font-family: "LXGW WenKai TC", cursive; font-size: 14px; transform: rotate(2deg); }
+    .hero-collage { position: relative; height: min(66svh, 660px); min-height: 460px; }
+    .hero-video-card { position: absolute; width: min(92%, 520px); right: 2%; top: 5%; padding: 13px 13px 54px; background: var(--paper-light); border: 1px solid rgba(41,39,32,.42); box-shadow: var(--shadow); transform: rotate(3.2deg); }
+    .hero-video-card video { width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: saturate(.84) contrast(1.04); background: var(--ink); }
+    .hero-video-card figcaption { position: absolute; left: 20px; bottom: 13px; font-family: "LXGW WenKai TC", cursive; font-weight: 700; }
+    .hero-ticket { position: absolute; left: -4%; bottom: 18%; width: min(70%, 340px); background: var(--green); color: var(--paper-light); padding: 21px 24px; border: 2px dashed rgba(255,255,255,.68); transform: rotate(-6deg); box-shadow: 8px 11px 0 rgba(41,39,32,.18); }
+    .hero-ticket b { display: block; font-family: "Noto Serif TC", serif; font-size: 26px; line-height: 1.25; }
+    .hero-ticket span { display: block; margin-top: 8px; font-size: 12px; letter-spacing: .08em; }
+    .scribble-arrow { position: absolute; left: 15%; top: 7%; width: 120px; height: 80px; transform: rotate(12deg); }
+    .scribble-arrow path { fill: none; stroke: var(--red); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .paw-cutout { position: absolute; right: 2%; bottom: 1%; width: 122px; aspect-ratio: 1; border-radius: 48% 52% 46% 54%; background: var(--yellow); border: 2px solid var(--ink); transform: rotate(8deg); box-shadow: 8px 9px 0 rgba(41,39,32,.16); }
+    .paw-cutout i, .paw-cutout b { position: absolute; display: block; background: var(--ink); }
+    .paw-cutout i { width: 16px; height: 22px; border-radius: 55% 55% 48% 48%; top: 28%; }
+    .paw-cutout i:nth-child(1) { left: 20%; transform: rotate(-25deg); }.paw-cutout i:nth-child(2) { left: 38%; top: 21%; transform: rotate(-8deg); }
+    .paw-cutout i:nth-child(3) { right: 27%; top: 22%; transform: rotate(9deg); }.paw-cutout i:nth-child(4) { right: 12%; transform: rotate(27deg); }
+    .paw-cutout b { width: 54px; height: 45px; left: 34px; bottom: 22px; border-radius: 48% 48% 42% 42%; transform: rotate(-3deg); }
+
+    .journey { height: 1125vh; position: relative; background: #e8ddbf; }
+    .journey-sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; background: repeating-linear-gradient(0deg, #eee4cb 0 38px, rgba(67,116,145,.20) 38px 39px); isolation: isolate; }
+    .journey-sticky::before { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, transparent 0 7.5%, rgba(219,111,92,.42) 7.5% calc(7.5% + 2px), transparent calc(7.5% + 2px)); }
+    .journey-sticky::after { content: ""; position: absolute; z-index: -1; left: -5%; right: -5%; bottom: -13vh; height: 38vh; background: var(--blue); clip-path: polygon(0 29%, 6% 22%, 12% 30%, 20% 18%, 29% 28%, 38% 16%, 47% 26%, 56% 14%, 65% 27%, 75% 17%, 84% 28%, 92% 20%, 100% 30%, 100% 100%, 0 100%); opacity: .72; }
+    .journey-ui { position: absolute; top: 92px; left: max(30px, 5vw); right: max(30px, 5vw); z-index: 30; display: flex; align-items: center; gap: 18px; pointer-events: none; }
+    .journey-count { flex: 0 0 auto; font-family: "LXGW WenKai TC", cursive; font-weight: 700; font-size: 14px; }
+    .journey-rail { flex: 1; height: 7px; background: rgba(41,39,32,.16); border: 1px solid rgba(41,39,32,.24); transform: rotate(-.3deg); overflow: hidden; }
+    .journey-rail i { display: block; width: 100%; height: 100%; background: var(--red); transform: scaleX(var(--journey-progress, 0)); transform-origin: left; }
+    .journey-title { flex: 0 0 auto; max-width: 35ch; font-size: 12px; font-weight: 900; letter-spacing: .08em; text-align: right; }
+    .scene-card { position: absolute; left: 50%; top: 51%; width: min(1080px, 82vw); min-height: min(68svh, 690px); max-height: calc(100svh - 188px); padding: clamp(26px, 4vw, 54px); background: var(--paper-light); border: 1px solid rgba(41,39,32,.3); box-shadow: 0 28px 65px rgba(60,48,28,.22); transform: translate(-50%,-50%); opacity: 0; pointer-events: none; will-change: transform, opacity; overflow: hidden; }
+    .scene-card::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0 31px, rgba(70,121,151,.10) 31px 32px); }
+    .scene-card.active { pointer-events: auto; }
+    .scene-grid { position: relative; z-index: 2; display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(28px, 5vw, 72px); align-items: center; min-height: inherit; }
+    .scene-copy { align-self: center; }
+    .scene-index { display: inline-block; margin-bottom: 15px; padding: 5px 10px; border: 1px solid var(--ink); background: var(--yellow); font-family: "LXGW WenKai TC", cursive; font-weight: 700; transform: rotate(-2deg); }
+    .scene-copy h2 { font-family: "Noto Serif TC", serif; font-size: clamp(33px, 4.2vw, 58px); line-height: 1.15; letter-spacing: .01em; }
+    .scene-copy p { margin-top: 20px; color: var(--ink-soft); max-width: 39ch; }
+    .scene-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 23px; }
+    .scene-tags span { padding: 4px 9px; border: 1px solid rgba(41,39,32,.32); background: rgba(255,255,255,.55); font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+    .scene-media { position: relative; min-height: 410px; }
+    .paper-shot { position: absolute; padding: 8px 8px 34px; background: #fffdf7; border: 1px solid rgba(41,39,32,.32); box-shadow: 10px 14px 25px rgba(67,55,32,.18); }
+    .paper-shot img, .paper-shot video { width: 100%; height: 100%; object-fit: cover; background: var(--ink); }
+    .paper-shot figcaption { position: absolute; left: 13px; bottom: 8px; font-family: "LXGW WenKai TC", cursive; font-size: 12px; font-weight: 700; }
+    .shot-main { inset: 3% 4% 9% 5%; transform: rotate(1.5deg); }
+    .shot-small-a { width: 42%; height: 42%; right: -4%; top: -3%; transform: rotate(6deg); z-index: 3; }
+    .shot-small-b { width: 39%; height: 38%; left: -4%; bottom: -2%; transform: rotate(-6deg); z-index: 4; }
+    .vertical-shot { width: 42%; height: 92%; left: 5%; top: 2%; transform: rotate(-3deg); }
+    .vertical-shot + .paper-shot { width: 58%; height: 62%; right: 1%; top: 12%; transform: rotate(4deg); }
+    .vertical-shot + .paper-shot + .paper-shot { width: 43%; height: 42%; right: 8%; bottom: 0; transform: rotate(-2deg); }
+    .triple-media { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; height: 100%; align-items: center; }
+    .triple-media .paper-shot { position: relative; inset: auto; width: auto; height: 62%; }
+    .triple-media .paper-shot:nth-child(1) { transform: rotate(-3deg) translateY(18px); }
+    .triple-media .paper-shot:nth-child(2) { transform: rotate(2deg) translateY(-16px); }
+    .triple-media .paper-shot:nth-child(3) { transform: rotate(-1deg) translateY(12px); }
+    .system-stack { display: grid; gap: 14px; align-content: center; height: 100%; }
+    .system-card { position: relative; display: grid; grid-template-columns: 54px 1fr auto; align-items: center; gap: 14px; padding: 17px 19px; background: #fffdf7; border: 1px solid var(--ink); box-shadow: 6px 7px 0 rgba(41,39,32,.13); transform: rotate(var(--tilt,0deg)); }
+    .system-card:nth-child(2) { --tilt: 1deg; margin-left: 7%; }.system-card:nth-child(3) { --tilt: -1deg; margin-right: 5%; }.system-card:nth-child(4) { --tilt: .6deg; margin-left: 12%; }
+    .system-num { font-family: "LXGW WenKai TC", cursive; font-size: 24px; font-weight: 700; color: var(--red); }
+    .system-card b { font-size: 15px; }.system-card small { color: var(--ink-soft); }
+    .system-card i { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 5px rgba(127,157,121,.18); }
+    .dog-dock { position: absolute; z-index: 36; right: max(12px, 2.5vw); bottom: 1.5vh; width: clamp(220px, 25vw, 360px); height: clamp(175px, 27vh, 275px); pointer-events: none; filter: drop-shadow(0 13px 12px rgba(41,39,32,.19)); }
+    .dog-shadow { position: absolute; left: 18%; right: 7%; bottom: 8px; height: 24px; border-radius: 50%; background: rgba(41,39,32,.16); transform: rotate(-2deg); }
+    .dog-character { --dog-x: 52%; --dog-tilt: -2deg; --dog-scale: 1; position: absolute; left: var(--dog-x); bottom: 11px; width: 220px; height: 166px; transform: translateX(-50%) rotate(var(--dog-tilt)) scale(var(--dog-scale)); transform-origin: 50% 100%; transition: left .65s var(--ease), filter .35s ease; animation: dog-bob 2.8s ease-in-out infinite; }
+    .dog-tail { position: absolute; z-index: 0; right: 5px; bottom: 64px; width: 76px; height: 28px; border: 3px solid var(--ink); border-left: 0; border-radius: 0 70% 70% 0; background: #bd7b45; transform: rotate(-29deg); transform-origin: 0 50%; animation: dog-tail-wag .56s ease-in-out infinite alternate; }
+    .dog-body { position: absolute; z-index: 2; right: 27px; bottom: 24px; width: 132px; height: 82px; border: 3px solid var(--ink); border-radius: 50% 54% 39% 42%; background: #bd7b45; transform: rotate(2deg); box-shadow: inset -19px -12px 0 rgba(104,64,35,.13); }
+    .dog-body::before { content: ""; position: absolute; width: 48px; height: 43px; right: 9px; top: 13px; border-radius: 47% 53% 45% 55%; background: #f5e7c8; transform: rotate(-11deg); }
+    .dog-leg { position: absolute; z-index: 1; bottom: 3px; width: 27px; height: 51px; border: 3px solid var(--ink); border-radius: 8px 8px 45% 45%; background: #bd7b45; }
+    .dog-leg.front { left: 74px; transform: rotate(3deg); }.dog-leg.back { right: 39px; transform: rotate(-3deg); }
+    .dog-leg::after { content: ""; position: absolute; left: 3px; right: 3px; bottom: 5px; height: 7px; border-top: 2px solid rgba(41,39,32,.6); border-radius: 50%; }
+    .dog-head { position: absolute; z-index: 5; left: 13px; bottom: 55px; width: 101px; height: 94px; border: 3px solid var(--ink); border-radius: 47% 53% 44% 48%; background: #c98a52; transform: rotate(-5deg); animation: dog-head-tilt 2.8s ease-in-out infinite; box-shadow: inset -11px -9px 0 rgba(104,64,35,.11); }
+    .dog-ear { position: absolute; z-index: -1; top: -12px; width: 42px; height: 68px; border: 3px solid var(--ink); background: #514338; }
+    .dog-ear.left { left: -14px; border-radius: 75% 38% 65% 38%; transform: rotate(21deg); animation: dog-ear-flop 1.9s ease-in-out infinite alternate; }
+    .dog-ear.right { right: -9px; border-radius: 38% 74% 38% 68%; transform: rotate(-18deg); }
+    .dog-blaze { position: absolute; left: 39px; top: 1px; width: 25px; height: 48px; background: #f5e7c8; border-radius: 20% 50% 55% 40%; transform: rotate(4deg); }
+    .dog-eye { position: absolute; top: 38px; width: 10px; height: 12px; border-radius: 50%; background: var(--ink); }
+    .dog-eye.left { left: 26px; }.dog-eye.right { right: 25px; }
+    .dog-eye::after { content: ""; position: absolute; width: 3px; height: 3px; left: 2px; top: 2px; border-radius: 50%; background: white; }
+    .dog-muzzle { position: absolute; left: 29px; bottom: 9px; width: 55px; height: 39px; border: 2px solid var(--ink); border-radius: 51% 49% 44% 48%; background: #f5e7c8; }
+    .dog-nose { position: absolute; left: 19px; top: 2px; width: 18px; height: 13px; border-radius: 52% 48% 60% 55%; background: var(--ink); }
+    .dog-mouth { position: absolute; left: 27px; top: 14px; width: 2px; height: 12px; background: var(--ink); }
+    .dog-mouth::after { content: ""; position: absolute; left: -10px; top: 7px; width: 22px; height: 9px; border-bottom: 2px solid var(--ink); border-radius: 50%; }
+    .dog-tongue { position: absolute; left: 21px; bottom: -13px; width: 15px; height: 18px; border: 2px solid var(--ink); border-top: 0; border-radius: 0 0 50% 50%; background: var(--red); opacity: 0; transition: opacity .25s ease; }
+    .dog-tag { position: absolute; z-index: 7; left: 103px; bottom: 55px; width: 20px; height: 20px; border: 2px solid var(--ink); border-radius: 50%; background: var(--yellow); }
+    body[data-scene="1"] .dog-character { --dog-x: 45%; --dog-tilt: 2deg; }
+    body[data-scene="2"] .dog-character { --dog-x: 57%; --dog-tilt: -1deg; }
+    body[data-scene="3"] .dog-character { --dog-x: 48%; --dog-tilt: 3deg; }
+    body[data-scene="4"] .dog-character { --dog-x: 55%; --dog-tilt: -3deg; }
+    body[data-scene="5"] .dog-character { --dog-x: 46%; --dog-tilt: 1deg; }
+    body[data-scene="6"] .dog-character { --dog-x: 56%; --dog-tilt: -2deg; }
+    body[data-scene="7"] .dog-character { --dog-x: 49%; --dog-tilt: 2deg; }
+    body[data-scene="8"] .dog-character { --dog-x: 58%; --dog-tilt: -2deg; }
+    body[data-scene="9"] .dog-character { --dog-x: 47%; --dog-tilt: 3deg; }
+    body[data-scene="1"] .dog-tongue, body[data-scene="4"] .dog-tongue, body[data-scene="7"] .dog-tongue { opacity: 1; }
+    body[data-scene="2"] .dog-tag, body[data-scene="5"] .dog-tag, body[data-scene="8"] .dog-tag { background: var(--blue); }
+    body[data-scene="3"] .dog-tag, body[data-scene="6"] .dog-tag, body[data-scene="9"] .dog-tag { background: var(--green); }
+    @keyframes dog-tail-wag { from { transform: rotate(-42deg); } to { transform: rotate(-8deg); } }
+    @keyframes dog-bob { 0%,100% { transform: translateX(-50%) translateY(0) rotate(var(--dog-tilt)) scale(var(--dog-scale)); } 50% { transform: translateX(-50%) translateY(-7px) rotate(calc(var(--dog-tilt) + 1deg)) scale(var(--dog-scale)); } }
+    @keyframes dog-head-tilt { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(-1deg); } }
+    @keyframes dog-ear-flop { from { transform: rotate(17deg); } to { transform: rotate(26deg); } }
+    .journey-hint { position: absolute; left: max(25px, 4vw); bottom: 28px; z-index: 30; font-family: "LXGW WenKai TC", cursive; font-size: 13px; transform: rotate(-1deg); }
+
+    .archive { position: relative; padding: 150px 0; background: var(--ink); color: var(--paper-light); overflow: hidden; }
+    .archive::before { content: ""; position: absolute; inset: 0; opacity: .08; background: repeating-linear-gradient(90deg, transparent 0 39px, white 39px 40px); }
+    .section-head { position: relative; z-index: 2; display: grid; grid-template-columns: .7fr 1.3fr; gap: 40px; align-items: end; margin-bottom: 50px; }
+    .section-no { font-family: "LXGW WenKai TC", cursive; font-size: 15px; color: var(--yellow); }
+    .section-head h2 { font-family: "Noto Serif TC", serif; font-size: clamp(45px, 7vw, 88px); line-height: .98; }
+    .section-head p { color: rgba(255,250,240,.67); max-width: 580px; justify-self: end; }
+    .archive-grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .archive-card { grid-column: span 4; background: var(--paper-light); color: var(--ink); padding: 9px 9px 17px; border: 1px solid rgba(255,255,255,.34); box-shadow: 10px 12px 0 rgba(0,0,0,.28); transition: transform .3s var(--ease), opacity .25s ease; }
+    .archive-card:nth-child(3n+2) { transform: rotate(.7deg); }.archive-card:nth-child(3n) { transform: rotate(-.7deg); }
+    .archive-card:hover { transform: translateY(-8px) rotate(0); }
+    .archive-media { aspect-ratio: 16/10; overflow: hidden; background: #111; position: relative; }
+    .archive-media.portrait { background: linear-gradient(90deg,#171713 0 25%,#e9b750 25% 26%,#171713 26% 74%,#78aeca 74% 75%,#171713 75%); }
+    .archive-media img, .archive-media video { width: 100%; height: 100%; object-fit: cover; transition: transform .55s var(--ease), filter .4s ease; }
+    .archive-media.portrait video { object-fit: contain; }
+    .archive-card:hover .archive-media img, .archive-card:hover .archive-media video { transform: scale(1.03); filter: saturate(1.08); }
+    .archive-meta { padding: 15px 6px 0; }
+    .archive-meta small { color: var(--red); font-weight: 900; letter-spacing: .08em; }.archive-meta h3 { margin-top: 5px; font-family: "Noto Serif TC", serif; font-size: 21px; line-height: 1.3; }.archive-meta p { margin-top: 7px; font-size: 12px; color: var(--ink-soft); }
+
+    .workshop { padding: 140px 0; position: relative; background: var(--paper); }
+    .workshop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; }
+    .workshop-copy { position: sticky; top: 120px; }
+    .workshop-copy h2 { margin-top: 10px; font-family: "Noto Serif TC", serif; font-size: clamp(44px, 6vw, 76px); line-height: 1.05; }
+    .workshop-copy > p { margin-top: 24px; color: var(--ink-soft); max-width: 46ch; }
+    .compare-card { margin-top: 34px; padding: 12px 12px 52px; background: var(--paper-light); border: 1px solid rgba(41,39,32,.35); box-shadow: var(--shadow); transform: rotate(-1deg); }
+    .compare { position: relative; aspect-ratio: 9/16; max-height: 600px; overflow: hidden; background: var(--ink); }
+    .compare img, .compare video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .compare-after { clip-path: inset(0 50% 0 0); }
+    .compare-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: var(--yellow); box-shadow: 0 0 0 1px var(--ink); pointer-events: none; }
+    .compare-line::after { content: "↔"; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: var(--yellow); border: 2px solid var(--ink); font-weight: 900; }
+    .compare input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 3; }
+    .compare-label { position: absolute; bottom: -41px; left: 18px; right: 18px; display: flex; justify-content: space-between; font-family: "LXGW WenKai TC", cursive; font-weight: 700; }
+    .systems-panel { display: grid; gap: 24px; }
+    .systems-intro { padding: 26px; background: var(--green); color: var(--paper-light); border: 1px solid var(--ink); box-shadow: 7px 8px 0 var(--ink); transform: rotate(1deg); }
+    .systems-intro h3 { font-family: "Noto Serif TC", serif; font-size: 31px; line-height: 1.25; }.systems-intro p { margin-top: 10px; color: rgba(255,255,255,.82); }
+    .discord-demo { border: 1px solid var(--ink); background: #31313a; color: #f6f4ee; box-shadow: 11px 13px 0 rgba(41,39,32,.16); }
+    .discord-head { display: flex; justify-content: space-between; gap: 20px; padding: 11px 14px; background: #23232a; font-size: 10px; letter-spacing: .1em; color: #c9c5bc; }
+    .discord-body { display: grid; grid-template-columns: 175px 1fr; min-height: 410px; }
+    .discord-tabs { padding: 10px; background: #292930; display: grid; align-content: start; gap: 4px; }
+    .discord-tabs button { border: 0; text-align: left; padding: 10px 11px; background: transparent; color: #bcb9b1; cursor: pointer; font-size: 12px; }
+    .discord-tabs button:hover, .discord-tabs button[aria-selected="true"] { background: #4b4b57; color: white; }
+    .discord-screen { padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+    .discord-message { display: grid; grid-template-columns: 42px 1fr; gap: 13px; }
+    .discord-avatar { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: var(--yellow); color: var(--ink); font-family: "LXGW WenKai TC", cursive; font-weight: 700; }
+    .discord-message h4 { font-size: 16px; }.discord-message p { margin-top: 5px; color: #bdb9b0; font-size: 13px; }
+    .terminal { margin-top: 25px; padding: 18px; min-height: 175px; background: #1b1b20; border-left: 3px solid var(--green); font-family: monospace; font-size: 12px; line-height: 1.8; color: #d8d5cc; }
+    .terminal b { color: #a8c7a3; }.terminal i { color: #e9b750; font-style: normal; }
+
+    .cap-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 54px; position: relative; z-index: 2; }
+    .cap-head h2 { font-family: "Noto Serif TC", serif; font-size: clamp(44px,6vw,78px); line-height: 1.05; }.cap-head p { align-self: end; max-width: 500px; color: var(--ink-soft); }
+    .cap-list { position: relative; z-index: 2; border-top: 2px solid var(--ink); }
+    .cap-row { display: grid; grid-template-columns: 80px 1fr auto; gap: 20px; align-items: center; padding: 22px 4px; border-bottom: 1px solid rgba(41,39,32,.38); transition: padding .25s var(--ease), background .25s ease; }
+    .cap-row:hover { padding-inline: 15px; background: rgba(255,255,255,.32); }
+    .cap-row small { font-family: "LXGW WenKai TC", cursive; color: var(--red); font-weight: 700; }.cap-row h3 { font-family: "Noto Serif TC", serif; font-size: clamp(24px,3.2vw,40px); }.cap-row span { font-size: 12px; color: var(--ink-soft); text-align: right; }
+
+    .about { padding: 145px 0 90px; background: var(--paper-light); }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 90px; align-items: start; }
+    .about h2 { font-family: "Noto Serif TC", serif; font-size: clamp(48px,7vw,90px); line-height: 1; }.about-copy > p { max-width: 640px; margin-top: 27px; font-size: 18px; color: var(--ink-soft); }
+    .stats { display: grid; gap: 13px; }
+    .stat { display: grid; grid-template-columns: 1fr auto; align-items: end; padding: 22px 24px; border: 1px solid var(--ink); background: var(--paper); box-shadow: 6px 7px 0 rgba(41,39,32,.14); transform: rotate(var(--tilt)); }.stat:nth-child(1){--tilt:1deg}.stat:nth-child(2){--tilt:-1deg}.stat:nth-child(3){--tilt:.5deg}
+    .stat b { font-size: 42px; line-height: 1; color: var(--blue-dark); }.stat span { font-family: "LXGW WenKai TC", cursive; font-weight: 700; }
+    .contact { margin-top: 100px; border-top: 2px solid var(--ink); padding-top: 68px; }
+    .contact h2 { max-width: 900px; font-size: clamp(42px,7vw,90px); }.contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 42px; }
+    .contact-links a, .contact-static { padding: 15px 20px; border: 1px solid var(--ink); font-weight: 900; background: var(--yellow); box-shadow: 5px 6px 0 var(--ink); transition: transform .25s var(--ease),box-shadow .25s var(--ease); }.contact-links a:nth-child(2), .contact-static{background:var(--blue)}.contact-links a:hover{transform:translate(4px,4px);box-shadow:1px 2px 0 var(--ink)}
+    footer { padding: 30px 0 40px; background: var(--paper-light); }
+    .footer-line { padding-top: 25px; border-top: 1px solid rgba(41,39,32,.24); display: flex; justify-content: space-between; gap: 25px; font-size: 11px; letter-spacing: .08em; color: var(--ink-soft); }
+    .footer-line a { text-decoration: underline; text-underline-offset: 4px; }
+
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .8s var(--ease); }.reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 980px) {
+      .shell { width: min(100% - 42px, 860px); }
+      .intro-grid { grid-template-columns: 1fr; padding-top: 45px; }
+      .intro-copy { padding-left: 5vw; }
+      .hero-collage { width: min(650px,90%); justify-self: end; height: 520px; }
+      .scene-card { width: 86vw; min-height: 70svh; padding: 34px; }.scene-grid { grid-template-columns: .82fr 1.18fr; gap: 28px; }.scene-media { min-height: 350px; }
+      .archive-card { grid-column: span 6; }
+      .workshop-grid { gap: 38px; }.discord-body { grid-template-columns: 145px 1fr; }.discord-screen { padding: 22px; }
+    }
+
+    @media (max-width: 720px) {
+      html { scroll-padding-top: 64px; }
+      .site-nav { height: 62px; }
+      .nav-links { display: none; position: absolute; left: 16px; right: 16px; top: 68px; padding: 20px; background: var(--paper-light); border: 1px solid var(--ink); box-shadow: 7px 8px 0 var(--ink); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links.open { display: flex; }.nav-links a { padding: 11px 4px; }.nav-contact { margin-top: 7px; text-align: center; }
+      .menu-toggle { display: block; }
+      .intro { padding-top: 84px; }.intro-grid { min-height: auto; gap: 18px; min-width: 0; }.intro-grid > * { min-width: 0; }.intro-copy { padding-left: 0; }.kicker { max-width: calc(100% - 8px); font-size: 14px; }.wordmark { font-size: clamp(52px, 14.8vw, 64px); }.intro-copy h1 { margin-top: 30px; font-size: 37px; }.intro-lead { font-size: 14px; }.intro-actions { align-items: flex-start; flex-direction: column; }.hero-collage { justify-self: center; height: 420px; width: 100%; }.hero-video-card { width: 87%; right: 2%; }.hero-ticket { left: 0; width: 76%; bottom: 8%; }.paw-cutout { width: 84px; }.paw-cutout i { width: 11px; height: 15px; }.paw-cutout b { width: 38px; height: 32px; left: 23px; bottom: 15px; }
+      .journey { height: 1230vh; }.journey-ui { top: 78px; left: 18px; right: 18px; }.journey-title { display: none; }.scene-card { top: 50%; width: calc(100vw - 30px); height: 77svh; min-height: 0; max-height: none; padding: 25px 22px; }.scene-grid { display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 14px; min-height: 0; height: 100%; }.scene-copy h2 { font-size: clamp(25px,7vw,34px); }.scene-copy p { display: none; }.scene-index { margin-bottom: 8px; }.scene-tags { margin-top: 12px; }.scene-media { min-height: 0; height: 100%; }.paper-shot { padding: 6px 6px 28px; }.triple-media { gap: 4px; }.triple-media .paper-shot { height: 74%; }.system-stack { gap: 8px; }.system-card { padding: 11px 13px; grid-template-columns: 40px 1fr 8px; }.system-card small { display: none; }.dog-dock { width: 178px; height: 142px; right: 6px; bottom: 2px; }.dog-character { --dog-scale: .78; }.journey-hint { bottom: 14px; left: 18px; font-size: 11px; max-width: 180px; }
+      .archive, .workshop { padding: 100px 0; }.section-head { grid-template-columns: 1fr; gap: 20px; }.section-head p { justify-self: start; }.archive-card { grid-column: 1/-1; }
+      .workshop-grid { grid-template-columns: 1fr; }.workshop-copy { position: relative; top: auto; }.compare { max-height: 540px; }.discord-body { grid-template-columns: 1fr; }.discord-tabs { grid-template-columns: repeat(2,1fr); }.discord-screen { min-height: 310px; }
+      .cap-head, .about-grid { grid-template-columns: 1fr; gap: 34px; }.cap-row { grid-template-columns: 46px 1fr; }.cap-row span { grid-column: 2; text-align: left; }.about { padding: 105px 0 70px; }.about-copy > p { font-size: 16px; }.contact { margin-top: 75px; }.footer-line { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .journey { height: auto; padding: 95px 0; }.journey-sticky { position: relative; height: auto; overflow: visible; padding: 40px 0; }.journey-ui, .journey-hint, .dog-dock { display: none; }.scene-card { position: relative; left: auto; top: auto; transform: none !important; opacity: 1 !important; margin: 25px auto; pointer-events: auto; max-height: none; }.scene-grid { min-height: 620px; }.reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body data-scene="0">
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <header class="site-nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="WelleW 回到首頁"><svg class="brand-dog" viewBox="0 0 36 36" aria-hidden="true"><path class="dog-logo-ear" d="M9 8C4 5 2 9 4 16c1 4 4 6 7 4Z"/><path class="dog-logo-ear" d="M27 8c5-3 7 1 5 8-1 4-4 6-7 4Z"/><path class="dog-logo-head" d="M8 13c1-6 6-9 10-9s9 3 10 9v8c0 7-4 11-10 11S8 28 8 21Z"/><circle class="dog-logo-eye" cx="14" cy="17" r="1.8"/><circle class="dog-logo-eye" cx="22" cy="17" r="1.8"/><path class="dog-logo-muzzle" d="M12 21c0-3 3-4 6-4s6 1 6 4-2 7-6 7-6-4-6-7Z"/><ellipse class="dog-logo-nose" cx="18" cy="20" rx="3.1" ry="2.2"/></svg>WelleW</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navLinks">MENU ＋</button>
+      <nav class="nav-links" id="navLinks" aria-label="主要導覽">
+        <a href="#work">作品</a>
+        <a href="#archive">影音剪輯</a>
+        <a href="#about">關於</a>
+        <a class="nav-contact" href="#contact">聯絡我 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="intro" id="top" aria-labelledby="intro-title">
+      <div class="shell intro-grid">
+        <div class="intro-copy">
+          <p class="kicker">影音製作工作室</p>
+          <div class="wordmark" aria-label="WelleW">Welle<span>W</span></div>
+          <h1 id="intro-title">影音製作工作室・<mark>節目、剪輯與社群系統</mark></h1>
+          <p class="intro-lead">我是 Welkin，WelleW 是我的一人工作室。做的範圍是節目企劃、剪輯、特效合成、直播元件、社群系統架設，以及自己寫的 AI 剪輯工具，需要協作時再依專案找人。</p>
+          <div class="intro-actions">
+            <a class="paper-button" href="#work">查看作品 <span aria-hidden="true">↓</span></a>
+            <span class="intro-note">向下捲動</span>
+          </div>
+        </div>
+        <div class="hero-collage" aria-label="WelleW 精選作品預覽">
+          <svg class="scribble-arrow" viewBox="0 0 120 80" aria-hidden="true"><path d="M8 62c25-41 57-53 94-26M87 23l17 13-20 8"/></svg>
+          <figure class="hero-video-card">
+            <video src="assets/showreel.webm" muted loop autoplay playsinline preload="metadata" aria-label="WelleW 影音作品精選"></video>
+            <figcaption>WELLEW STUDIO / SHOWREEL</figcaption>
+          </figure>
+          <div class="hero-ticket"><b>負責人 Welkin</b><span>節目企劃 / AI 剪輯工作站 / 直播系統 / 社群系統 / 新聞稿</span></div>
+          <div class="paw-cutout" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey" id="work" data-journey aria-label="WelleW 十項作品與服務">
+      <div class="journey-sticky">
+        <div class="journey-ui" aria-live="polite">
+          <span class="journey-count" id="journeyCount">01 / 10</span>
+          <span class="journey-rail" aria-hidden="true"><i></i></span>
+          <span class="journey-title" id="journeyTitle">節目企劃</span>
+        </div>
+
+        <article class="scene-card active" data-scene data-title="節目企劃">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">01 / SHOW PLANNING</span>
+              <h2>節目企劃</h2>
+              <p>負責選題、腳本結構與播出節奏的設計。</p>
+              <div class="scene-tags"><span>Yahoo Esports</span><span>AI VTuber「親親子」</span><span>打造 VTuber 虎子</span></div>
+            </div>
+            <div class="scene-media">
+              <figure class="paper-shot shot-main"><img src="assets/plan_yahoo_party.jpg" alt="Yahoo 電競名人邀請賽與爬梯 PARTY"><figcaption>YAHOO ESPORTS / 賽事直播與內容企劃</figcaption></figure>
+              <figure class="paper-shot shot-small-a"><video src="assets/plan_kissko_short.webm" muted loop playsinline preload="metadata" aria-label="AI VTuber 親親子"></video><figcaption>AI VTUBER「親親子」</figcaption></figure>
+              <figure class="paper-shot shot-small-b"><img src="assets/plan_huzi_vtuber.jpg" alt="打造 VTuber 虎子跨界聯動節目縮圖"><figcaption>打造 VTuber 虎子</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene-card" data-scene data-title="影音剪輯">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">02 / EDITING SHOWREEL</span>
+              <h2>影音剪輯</h2>
+              <p>16:9 長片、直播精華與 9:16 短影音。</p>
+            </div>
+            <div class="scene-media">
+              <figure class="paper-shot shot-main"><video src="assets/showreel.webm" muted loop playsinline preload="metadata" aria-label="綜藝節目風剪輯"></video><figcaption>16:9・綜藝節目風剪輯</figcaption></figure>
+              <figure class="paper-shot shot-small-a"><video src="assets/yt_yahoo_react.webm" muted loop playsinline preload="metadata" aria-label="95.5 萬觀看影片"></video><figcaption>16:9・95.5萬觀看</figcaption></figure>
+              <figure class="paper-shot shot-small-b"><video src="assets/yt_ugym.webm" muted loop playsinline preload="metadata" aria-label="醫療器材產品影片"></video><figcaption>16:9・醫療器材產品影片</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene-card" data-scene data-title="AI VTuber 親親子">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">03 / AI VTUBER</span>
+              <h2>AI VTuber 親親子</h2>
+              <p>人設、立繪狀態機、語音合成與直播推流。操作員打一行字，她在直播間用自己的聲音講出來。</p>
+              <div class="scene-tags"><span>角色企劃</span><span>PNGTuber 狀態機</span><span>語音合成</span><span>跨網直播推流</span><span>短影音經營</span></div>
+            </div>
+            <div class="scene-media">
+              <figure class="paper-shot vertical-shot"><video src="assets/plan_kissko_short.webm" muted loop playsinline preload="metadata" aria-label="親親子直播剪輯短影音"></video><figcaption>直播剪輯・短影音</figcaption></figure>
+              <figure class="paper-shot"><img src="assets/vt_kissko_states.jpg" alt="親親子 14 種立繪狀態對照表"><figcaption>14 種立繪狀態</figcaption></figure>
+              <figure class="paper-shot"><video src="assets/vt_kissko_talk.webm" muted loop playsinline preload="metadata" aria-label="親親子說話循環動畫"></video><figcaption>說話循環</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene-card" data-scene data-title="3D 資訊動畫">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">04 / 3D DATA VISUALIZATION</span>
+              <h2>3D 資訊動畫</h2>
+              <p>地形、範圍與路線用真實座標和高程資料計算。</p>
+              <div class="scene-tags"><span>真實高程</span><span>衛星影像</span><span>路線考據</span><span>4K 60fps</span></div>
+            </div>
+            <div class="scene-media triple-media">
+              <figure class="paper-shot"><video src="assets/geo3d_japan.webm" muted loop playsinline preload="metadata" aria-label="全日本俯瞰五層地形接力"></video><figcaption>全日本俯瞰・五層地形接力</figcaption></figure>
+              <figure class="paper-shot"><video src="assets/geo3d_terrain.webm" muted loop playsinline preload="metadata" aria-label="衛星實景山體與雪場範圍"></video><figcaption>衛星實景山體・雪場範圍</figcaption></figure>
+              <figure class="paper-shot"><video src="assets/geo3d_transit.webm" muted loop playsinline preload="metadata" aria-label="剪紙風交通比較地圖"></video><figcaption>剪紙風地圖・交通比較</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene-card" data-scene data-title="虛實整合影片">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">05 / VIRTUAL × REAL</span>
+              <h2>虛實整合影片</h2>
+              <p>實拍素材與虛擬角色、場景合成。</p>
+            </div>
+            <div class="scene-media">
+              <figure class="paper-shot shot-main"><img src="assets/before_train.jpg" alt="汐科站月台實拍原始照片"><figcaption>實拍原始素材</figcaption></figure>
+              <figure class="paper-shot shot-small-a"><video src="assets/after_train.webm" muted loop playsinline preload="metadata" aria-label="合成後成品"></video><figcaption>合成後成品</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene-card" data-scene data-title="客製化直播元件">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">06 / LIVE & MOTION</span>
+              <h2>客製化直播元件</h2>
+              <p>依直播內容製作需要的畫面元件。</p>
+            </div>
+            <div class="scene-media system-stack">
+              <div class="system-card"><span class="system-num">01</span><span><b>聊天室留言疊圖</b></span><i aria-hidden="true"></i></div>
+              <div class="system-card"><span class="system-num">02</span><span><b>即時投票系統</b></span><i aria-hidden="true"></i></div>
+              <div class="system-card"><span class="system-num">03</span><span><b>斗內目標進度條</b></span><i aria-hidden="true"></i></div>
+              <div class="system-card"><span class="system-num">04</span><span><b>洗版留言→HYPE 計數</b></span><i aria-hidden="true"></i></div>
+              <div class="system-card"><span class="system-num">05</span><span><b>斗內跑馬燈</b></span><i aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene-card" data-scene data-title="Discord 架設">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">07 / COMMUNITY</span>
+              <h2>Discord 架設</h2>
+              <p>身分組、頻道結構、互動指令與自動化。</p>
+            </div>
+            <div class="scene-media system-stack">
+              <div class="system-card"><span class="system-num">01</span><span><b>身分組與權限架構設計</b><small>對應不同社群動線</small></span><i aria-hidden="true"></i></div>
+              <div class="system-card"><span class="system-num">02</span><span><b>頻道結構規劃</b><small>公開／內部／分眾頻道分流</small></span><i aria-hidden="true"></i></div>
+              <div class="system-card"><span class="system-num">03</span><span><b>留言互動指令</b><small>抽籤、佔卜、點歌，成員打一行字就有回應</small></span><i aria-hidden="true"></i></div>
+              <div class="system-card"><span class="system-num">04</span><span><b>精華時間軸整合</b><small>VOD 上架後自動整理分段時間軸</small></span><i aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene-card" data-scene data-title="社群管理站">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">08 / COMMUNITY OPS</span>
+              <h2>社群管理站</h2>
+              <p>YouTube、X、Threads、Instagram、Facebook 的留言收進同一個收件匣：一站看、一站回，統一發文一次送多平台。誰最常來留言、哪些還沒回，打開就看到。</p>
+              <div class="scene-tags"><span>五平台留言收件匣</span><span>未回覆優先</span><span>回覆者排行</span><span>統一發文</span><span>邀請制登入</span></div>
+            </div>
+            <div class="scene-media">
+              <figure class="paper-shot shot-main"><img src="assets/community_inbox_youtube.jpg" alt="社群管理站 YouTube 收件匣：未回覆留言清單與近 30 天回覆者排行"><figcaption>YouTube 收件匣・頻道實接 1,060 則留言</figcaption></figure>
+              <figure class="paper-shot shot-small-a"><img src="assets/community_inbox_ranking.jpg" alt="近 30 天最常回覆的留言者排行"><figcaption>誰最常來留言・近 30 天排行</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene-card" data-scene data-title="AI 剪輯工作站 GAKEY">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">09 / AI EDITING</span>
+              <h2>AI 剪輯工作站 GAKEY</h2>
+              <p>貼一條直播連結進去，影片、聊天室與逐字稿一起抓回來。人挑段，AI 鋪素材：一集 20 分鐘的節目，234 顆字卡、音效與特效由 AI 照規則落到軌道上，人只鎖定自己要的 29 顆；每一顆都能拖、能改字、能重生。</p>
+              <div class="scene-tags"><span>直播自動下載</span><span>逐字稿自動生成</span><span>AI 自動鋪素材</span><span>多軌時間軸</span><span>毫秒級拖曳</span><span>一鍵出片</span></div>
+            </div>
+            <div class="scene-media">
+              <figure class="paper-shot shot-main"><video src="assets/tool_gakey_replay.webm" poster="assets/tool_gakey_replay_cover.jpg" muted loop playsinline preload="metadata" aria-label="GAKEY 演繹模式：AI 把 234 顆素材一顆一顆放上軌道"></video><figcaption style="left:auto;right:14px">看 AI 怎麼放・234 顆素材 25 秒落完</figcaption></figure>
+              <figure class="paper-shot shot-small-a"><img src="assets/tool_edit_main.jpg" alt="剪輯工作站主畫面：PIP 圈、9:16 裁切框與多軌時間軸"><figcaption>工作站主畫面・標記與時間軸</figcaption></figure>
+              <figure class="paper-shot shot-small-b"><img src="assets/tool_edit_triage.jpg" alt="卡片式整理挑段與成品清單"><figcaption>挑段整理・成品清單</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene-card" data-scene data-title="新聞稿撰寫">
+          <div class="scene-grid">
+            <div class="scene-copy">
+              <span class="scene-index">10 / PRESS</span>
+              <h2>新聞稿撰寫</h2>
+              <p>活動通稿、專訪與品牌敘事。</p>
+            </div>
+            <div class="scene-media system-stack">
+              <div class="system-card"><span class="system-num">經歷</span><span><b>Yahoo 遊戲電競主編</b></span><i aria-hidden="true"></i></div>
+              <div class="system-card"><span class="system-num">經歷</span><span><b>魔方網遊戲編輯</b></span><i aria-hidden="true"></i></div>
+              <div class="system-card"><span class="system-num">100+</span><span><b>專訪經驗</b></span><i aria-hidden="true"></i></div>
+              <div class="system-card"><span class="system-num">1,000+</span><span><b>新聞稿／公關稿撰寫</b></span><i aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="dog-dock" aria-hidden="true">
+          <div class="dog-shadow"></div>
+          <div class="dog-character">
+            <i class="dog-tail"></i>
+            <i class="dog-leg front"></i><i class="dog-leg back"></i>
+            <div class="dog-body"></div>
+            <i class="dog-tag"></i>
+            <div class="dog-head"><i class="dog-ear left"></i><i class="dog-ear right"></i><i class="dog-blaze"></i><i class="dog-eye left"></i><i class="dog-eye right"></i><div class="dog-muzzle"><i class="dog-nose"></i><i class="dog-mouth"></i><i class="dog-tongue"></i></div></div>
+          </div>
+        </div>
+        <p class="journey-hint">繼續向下捲動</p>
+      </div>
+    </section>
+
+    <section class="archive" id="archive" aria-labelledby="archive-title">
+      <div class="shell">
+        <div class="section-head reveal"><div><p class="section-no">02 / EDITING SHOWREEL</p><h2 id="archive-title">影音剪輯</h2></div><p>16:9 長片、直播精華與 9:16 短影音。</p></div>
+        <div class="archive-grid">
+          <article class="archive-card reveal"><div class="archive-media"><video src="assets/showreel.webm" muted loop playsinline preload="metadata" aria-label="綜藝節目風剪輯"></video></div><div class="archive-meta"><small>16:9</small><h3>綜藝節目風剪輯</h3></div></article>
+          <article class="archive-card reveal"><div class="archive-media"><video src="assets/yt_yahoo_react.webm" muted loop playsinline preload="metadata" aria-label="95.5 萬觀看影片"></video></div><div class="archive-meta"><small>16:9</small><h3>95.5萬觀看</h3></div></article>
+          <article class="archive-card reveal"><div class="archive-media"><video src="assets/yt_ugym.webm" muted loop playsinline preload="metadata" aria-label="醫療器材產品影片"></video></div><div class="archive-meta"><small>16:9</small><h3>醫療器材產品影片</h3></div></article>
+          <article class="archive-card reveal"><div class="archive-media"><video src="assets/yt_script_film_clip.webm" poster="assets/yt_script_film_cover.jpg" muted loop playsinline preload="metadata" aria-label="腳本規劃影片"></video></div><div class="archive-meta"><small>16:9</small><h3>腳本規劃・26.3萬觀看</h3></div></article>
+          <article class="archive-card reveal"><div class="archive-media portrait"><video src="assets/yt_short_top1.webm" muted loop playsinline preload="metadata" aria-label="11 萬觀看 Shorts"></video></div><div class="archive-meta"><small>SHORTS</small><h3>11萬觀看</h3></div></article>
+          <article class="archive-card reveal"><div class="archive-media portrait"><video src="assets/yt_short_top2.webm" muted loop playsinline preload="metadata" aria-label="6.7 萬觀看 Shorts"></video></div><div class="archive-meta"><small>SHORTS</small><h3>6.7萬觀看</h3></div></article>
+          <article class="archive-card reveal"><div class="archive-media portrait"><video src="assets/yt_short_huzi.webm" muted loop playsinline preload="metadata" aria-label="VTuber 虎子 Shorts"></video></div><div class="archive-meta"><small>SHORTS・10萬觀看</small><h3>打造 VTuber 虎子</h3></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="workshop" aria-labelledby="workshop-title">
+      <div class="shell workshop-grid">
+        <div class="workshop-copy reveal">
+          <p class="section-no" style="color:var(--red)">05 / VIRTUAL × REAL</p>
+          <h2 id="workshop-title">虛實整合影片</h2>
+          <p>實拍素材與虛擬角色、場景合成。</p>
+          <div class="compare-card">
+            <div class="compare" id="compare">
+              <img src="assets/before_train.jpg" alt="虛實整合前的原始火車畫面">
+              <video class="compare-after" src="assets/after_train.webm" muted loop autoplay playsinline preload="metadata" aria-label="虛實整合後的火車動畫"></video>
+              <span class="compare-line" aria-hidden="true"></span>
+              <input type="range" min="0" max="100" value="50" aria-label="拖曳比較虛實整合前後">
+            </div>
+            <div class="compare-label"><span>BEFORE / 原始畫面</span><span>AFTER / 虛實整合</span></div>
+          </div>
+        </div>
+
+        <div class="systems-panel reveal">
+          <div class="systems-intro"><h3>Discord 架設</h3><p>身分組、頻道結構、互動指令與自動化。</p></div>
+          <div class="discord-demo" id="discordDemo">
+            <div class="discord-head"><span>WELLEW / COMMUNITY LAB</span><span id="discordCounter">01 / 07</span></div>
+            <div class="discord-body">
+              <div class="discord-tabs" role="tablist" aria-label="Discord 產品示範">
+                <button type="button" role="tab" aria-selected="true" data-discord="0">身分組與權限架構設計</button><button type="button" role="tab" aria-selected="false" data-discord="1">頻道結構規劃</button><button type="button" role="tab" aria-selected="false" data-discord="2">留言互動指令</button><button type="button" role="tab" aria-selected="false" data-discord="3">表情機器人</button><button type="button" role="tab" aria-selected="false" data-discord="4">掛機養成遊戲</button><button type="button" role="tab" aria-selected="false" data-discord="5">精華時間軸整合</button><button type="button" role="tab" aria-selected="false" data-discord="6">Webhook 自動化</button>
+              </div>
+              <div class="discord-screen" role="tabpanel" aria-live="polite">
+                <div class="discord-message"><div class="discord-avatar" id="discordAvatar">權</div><div><h4 id="discordTitle">身分組與權限架構設計</h4><p id="discordText">對應不同社群動線。</p></div></div>
+                <div class="terminal" id="discordTerminal"><span><i>01</i> 身分組與權限架構設計</span><br><span><i>02</i> 對應不同社群動線</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="shell about-grid">
+        <div class="about-copy reveal"><p class="section-no" style="color:var(--red)">10 / PRESS</p><h2 id="about-title">新聞稿撰寫</h2><p>活動通稿、專訪與品牌敘事。</p></div>
+        <div class="stats reveal" aria-label="新聞與編輯經歷"><div class="stat"><b>Yahoo</b><span>遊戲電競主編</span></div><div class="stat"><b>魔方網</b><span>遊戲編輯</span></div><div class="stat"><b>100+</b><span>專訪經驗</span></div><div class="stat"><b>1,000+</b><span>新聞稿／公關稿撰寫</span></div></div>
+      </div>
+      <div class="shell contact" id="contact">
+        <p class="section-no" style="color:var(--red)">CONTACT</p>
+        <h2 class="serif reveal">有任何想法都歡迎聊聊</h2>
+        <div class="contact-links reveal"><a href="mailto:welkinhung7797@gmail.com">EMAIL / welkinhung7797@gmail.com</a><span class="contact-static">LINE / welkinhung</span><a href="https://welkin87.itch.io/graffiti-fight" target="_blank" rel="noopener">ITCH.IO / GRAFFITI FIGHT ↗</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-line"><span>WELLEW / WELKIN PORTFOLIO © 2026</span></div>
+  </footer>
+
+  <script>
+    (() => {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const menuButton = document.querySelector('.menu-toggle');
+      const navLinks = document.getElementById('navLinks');
+      menuButton.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.textContent = open ? 'CLOSE −' : 'MENU ＋';
+      });
+      navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.textContent = 'MENU ＋';
+      }));
+
+      const revealObserver = reducedMotion ? null : new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12, rootMargin: '0px 0px -45px' });
+      document.querySelectorAll('.reveal').forEach(element => reducedMotion ? element.classList.add('in') : revealObserver.observe(element));
+
+      const journey = document.querySelector('[data-journey]');
+      const scenes = [...document.querySelectorAll('.scene-card[data-scene]')];
+      const count = document.getElementById('journeyCount');
+      const title = document.getElementById('journeyTitle');
+      let activeScene = -1;
+      let ticking = false;
+
+      function activateScene(index) {
+        if (index === activeScene) return;
+        activeScene = index;
+        document.body.dataset.scene = String(index);
+        count.textContent = `${String(index + 1).padStart(2,'0')} / ${String(scenes.length).padStart(2,'0')}`;
+        title.textContent = scenes[index].dataset.title;
+        scenes.forEach((scene, sceneIndex) => {
+          const active = sceneIndex === index;
+          scene.classList.toggle('active', active);
+          scene.setAttribute('aria-hidden', String(!active));
+          scene.querySelectorAll('video').forEach(video => {
+            if (active && !reducedMotion) video.play().catch(() => {});
+            else video.pause();
+          });
+        });
+        window.dispatchEvent(new CustomEvent('wellew:scene', { detail: { index } }));
+      }
+
+      function renderJourney() {
+        ticking = false;
+        if (reducedMotion) {
+          scenes.forEach(scene => scene.removeAttribute('aria-hidden'));
+          return;
+        }
+        const rect = journey.getBoundingClientRect();
+        const scrollable = Math.max(1, rect.height - window.innerHeight);
+        const progress = Math.max(0, Math.min(1, -rect.top / scrollable));
+        const sceneFloat = progress * (scenes.length - 1);
+        const nextActive = Math.max(0, Math.min(scenes.length - 1, Math.round(sceneFloat)));
+        const stride = window.innerWidth * (window.innerWidth < 720 ? .96 : .88);
+        document.documentElement.style.setProperty('--journey-progress', progress.toFixed(4));
+        scenes.forEach((scene, index) => {
+          const delta = index - sceneFloat;
+          const x = delta * stride;
+          const y = Math.min(32, Math.abs(delta) * 20);
+          const rotate = Math.max(-4, Math.min(4, delta * 1.7));
+          scene.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), 0) rotate(${rotate}deg)`;
+          scene.style.opacity = String(Math.max(0, 1 - Math.max(0, Math.abs(delta) - .18) * 1.1));
+          scene.style.zIndex = String(20 - Math.round(Math.abs(delta) * 3));
+        });
+        activateScene(nextActive);
+      }
+
+      function scheduleJourney() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(renderJourney);
+      }
+      window.addEventListener('scroll', scheduleJourney, { passive: true });
+      window.addEventListener('resize', scheduleJourney);
+      renderJourney();
+
+      const compare = document.getElementById('compare');
+      const compareRange = compare.querySelector('input');
+      const compareAfter = compare.querySelector('.compare-after');
+      const compareLine = compare.querySelector('.compare-line');
+      compareRange.addEventListener('input', () => {
+        const value = compareRange.value;
+        compareAfter.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+        compareLine.style.left = `${value}%`;
+      });
+
+      const discordProducts = [
+        { avatar:'權', title:'身分組與權限架構設計', text:'對應不同社群動線。', lines:['身分組與權限架構設計','對應不同社群動線'] },
+        { avatar:'頻', title:'頻道結構規劃', text:'公開／內部／分眾頻道分流。', lines:['公開／內部／分眾頻道分流'] },
+        { avatar:'令', title:'留言互動指令', text:'抽籤、佔卜、點歌，成員打一行字就有回應。', lines:['抽籤','佔卜','點歌'] },
+        { avatar:'應', title:'表情機器人', text:'關鍵字自動蓋章、投票統計、活動簽到。', lines:['關鍵字自動蓋章','投票統計','活動簽到'] },
+        { avatar:'養', title:'掛機養成遊戲', text:'伺服器內建長期經營的 RPG 系統。', lines:['長期經營','RPG 系統'] },
+        { avatar:'軸', title:'精華時間軸整合', text:'VOD 上架後自動整理分段時間軸，主播不用自己重看一次直播才能剪。', lines:['VOD 上架後自動整理分段時間軸','主播不用自己重看一次直播才能剪'] },
+        { avatar:'通', title:'Webhook 自動化', text:'開台通知、新片上架、排程廣播。', lines:['開台通知','新片上架','排程廣播'] }
+      ];
+      const discordTabs = [...document.querySelectorAll('[data-discord]')];
+      function showDiscord(index) {
+        const product = discordProducts[index];
+        discordTabs.forEach((tab, tabIndex) => tab.setAttribute('aria-selected', String(tabIndex === index)));
+        document.getElementById('discordCounter').textContent = `${String(index + 1).padStart(2,'0')} / 07`;
+        document.getElementById('discordAvatar').textContent = product.avatar;
+        document.getElementById('discordTitle').textContent = product.title;
+        document.getElementById('discordText').textContent = product.text;
+        document.getElementById('discordTerminal').innerHTML = product.lines.map((line, lineIndex) => `<span><i>${String(lineIndex + 1).padStart(2,'0')}</i> ${line}</span>`).join('<br>');
+      }
+      discordTabs.forEach((tab, index) => tab.addEventListener('click', () => showDiscord(index)));
+
+      if (!reducedMotion) {
+        const mediaObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+          if (entry.target.closest('.scene-card[data-scene]')) return;
+          entry.isIntersecting ? entry.target.play().catch(() => {}) : entry.target.pause();
+        }), { threshold: .25 });
+        document.querySelectorAll('video').forEach(video => mediaObserver.observe(video));
+      } else {
+        document.querySelectorAll('video').forEach(video => { video.pause(); video.removeAttribute('autoplay'); });
+      }
+    })();
+  </script>
+
+</body>
+</html>

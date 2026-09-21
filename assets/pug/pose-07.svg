@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280" width="320" height="280" role="img" aria-labelledby="title"><title id="title">WelleW pug — play-bow</title><g stroke="#34312d" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(86 110) rotate(-30)"><path d="M15 14C-8 19-22 6-20-10C-19-25-3-28 5-18C11-8 1 1-5-5C-10-10-6-15-2-14" fill="#e9b750" stroke-width="5"/></g><path d="M79 111Q103 100 125 120L163 155Q197 166 225 193L239 215Q243 222 232 224L190 222Q161 218 136 199L110 161L92 198Q87 207 79 204Q72 201 77 193L79 155Q66 125 79 111Z" fill="#e9b750" stroke-width="4.6"/><path d="M185 212L172 220Q168 227 179 230L201 229Q212 226 210 220" fill="#e9b750" stroke-width="4.6"/><g transform="translate(221 164) rotate(14) scale(0.74)">
+    <path d="M-62-61C-38-77 41-79 68-62C90-48 96-13 87 18C79 52 50 74 8 75C-33 77-71 62-84 34C-98 4-88-43-62-61Z" fill="#e9b750" stroke-width="4.6"/>
+    <path d="M-61-61C-82-65-105-45-104-23C-104-9-98 12-88 13C-76 11-65-16-60-38Q-55-54-61-61Z" fill="#34312d" stroke-width="4.6"/>
+    <path d="M68-62C90-61 108-42 106-17C106-3 101 12 92 14C80 7 74-16 69-36Q64-53 68-62Z" fill="#34312d" stroke-width="4.6"/>
+    <path d="M-12-34Q0-40 12-34" fill="none" stroke-width="3.5"/>
+    <ellipse cx="-37" cy="0" rx="15.5" ry="18.5" fill="#fffaf0" stroke-width="4.2"/><ellipse cx="39" cy="-1" rx="15.5" ry="18.5" fill="#fffaf0" stroke-width="4.2"/><ellipse cx="-35" cy="2" rx="10" ry="13" fill="#34312d" stroke-width="0"/><ellipse cx="41" cy="1" rx="10" ry="13" fill="#34312d" stroke-width="0"/><path d="M-2 46L15 45L14 57Q12 69 4 66Q-3 64-2 46Z" fill="#fffaf0" stroke-width="3.5"/><path d="M7 48L7 57" fill="none" stroke-width="3.5"/>
+    <path d="M-3 18C-15 14-28 26-28 40C-28 54-13 60-4 52Q3 45 2 30Z" fill="#fffaf0" stroke-width="4"/>
+    <path d="M4 18C17 15 29 28 28 42C26 56 12 59 4 50Q-1 41 1 29Z" fill="#fffaf0" stroke-width="4"/>
+    <path d="M-10 15Q1 9 12 15Q12 21 2 27Q-8 23-10 15Z" fill="#34312d" stroke-width="3.6"/>
+
+  </g></g></svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280" width="320" height="280" role="img" aria-labelledby="title"><title id="title">WelleW pug — small-hop</title><g stroke="#34312d" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(80 172) rotate(12)"><path d="M15 14C-8 19-22 6-20-10C-19-25-3-28 5-18C11-8 1 1-5-5C-10-10-6-15-2-14" fill="#e9b750" stroke-width="5"/></g><path d="M114 107Q76 123 71 156Q70 185 103 202L108 214Q111 224 120 220L126 204Q167 217 203 202L214 213Q220 220 227 214L218 195Q247 167 235 141Q224 119 203 113Z" fill="#e9b750" stroke-width="4.6"/><path d="M136 164Q171 173 205 160L207 192Q178 209 143 197Z" fill="#fffaf0" stroke-width="0"/><g transform="translate(171 95) rotate(0) scale(0.92)">
+    <path d="M-62-61C-38-77 41-79 68-62C90-48 96-13 87 18C79 52 50 74 8 75C-33 77-71 62-84 34C-98 4-88-43-62-61Z" fill="#e9b750" stroke-width="4.6"/>
+    <path d="M-61-61C-82-65-105-45-104-23C-104-9-98 12-88 13C-76 11-65-16-60-38Q-55-54-61-61Z" fill="#34312d" stroke-width="4.6"/>
+    <path d="M68-62C90-61 108-42 106-17C106-3 101 12 92 14C80 7 74-16 69-36Q64-53 68-62Z" fill="#34312d" stroke-width="4.6"/>
+    <path d="M-12-34Q0-40 12-34" fill="none" stroke-width="3.5"/>
+    <ellipse cx="-37" cy="0" rx="15.5" ry="18.5" fill="#fffaf0" stroke-width="4.2"/><ellipse cx="39" cy="-1" rx="15.5" ry="18.5" fill="#fffaf0" stroke-width="4.2"/><ellipse cx="-35" cy="2" rx="10" ry="13" fill="#34312d" stroke-width="0"/><ellipse cx="41" cy="1" rx="10" ry="13" fill="#34312d" stroke-width="0"/><path d="M-2 46L15 45L14 57Q12 69 4 66Q-3 64-2 46Z" fill="#fffaf0" stroke-width="3.5"/><path d="M7 48L7 57" fill="none" stroke-width="3.5"/>
+    <path d="M-3 18C-15 14-28 26-28 40C-28 54-13 60-4 52Q3 45 2 30Z" fill="#fffaf0" stroke-width="4"/>
+    <path d="M4 18C17 15 29 28 28 42C26 56 12 59 4 50Q-1 41 1 29Z" fill="#fffaf0" stroke-width="4"/>
+    <path d="M-10 15Q1 9 12 15Q12 21 2 27Q-8 23-10 15Z" fill="#34312d" stroke-width="3.6"/>
+
+  </g><path d="M118 238L114 248M176 239L176 251M229 234L235 244" fill="none" stroke-width="3.5"/></g></svg>

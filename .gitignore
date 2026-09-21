@@ -1,3 +1,13 @@
 .DS_Store
 Thumbs.db
 .wrangler/
+node_modules/
+dist/
+.build-*/
+*.zip
+*.log
+.env
+.env.*
+!.env.example
+reference/*.png
+reference/pug-master-*.svg
