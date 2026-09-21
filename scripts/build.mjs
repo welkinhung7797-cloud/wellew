@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolve(root, 'dist');
 await mkdir(output, { recursive: true });
-for (const file of ['index.html', 'style.css', 'app.js', 'content.js', 'assets/logo.svg', 'assets/fonts', 'assets/pug', 'assets/source']) {
+for (const file of ['index.html', 'style.css', 'app.js', 'content.js', 'live-demo.js', 'live-demo.css', 'assets/logo.svg', 'assets/fonts', 'assets/pug', 'assets/source']) {
   await mkdir(dirname(resolve(output, file)), { recursive: true });
   await cp(resolve(root, file), resolve(output, file), { recursive: true });
 }

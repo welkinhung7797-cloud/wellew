@@ -21,6 +21,7 @@ npm start
 - 上方「作品目錄」直接選作品。
 - 點作品封面或縮圖，開啟大圖或影片；Escape 關閉。
 - Discord 頁可選擇 7 項功能。
+- 直播元件頁提供留言疊圖、即時投票、目標進度、HYPE 計數及跑馬燈五項互動示範，可切換、輸入與重設；所有資料只存在目前頁面，不連接直播平台，也不產生付款。
 - 每頁有獨立網址片段，可直接分享指定作品頁。
 
 ## 部署到 Cloudflare Pages
@@ -35,6 +36,8 @@ npm run check
 - 純靜態檔案，不需要環境變數或伺服器端服務。
 - `dist` 可以直接上傳到 Pages；請先在預覽部署確認，再替換正式網站。
 
+現有 Cloudflare 專案是 `wellewkin`，正式分支為 `main`，尚未連接 Git Provider。完成本機驗證後，使用已登入的 Wrangler 執行 `wrangler pages deploy dist --project-name wellewkin --branch main` 更新正式網站；僅推送 GitHub 不會更新此網址。
+
 目前 GitHub Pages 使用 `master` 分支的根目錄，網址為 https://welkinhung7797-cloud.github.io/wellew/ 。根目錄同時保留可直接使用的靜態入口與素材，推送後由既有 Pages 設定自動發布。
 
 ## 調整內容
@@ -42,6 +45,7 @@ npm run check
 - `content.js`：作品文字、媒體、經歷、聯絡資訊。
 - `style.css`：版面、配色、響應式與減少動態效果。
 - `app.js`：翻頁、作品目錄、延遲載入及播放器。
+- `live-demo.js`、`live-demo.css`：直播元件的本機互動示範與版面。
 - `assets/pug/pose-01.svg` 至 `pose-12.svg`：12 個簡筆巴哥動作。
 - `assets/source/`：原網站下載的作品素材與影片封面。
 

@@ -1,4 +1,5 @@
 import { projects, editingReel, profile } from './content.js';
+import { liveDemoMarkup, initLiveDemo } from './live-demo.js';
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const gallery = $('#gallery');
@@ -8,9 +9,17 @@ const number = value => String(value).padStart(2, '0');
 const poster = media => media.type === 'video' ? media.poster : media.src;
 const collection = project => project.id === 'editing' ? editingReel : project.media;
 const titlePug = pose => `<img class="title-pug" data-src="assets/pug/pose-${number(pose)}.svg" data-pose="${pose}" width="320" height="280" alt="" aria-hidden="true" decoding="async">`;
+const headingParts = {
+  kissko: ['AI VTuber', '親親子'], geo3d: ['3D', '資訊動畫'],
+  compositing: ['虛實整合', '影片'], live: ['客製化', '直播元件'],
+  discord: ['Discord', '架設'], gakey: ['AI 剪輯工作站', 'GAKEY']
+};
+const projectHeading = project => (headingParts[project.id] || [project.title])
+  .map(part => `<span class="title-chunk">${escape(part)}</span>`).join(project.title.includes(' ') ? ' <wbr>' : '<wbr>');
 
 function factsMarkup(project) {
   const facts = project.facts || [];
+  if (project.id === 'live') return liveDemoMarkup();
   if (project.id === 'discord') return `<div class="facts-composition discord-composition"><p class="facts-label">COMMUNITY / DISCORD</p><div class="feature-selectors" aria-label="Discord 功能">${facts.map((fact, index) => `<button type="button" data-feature="${index}" aria-label="${escape(fact.title)}" aria-pressed="${index === 0}">${number(index + 1)}</button>`).join('')}</div><div class="feature-detail" aria-live="polite"><p class="feature-index">01 / 07</p><h3 id="feature-title">${escape(facts[0].title)}</h3><p id="feature-description">${escape(facts[0].description)}</p></div><div class="feature-footer"><span>從架構到日常互動</span><button type="button" id="next-feature">下一項 →</button></div></div>`;
   return `<div class="facts-composition"><p class="facts-label">${escape(project.en)} / WELLEW</p>${facts.map(fact => `<div class="fact-row"><b>${escape(fact.title)}</b><span>${escape(fact.description || fact.label)}</span></div>`).join('')}</div>`;
 }
@@ -25,7 +34,7 @@ projects.forEach((project, index) => {
   section.setAttribute('aria-labelledby', `${project.id}-title`);
   section.innerHTML = `<div class="work-copy">
     <p class="work-number"><span class="number">${number(index + 1)}</span><span>${escape(project.en)}</span></p>
-    <div class="title-line"><h2 id="${project.id}-title">${escape(project.title)}</h2>${titlePug(index + 2)}</div>
+    <div class="title-line"><h2 id="${project.id}-title" aria-label="${escape(project.title)}">${projectHeading(project)}</h2>${titlePug(index + 2)}</div>
     <p class="work-description project-subtitle">${escape(project.description)}</p>
     ${project.tags.length ? `<div class="work-tags">${project.tags.map(tag => `<span>${escape(tag)}</span>`).join('')}</div>` : ''}
     ${items.length ? `<button class="text-cta" type="button" data-project="${project.id}" data-media="0">看看作品 <span class="round-arrow" aria-hidden="true">↗</span></button>` : ''}
@@ -39,6 +48,7 @@ projects.forEach((project, index) => {
     ${items.length > 1 ? `<div class="preview-strip">${items.slice(1, 5).map((media, mediaIndex) => `<button type="button" data-project="${project.id}" data-media="${mediaIndex + 1}" aria-label="查看：${escape(media.alt)}"><img data-src="${escape(poster(media))}" width="64" height="40" alt="" decoding="async"></button>`).join('')}<span>${items.length} 件作品</span></div>` : ''}` : factsMarkup(project)}</div>`;
   gallery.append(section);
 });
+initLiveDemo($('#live'));
 
 const contact = document.createElement('section');
 contact.id = 'contact';
@@ -176,7 +186,7 @@ gallery.addEventListener('wheel', event => {
 gallery.addEventListener('touchstart', () => { pendingIndex = null; }, { passive: true });
 gallery.addEventListener('wheel', event => { if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) pendingIndex = null; }, { passive: true });
 document.addEventListener('keydown', event => {
-  if (event.ctrlKey || event.metaKey || event.altKey || event.target.closest('dialog,input,textarea,select,video,[contenteditable="true"]')) return;
+  if (event.ctrlKey || event.metaKey || event.altKey || event.target.closest('dialog,input,textarea,select,video,[contenteditable="true"],[data-no-page-keys]')) return;
   const index = ({ ArrowRight: activeIndex + 1, ArrowLeft: activeIndex - 1, Home: 0, End: pages.length - 1 })[event.key];
   if (index === undefined) return;
   event.preventDefault();

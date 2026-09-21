@@ -21,7 +21,7 @@ const slash = path => path.replaceAll('\\', '/');
 const external = value => !value || value.startsWith('#') || value.startsWith('//') || /^[a-z][a-z\d+.-]*:/i.test(value);
 const attributes = tag => Object.fromEntries([...tag.matchAll(/\s([\w:-]+)\s*=\s*["']([^"']*)["']/g)].map(match => [match[1], match[2]]));
 const moduleImports = source => [...source.matchAll(/(?:\b(?:import|export)\s+(?:[^'";]*?\s+from\s*)?|\bimport\s*\(\s*)["']([^"']+)["']/g)].map(match => match[1]);
-const expectedTopLevel = new Set(['index.html', 'style.css', 'app.js', 'content.js', '_headers', 'assets']);
+const expectedTopLevel = new Set(['index.html', 'style.css', 'app.js', 'content.js', 'live-demo.js', 'live-demo.css', '_headers', 'assets']);
 const assetExtensions = new Set(['.svg', '.webp', '.jpg', '.jpeg', '.png', '.gif', '.avif', '.webm', '.mp4', '.woff', '.woff2', '.ttf', '.otf', '.txt', '.css', '.ico']);
 
 async function exists(path) {

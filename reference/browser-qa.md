@@ -44,3 +44,13 @@ These observations validate layout and interaction in the tested browser. They a
 - Confirmed the GAKEY hash survives refresh, current and adjacent pug SVGs load, no guide-note remains, and the initial DOM has zero videos.
 - Deferred the finite 460 ms entrance until the target page reaches 95% visibility and the SVG decodes.
 - Source and dist validation and structural performance checks pass; HTML plus local JS/CSS: 65,113 bytes.
+
+## Layout and live interaction revision
+
+- At 1920×1080, the previous layout placed the copy at x=310 and capped the media at 752.5 px wide. The revised layout starts at x=86.4 and gives the media 1008 px. Content aligns near the top of the reading area.
+- The live heading previously occupied two 68.6 px lines with an isolated final character. It now occupies one 79.05 px line at 1920×1080. Narrow layouts wrap whole title phrases; the accessible heading retains the original complete title.
+- The five static live feature rows were replaced by five selectable, working local demonstrations. Chat submission displayed the entered text; three votes produced 34/33/33%; simulated +100 and +500 produced 600/1000 and 60%; HYPE +1 and +10 produced 11; the marquee reported one completed playback. Reset restored the samples.
+- ArrowRight while editing a demo input stayed on the live page. Discord's next-feature button still changed to 頻道結構規劃.
+- All 12 pages had zero vertical page overflow at 375×667, 390×844, 844×390, 1280×720 and 1440×721. The live demo also fit at 1440×768 and 1920×1080. Small-height rules fix the live controls and Discord details being clipped.
+- Demo strings are inserted as text, the vote percentages sum to 100, and the marquee animation is finite. Switching demos, resetting, reduced-motion preference and hiding the page cancel the animation.
+- Source and dist validation passed with 58 checked files and 12 mascot poses. Runtime HTML plus local JS/CSS: 95,333 bytes. The new files are included in the production build whitelist.
