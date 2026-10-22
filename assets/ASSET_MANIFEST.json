@@ -7,9 +7,9 @@
       "role": "deliverable",
       "canonical_path": "index.html",
       "original_path": "index.html",
-      "provenance": "Redesigned in the canonical project; original dog identity and CSS mascot added on 2026-08-09; 2026-08-17 加入 AI VTuber 親親子／自動剪輯軟體兩幕、獨立遊戲改掛 PENGUIN CAN FIGHT，並把全站文案改成中性描述；2026-08-17 user 指示直接上線，據此標記 approved；2026-09-03 加入社群管理站（緣結五平台收件匣，YouTube 實接）與 GAKEY 演繹模式錄影（234 顆素材 AI 放 205／人工鎖 29）；自動剪輯軟體幕改為 AI 剪輯工作站 GAKEY；2026-09-03 去識別化：收件匣重新渲染為假名（小明/小華…）、斗內卡贊助者換名、親親子短影音聊天區馬賽克；下架獨立遊戲幕與三張遊戲圖；2026-09-03 去識別化：收件匣重新渲染為假名（小明/小華…）、斗內卡贊助者換名、親親子短影音聊天區馬賽克；下架獨立遊戲幕與三張遊戲圖；2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
-      "sha256": "10FBA35D690FDF24A2938B3D9E7F7270D0B6E8A2E6B711AD72083CF3CDBB4A5A",
-      "size": 71085,
+      "provenance": "Redesigned in the canonical project; original dog identity and CSS mascot added on 2026-08-09; 2026-08-17 加入 AI VTuber 親親子／自動剪輯軟體兩幕、獨立遊戲改掛 PENGUIN CAN FIGHT，並把全站文案改成中性描述；2026-08-17 user 指示直接上線，據此標記 approved；2026-09-03 加入社群管理站（緣結五平台收件匣，YouTube 實接）與 GAKEY 演繹模式錄影（234 顆素材 AI 放 205／人工鎖 29）；自動剪輯軟體幕改為 AI 剪輯工作站 GAKEY；2026-09-03 去識別化：收件匣重新渲染為假名（小明/小華…）、斗內卡贊助者換名、親親子短影音聊天區馬賽克；下架獨立遊戲幕與三張遊戲圖；2026-09-03 去識別化：收件匣重新渲染為假名（小明/小華…）、斗內卡贊助者換名、親親子短影音聊天區馬賽克；下架獨立遊戲幕與三張遊戲圖；2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）；2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）；封面重裁（薛喜 Shorts 首頁格）",
+      "sha256": "B06C517C71B8D7C4547A8D477944B5C84E7120C667476B3B63CF9D392F73FE13",
+      "size": 74951,
       "approved": true,
       "status": "approved"
     },
@@ -420,61 +420,6 @@
       "approved": true,
       "status": "approved"
     },
-    "shaxy_intro_pixel": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/shaxy_intro_pixel.webm",
-      "original_path": "assets/shaxy_intro_pixel.webm",
-      "provenance": "2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
-      "sha256": "94B777AB1279F151F5D879A3F767754ED3F48FCBA76A9E3536AA4BDFACD902CE",
-      "size": 1166646,
-      "approved": true,
-      "status": "approved"
-    },
-    "shaxy_long_hearthstone": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/shaxy_long_hearthstone.webm",
-      "original_path": "assets/shaxy_long_hearthstone.webm",
-      "provenance": "2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
-      "sha256": "C65B19EA4AE9177EE727C26820427813B15CC2BD2A2363D6DF2D725FCBF77A51",
-      "size": 2074192,
-      "approved": true,
-      "status": "approved"
-    },
-    "shaxy_long_hearthstone_cover": {
-      "kind": "image",
-      "role": "portfolio_media",
-      "canonical_path": "assets/shaxy_long_hearthstone_cover.jpg",
-      "original_path": "assets/shaxy_long_hearthstone_cover.jpg",
-      "provenance": "2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
-      "sha256": "5AF246528DE647A7C44E24CAFCA12F673B8AF527301EB3D6F1E353B855B21816",
-      "size": 149191,
-      "approved": true,
-      "status": "approved"
-    },
-    "shaxy_short_dog": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/shaxy_short_dog.webm",
-      "original_path": "assets/shaxy_short_dog.webm",
-      "provenance": "2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
-      "sha256": "0A05E97B5615D1EDE5296C320235C3FACB8A5476D0E664464E78A4905CE83F48",
-      "size": 4627045,
-      "approved": true,
-      "status": "approved"
-    },
-    "shaxy_short_friend": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/shaxy_short_friend.webm",
-      "original_path": "assets/shaxy_short_friend.webm",
-      "provenance": "2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
-      "sha256": "3CCB26A51C72C696F092CBB68110EFB8A51A14673576205377FEBBF8622E77F6",
-      "size": 4927935,
-      "approved": true,
-      "status": "approved"
-    },
     "torako_live": {
       "kind": "video",
       "role": "portfolio_media",
@@ -582,6 +527,116 @@
       "provenance": "2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
       "sha256": "5602CD9D62A8409E25A2162FD0A469E9206994B58EAFCC15B93D9A00A14DE802",
       "size": 57338,
+      "approved": true,
+      "status": "approved"
+    },
+    "eason_short_mahjong": {
+      "kind": "video",
+      "role": "portfolio_media",
+      "canonical_path": "assets/eason_short_mahjong.webm",
+      "original_path": "assets/eason_short_mahjong.webm",
+      "provenance": "2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）",
+      "sha256": "3C886EBF97C11E7FB532DE818D352CB23A6F33ADAEC64E67E4735DAFC6CB2A71",
+      "size": 5693333,
+      "approved": true,
+      "status": "approved"
+    },
+    "eason_short_meridian": {
+      "kind": "video",
+      "role": "portfolio_media",
+      "canonical_path": "assets/eason_short_meridian.webm",
+      "original_path": "assets/eason_short_meridian.webm",
+      "provenance": "2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）",
+      "sha256": "527B6654A3DDAB500EE1A0F3E5B5A4BF228F67C256A67A4589657CFF1D4E6583",
+      "size": 6671722,
+      "approved": true,
+      "status": "approved"
+    },
+    "eason_short_roger": {
+      "kind": "video",
+      "role": "portfolio_media",
+      "canonical_path": "assets/eason_short_roger.webm",
+      "original_path": "assets/eason_short_roger.webm",
+      "provenance": "2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）",
+      "sha256": "59D583F0B6272B0F4A2BE5C473721068D9865A7BB702831CC3C00AC3C9976F76",
+      "size": 10159030,
+      "approved": true,
+      "status": "approved"
+    },
+    "shaxy_short_wasd": {
+      "kind": "video",
+      "role": "portfolio_media",
+      "canonical_path": "assets/shaxy_short_wasd.webm",
+      "original_path": "assets/shaxy_short_wasd.webm",
+      "provenance": "2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）",
+      "sha256": "56966946A17D99CBFA36CBFCB9B0BA4CF9C07112354D0618B65B7FDC714C0B4C",
+      "size": 4765054,
+      "approved": true,
+      "status": "approved"
+    },
+    "shaxy_short_wasd_cover": {
+      "kind": "image",
+      "role": "portfolio_media",
+      "canonical_path": "assets/shaxy_short_wasd_cover.jpg",
+      "original_path": "assets/shaxy_short_wasd_cover.jpg",
+      "provenance": "2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）",
+      "sha256": "7F5F3E871FC3D05B4AD7A973CB0D16721EBFCE17F0139F20F5EDB1859E4283E8",
+      "size": 44832,
+      "approved": true,
+      "status": "approved"
+    },
+    "ski_kicker_anatomy": {
+      "kind": "video",
+      "role": "portfolio_media",
+      "canonical_path": "assets/ski_kicker_anatomy.webm",
+      "original_path": "assets/ski_kicker_anatomy.webm",
+      "provenance": "2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）",
+      "sha256": "64F62E7C9B1698B607CADE761608E34826F5DD8A4F61C3B773F924D87DE80758",
+      "size": 633076,
+      "approved": true,
+      "status": "approved"
+    },
+    "ski_kicker_types": {
+      "kind": "video",
+      "role": "portfolio_media",
+      "canonical_path": "assets/ski_kicker_types.webm",
+      "original_path": "assets/ski_kicker_types.webm",
+      "provenance": "2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）",
+      "sha256": "7F9CC73EBDCA8F09F9F474FAE359A2B99A89DEEA484438AA3F8BF8BEE86935EC",
+      "size": 300615,
+      "approved": true,
+      "status": "approved"
+    },
+    "ski_roller": {
+      "kind": "video",
+      "role": "portfolio_media",
+      "canonical_path": "assets/ski_roller.webm",
+      "original_path": "assets/ski_roller.webm",
+      "provenance": "2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）",
+      "sha256": "684C9719E763C43ED61E16206306E0191657F01B2F60915974C48C757D965E5C",
+      "size": 232665,
+      "approved": true,
+      "status": "approved"
+    },
+    "vt_kissko_stream": {
+      "kind": "video",
+      "role": "portfolio_media",
+      "canonical_path": "assets/vt_kissko_stream.webm",
+      "original_path": "assets/vt_kissko_stream.webm",
+      "provenance": "2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）",
+      "sha256": "BA5B9C52E1CD2A43345427A249E93C0BFF1AF008C92E09E8FBBBA0F262D017DD",
+      "size": 3303305,
+      "approved": true,
+      "status": "approved"
+    },
+    "vt_kissko_stream_cover": {
+      "kind": "image",
+      "role": "portfolio_media",
+      "canonical_path": "assets/vt_kissko_stream_cover.jpg",
+      "original_path": "assets/vt_kissko_stream_cover.jpg",
+      "provenance": "2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）",
+      "sha256": "255A782511134BAE7E74D054D3F711C91131FB83399CD552823437763FCBC025",
+      "size": 99345,
       "approved": true,
       "status": "approved"
     }

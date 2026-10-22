@@ -92,8 +92,8 @@
     .grid-table th, .grid-table td { border: 1px solid #b9ab88; padding: 6px 10px; text-align: left; vertical-align: top; }
     .grid-table th { background: #efe3c4; font-weight: 700; white-space: nowrap; width: 1%; }
     .grid-table thead th { background: var(--paper-deep); width: auto; }
-    .news-table td:first-child { white-space: nowrap; font-size: 14px; color: var(--ink-soft); width: 1%; }
-    .news-table td:nth-child(2) { white-space: nowrap; font-weight: 700; width: 1%; }
+    .news-table td:first-child { white-space: nowrap; width: 1%; }
+    .news-table td:nth-child(3) { font-size: 14px; }
     .news-table tr.cat td { background: #f6edd6; font-weight: 700; color: var(--blue-dark); }
     .news-table .new { color: #e0201b; font-size: 13px; margin-left: 4px; }
     .top-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); gap: 18px; align-items: start; }
@@ -122,6 +122,8 @@
     .gallery + .sub-head { margin-top: 22px; }
     .src { margin: 0; padding-left: 1.2em; font-size: 13px; line-height: 1.7; word-break: break-all; }
     .note { font-size: 13px; color: var(--ink-soft); }
+    .yt { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--ink-soft); background: #111; max-width: 960px; }
+    .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
     .compare { position: relative; overflow: hidden; border: 1px solid var(--ink-soft); background: #111; user-select: none; }
     .compare img { width: 100%; border: 0; }
@@ -205,6 +207,7 @@
       <ul>
         <li><span class="dot" style="color:#8a5a35">●</span><a href="#kangkang">九孔要變帥 康康篇</a></li>
         <li><span class="dot" style="color:#3fae8f">●</span><a href="#shaxy">薛喜 實況剪輯</a></li>
+        <li><span class="dot" style="color:#c9832e">●</span><a href="#eason">Eason 實況剪輯</a></li>
         <li><span class="dot" style="color:#b0559a">●</span><a href="#enishi">緣結 直播剪輯</a></li>
         <li><span class="dot" style="color:var(--ink-soft)">●</span><a href="#reel">其他剪輯作品</a></li>
       </ul>
@@ -244,7 +247,7 @@
             <a class="tile" href="#cage"><img src="assets/plan_yahoo_event.jpg" alt="新生高架橋下的鐵籠賽舞台"><span>新生橋鐵籠賽</span></a>
             <a class="tile" href="#ladder"><img src="assets/plan_yahoo_party.jpg" alt="Yahoo 電競名人爬梯 PARTY 主視覺"><span>爐石名人爬梯 Party</span></a>
             <a class="tile" href="#torako"><img src="assets/torako_live_cover.jpg" alt="VTuber 虎子直播畫面"><span>VTuber 虎子</span></a>
-            <a class="tile" href="#shaxy"><img src="assets/shaxy_long_hearthstone_cover.jpg" alt="薛喜爐石實況長版畫面"><span>薛喜 實況剪輯</span></a>
+            <a class="tile" href="#shaxy"><img src="assets/shaxy_short_wasd_cover.jpg" alt="薛喜 Shorts 畫面"><span>薛喜 實況剪輯</span></a>
             <a class="tile" href="#gakey"><img src="assets/tool_gakey_replay_cover.jpg" alt="AI 剪輯工作站 GAKEY 畫面"><span>AI 剪輯工作站 GAKEY</span></a>
           </div>
         </div>
@@ -282,26 +285,18 @@
           </div>
 
           <div class="box">
-            <h2 class="box-head center">★★★　最新情報　★★★</h2>
+            <h2 class="box-head center">★★★　服務項目　★★★</h2>
             <div class="box-body">
               <table class="grid-table news-table">
-                <thead><tr><th>日期</th><th>作品</th><th>更新內容</th></tr></thead>
+                <thead><tr><th>服務</th><th>內容</th><th>代表作品</th></tr></thead>
                 <tbody>
-                  <tr class="cat"><td colspan="3">・影音剪輯</td></tr>
-                  <tr><td>2026.10.22</td><td><a href="#shaxy">薛喜 實況剪輯</a><span class="new">New!</span></td><td>新增 YouTube 長版、片頭與 Shorts</td></tr>
-                  <tr><td>2026.10.22</td><td><a href="#enishi">緣結 直播剪輯</a><span class="new">New!</span></td><td>新增直播 Shorts 與巴哈姆特 30 週年活動開場素材</td></tr>
-                  <tr><td>2026.10.22</td><td><a href="#kangkang">九孔要變帥 康康篇</a><span class="new">New!</span></td><td>新增綜藝節目剪輯</td></tr>
-                  <tr class="cat"><td colspan="3">・動畫</td></tr>
-                  <tr><td>2026.10.22</td><td><a href="#geo3d">赤倉雪場 3D 動畫</a><span class="new">New!</span></td><td>新增雪場簡介 3D 地形飛行（4K 60fps）</td></tr>
-                  <tr class="cat"><td colspan="3">・賽事與節目企劃</td></tr>
-                  <tr><td>2026.10.22</td><td><a href="#invitational">Yahoo 名人邀請賽</a></td><td>補上各屆賽事資料與報導來源</td></tr>
-                  <tr><td>2026.10.22</td><td><a href="#cage">新生橋鐵籠賽</a></td><td>補上賽事資料與報導來源</td></tr>
-                  <tr><td>2026.10.22</td><td><a href="#ladder">爐石名人爬梯 Party</a></td><td>補上賽事資料與報導來源</td></tr>
-                  <tr><td>2026.10.22</td><td><a href="#torako">VTuber 虎子</a></td><td>補上頻道與 Super Chat 排行資料</td></tr>
-                  <tr><td>2026.10.22</td><td><a href="#kissko">AI VTuber 親親子</a></td><td>新增直播間互動示意</td></tr>
-                  <tr class="cat"><td colspan="3">・系統與工具</td></tr>
-                  <tr><td>2026.09.03</td><td><a href="#gakey">AI 剪輯工作站 GAKEY</a></td><td>新增演繹模式影片：234 顆素材 25 秒落完</td></tr>
-                  <tr><td>2026.09.03</td><td><a href="#community">社群管理站</a></td><td>五平台留言收進同一個收件匣</td></tr>
+                  <tr><td><b>賽事與活動企劃</b></td><td>電競賽事、線下活動、24 小時直播企劃，從企劃到現場執行</td><td><a href="#invitational">Yahoo 名人邀請賽</a>／<a href="#cage">新生橋鐵籠賽</a>／<a href="#ladder">名人爬梯 Party</a></td></tr>
+                  <tr><td><b>VTuber 企劃與經營</b></td><td>角色定位、直播內容、社群經營，AI VTuber 從人設到推流一條龍</td><td><a href="#torako">虎子</a>／<a href="#kissko">AI 親親子</a></td></tr>
+                  <tr><td><b>影音剪輯</b></td><td>綜藝節目、實況長片、Shorts</td><td><a href="#kangkang">九孔要變帥</a>／<a href="#shaxy">薛喜</a>／<a href="#eason">Eason</a>／<a href="#enishi">緣結</a></td></tr>
+                  <tr><td><b>3D 資訊動畫・合成</b></td><td>真實地形資料 3D 動畫、解說動畫、實拍合成</td><td><a href="#geo3d">赤倉雪場</a>／<a href="#virtual">虛實整合</a></td></tr>
+                  <tr><td><b>直播與社群系統</b></td><td>直播畫面元件、Discord 架設、多平台留言管理</td><td><a href="#live">直播元件</a>／<a href="#discord">Discord</a>／<a href="#community">社群管理站</a></td></tr>
+                  <tr><td><b>AI 剪輯工具</b></td><td>自製 AI 剪輯工作站，直播連結進去、AI 鋪字卡音效特效</td><td><a href="#gakey">GAKEY</a></td></tr>
+                  <tr><td><b>新聞稿撰寫</b></td><td>活動通稿、專訪、品牌敘事</td><td><a href="#press">新聞稿</a></td></tr>
                 </tbody>
               </table>
             </div>
@@ -509,7 +504,9 @@
       <section class="page" id="kissko" aria-labelledby="kissko-title">
         <h2 class="work-title" id="kissko-title"><span class="dot" style="color:#f08bb0">●</span>AI VTuber 親親子</h2>
         <p class="work-en">AI VTUBER / CHARACTER × VOICE × LIVE</p>
-        <p class="sub-head">直播間互動示意</p>
+        <p class="sub-head">實際直播（YouTube「AI親親子」頻道）</p>
+        <figure style="max-width:960px"><video src="assets/vt_kissko_stream.webm" poster="assets/vt_kissko_stream_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="AI親親子實際直播片段：觀眾在聊天室發問，親親子即時回答"></video><figcaption>實際直播片段（20 秒）：觀眾在聊天室發問，親親子即時回答｜<a href="https://www.youtube.com/watch?v=ocVkpD74MTI" target="_blank" rel="noopener">看完整直播（約 1.7 萬觀看）↗</a>｜<a href="https://www.youtube.com/channel/UCwv0HL1xjz7NgT4xecDcjwA" target="_blank" rel="noopener">AI親親子頻道 ↗</a></figcaption></figure>
+        <p class="sub-head" style="margin-top:18px">直播間互動示意</p>
         <div class="kq" data-kq data-full>
           <div class="kq-stage">
             <span class="kq-live">LIVE</span><span class="kq-state"></span>
@@ -532,6 +529,8 @@
                   <tr><th>類型</th><td>AI VTuber（PNGTuber 立繪＋語音合成）</td></tr>
                   <tr><th>狀態</th><td>14 種立繪狀態：待機、講話、生氣、害羞、哭、唱歌…</td></tr>
                   <tr><th>直播</th><td>跨平台同步推流</td></tr>
+                  <tr><th>頻道</th><td>YouTube「AI親親子」：1,270 訂閱，61 支影片、186 支 Shorts</td></tr>
+                  <tr><th>成績</th><td>直播影片最高約 1.7 萬觀看；Shorts 最高約 1.1 萬觀看</td></tr>
                   <tr><th>我的角色</th><td>角色企劃／狀態機設計／語音合成串接／直播與短影音經營</td></tr>
                 </table>
               </div>
@@ -568,6 +567,8 @@
                   <tr><th>節目</th><td>《九孔要變帥》</td></tr>
                   <tr><th>來賓</th><td>康康</td></tr>
                   <tr><th>片長</th><td>20 分 33 秒（16:9）</td></tr>
+                  <tr><th>上架</th><td>2026.09.03，YouTube「九孔要變帥」頻道</td></tr>
+                  <tr><th>成績</th><td>66 萬觀看</td></tr>
                   <tr><th>我的角色</th><td>剪輯／字卡與音效／特效包裝</td></tr>
                 </table>
               </div>
@@ -581,7 +582,7 @@
           </div>
           <div>
             <p class="sub-head">節目片段</p>
-            <figure><video src="assets/yt_kangkang.webm" poster="assets/yt_kangkang_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="九孔要變帥 康康篇片段"></video><figcaption>節目片段（15 秒）</figcaption></figure>
+            <figure><video src="assets/yt_kangkang.webm" poster="assets/yt_kangkang_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="九孔要變帥 康康篇片段"></video><figcaption>節目片段（15 秒）｜<a href="https://www.youtube.com/watch?v=QeMjmWNY0jk" target="_blank" rel="noopener">到 YouTube 看完整集 ↗</a></figcaption></figure>
           </div>
         </div>
         <p class="pager"><a href="#kissko">← 上一件：AI VTuber 親親子</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#shaxy">下一件：薛喜 實況剪輯 →</a></p>
@@ -590,40 +591,70 @@
       <!-- ========== 薛喜 實況剪輯 ========== -->
       <section class="page" id="shaxy" aria-labelledby="shaxy-title">
         <h2 class="work-title" id="shaxy-title"><span class="dot" style="color:#3fae8f">●</span>薛喜 實況剪輯</h2>
-        <p class="work-en">STREAM EDITING / YOUTUBE LONG-FORM &amp; SHORTS</p>
+        <p class="work-en">STREAM EDITING / SHORTS</p>
         <div class="work-cols">
           <div>
             <div class="box">
               <h3 class="box-head">◆ 作品資料</h3>
               <div class="box-body">
                 <table class="grid-table">
-                  <tr><th>對象</th><td>Twitch 實況主 薛喜（爐石戰記職業大師）</td></tr>
-                  <tr><th>內容</th><td>YouTube 長版（16:9）／Shorts（9:16）／頻道片頭</td></tr>
-                  <tr><th>期間</th><td>2026 年 9 月起持續製作</td></tr>
-                  <tr><th>我的角色</th><td>挑段／剪輯／花字與音效／片頭動畫</td></tr>
+                  <tr><th>頻道</th><td>YouTube「天梯小旋風薛喜」</td></tr>
+                  <tr><th>作品</th><td>虧皮龜狗第一次看到有人 WASD 可以按到手指打結（Shorts）</td></tr>
+                  <tr><th>上架</th><td>2026.10.17</td></tr>
+                  <tr><th>成績</th><td>17.5 萬觀看</td></tr>
+                  <tr><th>我的角色</th><td>挑段／剪輯／字幕與音效</td></tr>
                 </table>
               </div>
             </div>
             <div class="box">
               <h3 class="box-head">◆ 說明</h3>
               <div class="box-body">
-                <p>把數小時的 Twitch 實況剪成 YouTube 長版和一支一個梗的 Shorts。長版保留遊戲判斷和聊天室互動，講話的人用小窗框出來，重點台詞上花字；Shorts 只留一個笑點，前三秒就進梗。片頭另外做了 8-bit 像素遊戲風格的動畫版。</p>
+                <p>從薛喜的 Twitch 實況裡挑出一個梗，剪成一支 Shorts：前三秒就進笑點，只留這一個梗。</p>
               </div>
             </div>
           </div>
           <div>
-            <p class="sub-head">YouTube 長版</p>
-            <figure><video src="assets/shaxy_long_hearthstone.webm" poster="assets/shaxy_long_hearthstone_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="薛喜爐石新卡評分長版片段"></video><figcaption>爐石新卡評分（長版片段）</figcaption></figure>
-            <p class="sub-head" style="margin-top:22px">頻道片頭</p>
-            <figure><video src="assets/shaxy_intro_pixel.webm" muted loop playsinline controls preload="metadata" aria-label="薛喜 YouTube 片頭像素遊戲版"></video><figcaption>YT 片頭・像素遊戲版（14 秒）</figcaption></figure>
+            <p class="sub-head">Shorts</p>
+            <figure class="portrait" style="max-width:300px"><video src="assets/shaxy_short_wasd.webm" muted loop playsinline controls preload="metadata" aria-label="薛喜 Shorts：虧皮龜狗第一次看到有人 WASD 可以按到手指打結"></video><figcaption>17.5 萬觀看｜<a href="https://www.youtube.com/shorts/NsznL2S410g" target="_blank" rel="noopener">YouTube ↗</a></figcaption></figure>
           </div>
         </div>
-        <p class="sub-head" style="margin-top:22px">Shorts</p>
-        <div class="gallery shorts">
-          <figure class="portrait"><video src="assets/shaxy_short_friend.webm" muted loop playsinline controls preload="metadata" aria-label="薛喜 Shorts：開台 11 年沒朋友"></video><figcaption>開台 11 年沒朋友</figcaption></figure>
-          <figure class="portrait"><video src="assets/shaxy_short_dog.webm" muted loop playsinline controls preload="metadata" aria-label="薛喜 Shorts：又靠阿狗"></video><figcaption>又靠阿狗</figcaption></figure>
+        <p class="pager"><a href="#kangkang">← 上一件：九孔要變帥 康康篇</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#eason">下一件：Eason 實況剪輯 →</a></p>
+      </section>
+
+      <!-- ========== Eason 實況剪輯 ========== -->
+      <section class="page" id="eason" aria-labelledby="eason-title">
+        <h2 class="work-title" id="eason-title"><span class="dot" style="color:#c9832e">●</span>Eason 實況剪輯</h2>
+        <p class="work-en">STREAM EDITING / SHORTS</p>
+        <div class="work-cols">
+          <div>
+            <div class="box">
+              <h3 class="box-head">◆ 作品資料</h3>
+              <div class="box-body">
+                <table class="grid-table">
+                  <tr><th>頻道</th><td>YouTube「禿頭博士Eason」</td></tr>
+                  <tr><th>作品</th><td>【Eason】系列 Shorts</td></tr>
+                  <tr><th>成績</th><td>向子午計畫，開戰！11.3 萬／遊戲橘子所有單位都是羅傑的人 9 萬／羅傑說麻將打十塊二十塊不如去旁邊跳舞 7.7 萬觀看</td></tr>
+                  <tr><th>我的角色</th><td>挑段／剪輯／字幕與音效</td></tr>
+                </table>
+              </div>
+            </div>
+            <div class="box">
+              <h3 class="box-head">◆ 說明</h3>
+              <div class="box-body">
+                <p>從 Eason 的實況中挑出好笑的對話，剪成一支一個梗的直式 Shorts。</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="sub-head">Shorts（觀看前三名）</p>
+            <div class="gallery three">
+              <figure class="portrait"><video src="assets/eason_short_meridian.webm" muted loop playsinline controls preload="metadata" aria-label="Eason Shorts：向子午計畫，開戰！"></video><figcaption>11.3 萬觀看｜<a href="https://www.youtube.com/shorts/g0D8aXtQQuM" target="_blank" rel="noopener">YouTube ↗</a></figcaption></figure>
+              <figure class="portrait"><video src="assets/eason_short_roger.webm" muted loop playsinline controls preload="metadata" aria-label="Eason Shorts：遊戲橘子所有單位都是羅傑的人"></video><figcaption>9 萬觀看｜<a href="https://www.youtube.com/shorts/-3XQcp7vGIM" target="_blank" rel="noopener">YouTube ↗</a></figcaption></figure>
+              <figure class="portrait"><video src="assets/eason_short_mahjong.webm" muted loop playsinline controls preload="metadata" aria-label="Eason Shorts：羅傑說麻將打十塊二十塊不如去旁邊跳舞"></video><figcaption>7.7 萬觀看｜<a href="https://www.youtube.com/shorts/4jHnrstDJCU" target="_blank" rel="noopener">YouTube ↗</a></figcaption></figure>
+            </div>
+          </div>
         </div>
-        <p class="pager"><a href="#kangkang">← 上一件：九孔要變帥 康康篇</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#enishi">下一件：緣結 直播剪輯 →</a></p>
+        <p class="pager"><a href="#shaxy">← 上一件：薛喜 實況剪輯</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#enishi">下一件：緣結 直播剪輯 →</a></p>
       </section>
 
       <!-- ========== 緣結 直播剪輯 ========== -->
@@ -660,7 +691,7 @@
           <figure class="portrait"><video src="assets/enishi_short_highlight.webm" muted loop playsinline controls preload="metadata" aria-label="緣結 Shorts：可以剪精華嗎"></video><figcaption>可以剪精華嗎</figcaption></figure>
           <figure class="portrait"><video src="assets/enishi_short_scold.webm" muted loop playsinline controls preload="metadata" aria-label="緣結 Shorts：初見就叫我罵你"></video><figcaption>初見就叫我罵你</figcaption></figure>
         </div>
-        <p class="pager"><a href="#shaxy">← 上一件：薛喜 實況剪輯</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#reel">下一件：其他剪輯作品 →</a></p>
+        <p class="pager"><a href="#eason">← 上一件：Eason 實況剪輯</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#reel">下一件：其他剪輯作品 →</a></p>
       </section>
 
       <!-- ========== 其他剪輯作品 ========== -->
@@ -706,7 +737,7 @@
                   <tr><th>主題</th><td>日本新潟 赤倉觀光雪場與周邊雪場</td></tr>
                   <tr><th>規格</th><td>4K 60fps</td></tr>
                   <tr><th>資料</th><td>真實座標與高程、衛星影像、路線考據</td></tr>
-                  <tr><th>段落</th><td>全日本俯瞰／雪場簡介地形飛行（41 個雪場標籤）／衛星實景山體／交通比較地圖</td></tr>
+                  <tr><th>段落</th><td>全日本俯瞰／雪場簡介地形飛行（41 個雪場標籤）／衛星實景山體／交通比較地圖／跳台與地形解說（飛行軌跡）</td></tr>
                   <tr><th>我的角色</th><td>資料整理／3D 地形與鏡頭設計／動畫製作</td></tr>
                 </table>
               </div>
@@ -722,6 +753,12 @@
             <p class="sub-head">雪場簡介 3D 地形飛行</p>
             <figure><video src="assets/geo3d_ski.webm" poster="assets/geo3d_ski_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="赤倉觀光雪場簡介 3D 地形飛行"></video><figcaption>雪場簡介・連續地形飛行（37 秒）</figcaption></figure>
           </div>
+        </div>
+        <p class="sub-head" style="margin-top:22px">跳台與地形解說：滑雪飛行軌跡動畫</p>
+        <div class="gallery three">
+          <figure><video src="assets/ski_kicker_types.webm" muted loop playsinline controls preload="metadata" aria-label="三種跳台類型與飛行軌跡：下降式、向上式、平頂式"></video><figcaption>三種跳台：下降式／向上式／平頂式（17 秒）</figcaption></figure>
+          <figure><video src="assets/ski_kicker_anatomy.webm" muted loop playsinline controls preload="metadata" aria-label="跳台部位解說：Ramp、Deck、Knuckle、Landing area"></video><figcaption>跳台部位：Ramp／Deck／Knuckle／落地區（23 秒）</figcaption></figure>
+          <figure><video src="assets/ski_roller.webm" muted loop playsinline controls preload="metadata" aria-label="滾坡 Roller 的兩種通過方式"></video><figcaption>滾坡 Roller 的兩種通過方式（13 秒）</figcaption></figure>
         </div>
         <p class="sub-head" style="margin-top:22px">其他段落</p>
         <div class="gallery three">
