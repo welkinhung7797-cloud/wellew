@@ -184,19 +184,16 @@
     .menu-cat { background: linear-gradient(90deg, var(--title-a), var(--title-b)); font-weight: 400; font-size: 13px; letter-spacing: .1em; }
     .menu a[aria-current="page"] { background: var(--title-a); color: #fff; }
     .menu-foot { color: var(--win-darker); }
-    h1 { font-weight: 400; color: var(--title-a); text-shadow: 2px 2px 0 #fff, 3px 3px 0 var(--win-dark); }
+    /* 大標用清楚的粗體明體，不用點陣字也不疊陰影（點陣字＋雙層陰影在大字會糊） */
+    h1 { font-family: "Noto Serif TC", "PMingLiU", serif; font-weight: 900; color: var(--title-a); text-shadow: none; }
     h1 small { font-family: "VT323", monospace; font-size: 20px; color: var(--win-darker); text-shadow: none; }
     .box { background: var(--win); border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; box-shadow: 1px 1px 0 #000; padding: 3px; }
     .box-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: linear-gradient(90deg, var(--title-a), var(--title-b)); font-weight: 400; font-size: 14px; padding: 2px 4px 2px 8px; }
-    .box-head::after { content: "_ □ ×"; flex: none; background: var(--win); color: #000; font-family: "VT323", monospace; font-size: 15px; line-height: 1; letter-spacing: 5px; padding: 1px 1px 1px 6px; border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; }
     .box-head.center { justify-content: center; }
-    .box-head.center::after { position: absolute; right: 10px; }
-    .box:has(.box-head.center) { position: relative; }
     .box-body { background: var(--paper-light); border: 2px solid; border-color: var(--win-dark) #fff #fff var(--win-dark); margin-top: 3px; }
     .grid-table th, .grid-table td { border: 1px solid var(--win-dark); }
     .grid-table th, .grid-table thead th { background: #d4d0c8; }
     .work-title { font-weight: 400; font-size: 20px; color: #fff; background: linear-gradient(90deg, var(--title-a), var(--title-b)); border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; padding: 4px 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .work-title::after { content: "_ □ ×"; flex: none; background: var(--win); color: #000; font-family: "VT323", monospace; font-size: 17px; line-height: 1; letter-spacing: 5px; padding: 1px 1px 1px 6px; border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; }
     .work-title .dot { display: none; }
     .work-en { font-family: "VT323", monospace; font-size: 17px; letter-spacing: .12em; color: var(--win-darker); }
     .sub-head { font-weight: 400; background: var(--win); border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; border-left-width: 2px; padding: 2px 10px; }
@@ -224,6 +221,12 @@
     .badge.b { background: #000; color: var(--lcd); }
     .badge.c { background: var(--yellow); color: #000; }
     .badge.d { background: #d4689a; color: #fff; }
+    .tile.slides > img { position: absolute; inset: 0; opacity: 0; transition: opacity .6s; }
+    .tile.slides > img.on { opacity: 1; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0; padding: 0; list-style: none; }
+    .flow li { background: var(--win); border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; padding: 6px 10px; font-size: 14px; line-height: 1.4; text-align: center; }
+    .flow li b { display: block; font-family: "DotGothic16", monospace; font-weight: 400; color: var(--title-a); }
+    .flow li.arrow { background: none; border: 0; padding: 0; font-family: "VT323", monospace; font-size: 22px; color: var(--win-darker); }
     .tile-gif { background: repeating-conic-gradient(#e8e8e8 0 25%, #fff 0 50%) 0 0 / 16px 16px; }
     .tile-gif > img { object-fit: contain; }
     .gifs { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
@@ -237,7 +240,6 @@
       .statusbar span { flex: 1 1 45%; }
       .gallery.torako-media { grid-template-columns: 1fr 1fr; }
       .gallery.torako-media figure:first-child { grid-column: 1 / -1; }
-      .box-head::after, .work-title::after { letter-spacing: 3px; }
     }
     @media (prefers-reduced-motion: reduce) { .menu-dog, .new { animation: none; } .marquee span { animation: none; padding-left: 8px; } }
   </style>
@@ -276,7 +278,7 @@
         <div class="box">
           <h2 class="box-head">◆ 作品精選（點圖進作品頁）</h2>
           <div class="collage">
-            <a class="tile big" href="#animation"><video src="assets/geo3d_ski.webm" poster="assets/geo3d_ski_cover.jpg" muted loop autoplay playsinline preload="metadata" aria-label="赤倉觀光雪場 3D 地形飛行"></video><span>赤倉雪場 3D 動畫</span></a>
+            <a class="tile big" href="#animation"><video src="assets/geo3d_ski.webm" poster="assets/geo3d_ski_cover.jpg" muted autoplay playsinline preload="metadata" data-playlist="assets/geo3d_ski.webm assets/ski_kicker_types.webm assets/ski_kicker_anatomy.webm assets/ski_roller.webm assets/geo3d_terrain.webm" aria-label="赤倉觀光雪場 3D 動畫輪播：地形飛行、跳台軌跡、滾坡、衛星山體"></video><span>赤倉雪場 3D 動畫</span></a>
             <a class="tile tile-gif" href="#vtuber"><img src="assets/kissko_gif_happy.gif" alt="AI VTuber 親親子"><span>AI VTuber 親親子</span></a>
             <a class="tile" href="#editing"><img src="assets/yt_kangkang_cover.jpg" alt="九孔要變帥 康康篇畫面"><span>九孔要變帥 康康篇</span></a>
             <a class="tile" href="#events"><img src="assets/plan_yahoo_roster.jpg" alt="Yahoo 奇摩電競名人邀請賽參賽名單"><span>Yahoo 名人邀請賽</span></a>
@@ -284,7 +286,7 @@
             <a class="tile" href="#events"><img src="assets/plan_yahoo_party.jpg" alt="Yahoo 電競名人爬梯 PARTY 主視覺"><span>爐石名人爬梯 Party</span></a>
             <a class="tile" href="#vtuber"><img src="assets/torako_live_cover.jpg" alt="VTuber 虎子直播畫面"><span>VTuber 虎子</span></a>
             <a class="tile" href="#editing"><img src="assets/shaxy_short_wasd_cover.jpg" alt="薛喜 Shorts 畫面"><span>薛喜 實況剪輯</span></a>
-            <a class="tile" href="#gakey"><img src="assets/tool_gakey_replay_cover.jpg" alt="AI 剪輯工作站 GAKEY 畫面"><span>AI 剪輯工作站 GAKEY</span></a>
+            <a class="tile slides" href="#gakey"><img class="on" src="assets/tool_gakey_replay_cover.jpg" alt="AI 剪輯工作站 GAKEY 時間軸"><img src="assets/tool_edit_main.jpg" alt="GAKEY 主畫面"><img src="assets/tool_edit_triage.jpg" alt="GAKEY 挑段整理"><img src="assets/tool_edit_menu.jpg" alt="GAKEY 效果選單"><span>AI 剪輯工作站 GAKEY</span></a>
           </div>
         </div>
 
@@ -606,6 +608,26 @@
         <div class="gallery">
           <figure class="wide"><video src="assets/tool_gakey_replay.webm" poster="assets/tool_gakey_replay_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="GAKEY 演繹模式：AI 把 234 顆素材一顆一顆放上軌道"></video><figcaption>AI 鋪素材過程・234 顆 25 秒落完</figcaption></figure>
         </div>
+        <div class="box" style="margin-top:18px">
+          <h3 class="box-head">◆ 工作流程架構</h3>
+          <div class="box-body">
+            <ol class="flow">
+              <li><b>① 貼連結</b>Twitch VOD／YouTube</li><li class="arrow" aria-hidden="true">→</li>
+              <li><b>② 自動抓回</b>影片＋聊天室</li><li class="arrow" aria-hidden="true">→</li>
+              <li><b>③ 逐字稿</b>自動語音轉字</li><li class="arrow" aria-hidden="true">→</li>
+              <li><b>④ 人挑段</b>卡片式挑段整理</li><li class="arrow" aria-hidden="true">→</li>
+              <li><b>⑤ AI 鋪素材</b>字卡／音效／特效</li><li class="arrow" aria-hidden="true">→</li>
+              <li><b>⑥ 人修改</b>多軌時間軸拖曳改字</li><li class="arrow" aria-hidden="true">→</li>
+              <li><b>⑦ 一鍵出片</b>16:9／9:16</li>
+            </ol>
+          </div>
+        </div>
+        <p class="sub-head">介面</p>
+        <div class="gallery three">
+          <figure><img src="assets/tool_edit_main.jpg" alt="GAKEY 主畫面：貼連結抓影片、PIP 圈、9:16 框與時間軸" loading="lazy"><figcaption>主畫面：貼連結抓影片、PIP 圈、9:16 框</figcaption></figure>
+          <figure><img src="assets/tool_edit_triage.jpg" alt="GAKEY 卡片式挑段整理與成品清單" loading="lazy"><figcaption>挑段整理：卡片式分類成品清單</figcaption></figure>
+          <figure><img src="assets/tool_edit_menu.jpg" alt="GAKEY 效果選單：觀眾 PIP 圈、藝術字卡、圖卡、放大、大頭、追蹤箭頭" loading="lazy"><figcaption>效果選單：PIP 圈／字卡／圖卡／放大／追蹤箭頭</figcaption></figure>
+        </div>
         <p class="pager"><a href="#animation">← 上一項：3D 資訊動畫・合成</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#systems">下一項：直播與社群系統 →</a></p>
       </section>
 
@@ -716,6 +738,19 @@
 
       window.addEventListener('hashchange', () => show(location.hash.slice(1), true));
       show(location.hash.slice(1), false);
+
+      // 首頁 3D 格：一支播完接下一支
+      document.querySelectorAll('video[data-playlist]').forEach((v) => {
+        const list = v.dataset.playlist.split(' ');
+        let i = 0;
+        v.addEventListener('ended', () => { i = (i + 1) % list.length; v.src = list[i]; v.play().catch(() => {}); });
+      });
+      // 首頁 GAKEY 格：幾張介面輪流
+      document.querySelectorAll('.tile.slides').forEach((t) => {
+        const imgs = [...t.querySelectorAll('img')];
+        let i = 0;
+        setInterval(() => { imgs[i].classList.remove('on'); i = (i + 1) % imgs.length; imgs[i].classList.add('on'); }, 2800);
+      });
 
       // 寬表格在手機上直排：每格前面補上欄名
       document.querySelectorAll('table.stack').forEach((t) => {
