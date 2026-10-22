@@ -221,6 +221,10 @@
     .badge.b { background: #000; color: var(--lcd); }
     .badge.c { background: var(--yellow); color: #000; }
     .badge.d { background: #d4689a; color: #fff; }
+    details.more { margin-top: 6px; font-size: 14px; }
+    details.more summary { cursor: pointer; display: inline-block; background: var(--win); border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; padding: 0 8px; font-family: "DotGothic16", monospace; }
+    details.more[open] summary { border-color: var(--win-darker) #fff #fff var(--win-darker); }
+    details.more ul { margin: 6px 0 0; padding-left: 1.2em; }
     .tile.slides > img { position: absolute; inset: 0; opacity: 0; transition: opacity .6s; }
     .tile.slides > img.on { opacity: 1; }
     .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0; padding: 0; list-style: none; }
@@ -257,6 +261,7 @@
         <li><span class="dot" style="color:#d4689a">●</span><a href="#vtuber">VTuber 企劃與經營</a></li>
         <li><span class="dot" style="color:#3fae8f">●</span><a href="#editing">實況主與節目剪輯</a></li>
         <li><span class="dot" style="color:var(--green)">●</span><a href="#animation">3D 資訊動畫・合成</a></li>
+        <li><span class="dot" style="color:#e58a3a">●</span><a href="#ai">AI 生成影片</a></li>
         <li><span class="dot" style="color:#7b55a8">●</span><a href="#gakey">AI 剪輯工作站 GAKEY</a></li>
         <li><span class="dot" style="color:#4b5fb0">●</span><a href="#systems">直播與社群系統</a></li>
         <li><span class="dot" style="color:#9a4040">●</span><a href="#media">媒體編輯與新聞稿</a></li>
@@ -281,7 +286,7 @@
             <a class="tile big" href="#animation"><video src="assets/geo3d_ski.webm" poster="assets/geo3d_ski_cover.jpg" muted autoplay playsinline preload="metadata" data-playlist="assets/geo3d_ski.webm assets/ski_kicker_types.webm assets/ski_kicker_anatomy.webm assets/ski_roller.webm assets/geo3d_terrain.webm" aria-label="赤倉觀光雪場 3D 動畫輪播：地形飛行、跳台軌跡、滾坡、衛星山體"></video><span>赤倉雪場 3D 動畫</span></a>
             <a class="tile tile-gif" href="#vtuber"><img src="assets/kissko_gif_happy.gif" alt="AI VTuber 親親子"><span>AI VTuber 親親子</span></a>
             <a class="tile" href="#editing"><img src="assets/yt_kangkang_cover.jpg" alt="九孔要變帥 康康篇畫面"><span>九孔要變帥 康康篇</span></a>
-            <a class="tile" href="#events"><img src="assets/plan_yahoo_roster.jpg" alt="Yahoo 奇摩電競名人邀請賽參賽名單"><span>Yahoo 名人邀請賽</span></a>
+            <a class="tile" href="#ai"><img src="assets/ai_recruit_diary_ep2_cover.jpg" alt="AI 生成動畫 新兵日記 EP2 畫面"><span>AI 生成影片</span></a>
             <a class="tile" href="#events"><img src="assets/plan_yahoo_event.jpg" alt="新生高架橋下的鐵籠賽舞台"><span>新生橋鐵籠賽</span></a>
             <a class="tile" href="#events"><img src="assets/plan_yahoo_party.jpg" alt="Yahoo 電競名人爬梯 PARTY 主視覺"><span>爐石名人爬梯 Party</span></a>
             <a class="tile" href="#vtuber"><img src="assets/torako_live_cover.jpg" alt="VTuber 虎子直播畫面"><span>VTuber 虎子</span></a>
@@ -332,6 +337,7 @@
                   <tr><td><b><a href="#vtuber">VTuber 企劃與經營</a></b></td><td>角色定位、直播內容、社群經營；AI VTuber 從人設到推流</td><td>虎子 10.1 萬訂閱、Super Chat 累計 NT$523 萬、2025 台灣第 4 名</td></tr>
                   <tr><td><b><a href="#editing">實況主與節目剪輯</a></b></td><td>實況長影音、Shorts、綜藝節目</td><td>總觀看 736 萬；10 萬以上 18 支；九孔康康篇 66 萬</td></tr>
                   <tr><td><b><a href="#animation">3D 資訊動畫・合成</a></b></td><td>真實地形資料 3D 動畫、解說動畫、實拍合成</td><td>赤倉雪場 4K 60fps、41 個雪場標籤</td></tr>
+                  <tr><td><b><a href="#ai">AI 生成影片</a></b></td><td>AI 生成角色動畫短劇、會講話的動物短片：腳本、分鏡、生成、配音、對嘴到成片</td><td>新兵日記 EP2（1 分 36 秒動畫短劇）、黑狗討飯系列</td></tr>
                   <tr><td><b><a href="#gakey">AI 剪輯工具</a></b></td><td>自製 AI 剪輯工作站，AI 自動鋪字卡、音效、特效</td><td>234 顆素材 25 秒落完</td></tr>
                   <tr><td><b><a href="#systems">直播與社群系統</a></b></td><td>直播畫面元件、Discord 架設、多平台留言管理</td><td>5 平台留言收件匣；1,060 則留言實接</td></tr>
                   <tr><td><b><a href="#media">媒體編輯與新聞稿</a></b></td><td>Yahoo 奇摩電競主編、國際採訪、新聞稿與專訪</td><td>帶領 5 人團隊；1,000+ 篇稿；100+ 場專訪</td></tr>
@@ -365,11 +371,17 @@
             <table class="grid-table stack">
               <thead><tr><th>活動</th><th>時間</th><th>地點</th><th>規模／邀請</th><th>成績</th></tr></thead>
               <tbody>
-                <tr><td><b>Yahoo《爐石戰記》名人邀請賽</b>（首屆）</td><td>2018.01</td><td>台北</td><td>8 位台灣名人選手</td><td>Yahoo TV 首度自辦電競賽；總決賽超過百位粉絲到場，直播留言數成長近 6 倍；總獎金 NT$10 萬</td></tr>
+                <tr><td><b>Yahoo 名人邀請賽 系列</b><br>（2018–2019，共 5 屆）</td><td>2018.01–2019.07</td><td>台北、花博爭豔館 WirForce 2018 主舞台、跨國線上</td><td>最多 20 位日港台名人同台；第五屆 6 國隊伍＋64 位選手</td><td>首屆總決賽百位粉絲到場、直播留言成長近 6 倍；第五屆爐石總獎金 US$15,000
+                  <details class="more"><summary>展開歷屆</summary>
+                    <ul>
+                      <li><b>2018.01 首屆《爐石戰記》</b>：Yahoo TV 首度自辦電競賽，8 位台灣名人選手，總獎金 NT$10 萬，冠軍 Jay。</li>
+                      <li><b>2018.06 第二屆</b>：新生高架橋下鐵籠 1v1（見下一列「新生橋鐵籠賽」）。</li>
+                      <li><b>2018.12.08 線下決賽</b>：花博爭豔館 WirForce 2018 主舞台，20 位日港台名人（GamerBee、Tom60229、RB、羅杰…）；台灣藍、紅兩隊迎戰香港 HGG 亞運金牌與日本選手聯軍，快打旋風 V＋爐石戰記。</li>
+                      <li><b>2019.06–07 第五屆</b>：爐石台灣 6 位選手對上港韓新泰菲隊伍，總獎金 US$15,000；絕地求生 64 位選手雙排。</li>
+                    </ul>
+                  </details></td></tr>
                 <tr><td><b>《爐石戰記》名人爬梯 Party</b></td><td>2018.04.14–15</td><td>24 小時線上直播</td><td>Tom60229、薛喜、紹安、羅杰、Uzra、偷米 6 位名人分 3 隊</td><td>獎金 NT$10 萬；6 人一天內全數爬上傳說；精華影片 6.5 萬觀看；延續辦到第三屆（2019）</td></tr>
                 <tr><td><b>新生橋鐵籠賽</b>（第二屆名人邀請賽）</td><td>2018.06.02–03</td><td>台北 新生高架橋下 鐵籠舞台</td><td>英雄聯盟／爐石戰記／快打旋風 V 三項 1v1；素人預選晉級挑戰名人</td><td>總獎金 NT$30 萬；冠軍 M17 Dee、FW Tom60229、RB</td></tr>
-                <tr><td><b>名人邀請賽 線下決賽</b></td><td>2018.12.08</td><td>花博爭豔館 WirForce 2018 主舞台</td><td>20 位日港台名人選手（GamerBee、Tom60229、RB、羅杰…）</td><td>台灣藍、紅兩隊迎戰香港 HGG 亞運金牌與日本選手聯軍；快打旋風 V＋爐石戰記雙項目</td></tr>
-                <tr><td><b>第五屆名人邀請賽</b></td><td>2019.06.20–07.20</td><td>跨國線上＋決賽</td><td>爐石：台灣 6 位選手對上港韓新泰菲隊伍；絕地求生：64 位選手雙排</td><td>爐石總獎金 US$15,000</td></tr>
               </tbody>
             </table>
           </div>
@@ -588,7 +600,27 @@
           <input type="range" min="0" max="100" value="50" aria-label="拖曳比較虛實整合前後">
         </div>
         <div class="compare-label" style="max-width:860px"><span>← 合成後</span><span>實拍原始 →</span></div>
-        <p class="pager"><a href="#editing">← 上一項：實況主與節目剪輯</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#gakey">下一項：AI 剪輯工作站 GAKEY →</a></p>
+        <p class="pager"><a href="#editing">← 上一項：實況主與節目剪輯</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#ai">下一項：AI 生成影片 →</a></p>
+      </section>
+
+      <!-- ========== AI 生成影片 ========== -->
+      <section class="page" id="ai" aria-labelledby="ai-title">
+        <h2 class="work-title" id="ai-title"><span class="dot" style="color:#e58a3a">●</span>AI 生成影片</h2>
+        <p class="work-en">AI-GENERATED ANIMATION &amp; SHORTS</p>
+        <div class="box">
+          <h3 class="box-head">◆ 說明</h3>
+          <div class="box-body">
+            <p>在自己的電腦上用 AI 生成畫面與動態，從腳本、分鏡、角色設定、逐鏡生成、配音到對嘴，一路做到成片。</p>
+          </div>
+        </div>
+        <p class="sub-head">新兵日記 EP2｜AI 動畫短劇（1 分 36 秒）</p>
+        <figure style="max-width:960px"><video src="assets/ai_recruit_diary_ep2.webm" poster="assets/ai_recruit_diary_ep2_cover.jpg" muted playsinline controls preload="metadata" aria-label="AI 動畫短劇 新兵日記 EP2"></video><figcaption>三位實況主的軍旅轉生短劇：日系動畫風、角色一致、配音對嘴</figcaption></figure>
+        <p class="sub-head" style="margin-top:22px">黑狗討飯｜會講話的狗短片</p>
+        <div class="gallery shorts">
+          <figure class="portrait"><video src="assets/ai_blackdog_rice.webm" poster="assets/ai_blackdog_rice_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="AI 短片 黑狗討飯：媽媽我的飯呢"></video><figcaption>媽媽我的飯呢</figcaption></figure>
+          <figure class="portrait"><video src="assets/ai_blackdog_work.webm" poster="assets/ai_blackdog_work_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="AI 短片 黑狗討飯：媽媽要認真工作"></video><figcaption>媽媽要認真工作</figcaption></figure>
+        </div>
+        <p class="pager"><a href="#animation">← 上一項：3D 資訊動畫・合成</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#gakey">下一項：AI 剪輯工作站 GAKEY →</a></p>
       </section>
 
       <!-- ========== GAKEY ========== -->
@@ -628,7 +660,7 @@
           <figure><img src="assets/tool_edit_triage.jpg" alt="GAKEY 卡片式挑段整理與成品清單" loading="lazy"><figcaption>挑段整理：卡片式分類成品清單</figcaption></figure>
           <figure><img src="assets/tool_edit_menu.jpg" alt="GAKEY 效果選單：觀眾 PIP 圈、藝術字卡、圖卡、放大、大頭、追蹤箭頭" loading="lazy"><figcaption>效果選單：PIP 圈／字卡／圖卡／放大／追蹤箭頭</figcaption></figure>
         </div>
-        <p class="pager"><a href="#animation">← 上一項：3D 資訊動畫・合成</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#systems">下一項：直播與社群系統 →</a></p>
+        <p class="pager"><a href="#ai">← 上一項：AI 生成影片</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#systems">下一項：直播與社群系統 →</a></p>
       </section>
 
       <!-- ========== 直播與社群系統 ========== -->
