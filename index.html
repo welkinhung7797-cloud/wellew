@@ -221,6 +221,40 @@
     .badge.b { background: #000; color: var(--lcd); }
     .badge.c { background: var(--yellow); color: #000; }
     .badge.d { background: #d4689a; color: #fff; }
+    /* ===== 示意：社群管理站收件匣 ===== */
+    .ib-bar { display: flex; gap: 6px; align-items: center; margin-bottom: 8px; }
+    .ib-tab, .dc-cmds button, .ib-reply { font: inherit; font-size: 13px; cursor: pointer; background: var(--win); border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; padding: 1px 10px; }
+    .ib-tab[aria-pressed="true"] { border-color: var(--win-darker) #fff #fff var(--win-darker); background: #d4d0c8; font-weight: 700; }
+    .ib-count { margin-left: auto; font-size: 13px; color: var(--ink-soft); }
+    .ib-cols { display: grid; grid-template-columns: minmax(0, 1fr) 200px; gap: 12px; align-items: start; }
+    .ib-pf { display: inline-block; min-width: 54px; text-align: center; font-family: "VT323", monospace; font-size: 15px; color: #fff; padding: 0 4px; }
+    .ib-todo { color: #c00000; font-weight: 700; }
+    .ib-done { color: var(--green); }
+    .ib-rank { background: #fff; border: 2px solid; border-color: var(--win-darker) #fff #fff var(--win-darker); padding: 6px 10px; font-size: 14px; }
+    .ib-rank ol { margin: 4px 0 0; padding-left: 1.4em; }
+    .ib-rank li { display: flex; justify-content: space-between; gap: 8px; }
+    .ib-rank li::marker { content: none; }
+    .ib-rank ol { padding-left: 0; list-style: none; counter-reset: r; }
+    .ib-rank li::before { counter-increment: r; content: counter(r) ". "; color: var(--ink-soft); }
+    .ib-rank li span:first-of-type { flex: 1; }
+    .ib-rank li b { font-family: "VT323", monospace; font-weight: 400; font-size: 17px; color: var(--title-a); }
+    /* ===== 示意：Discord 機器人 ===== */
+    .dc { display: grid; grid-template-columns: 140px minmax(0, 1fr); background: #313338; color: #dbdee1; border: 2px solid; border-color: var(--win-darker) #fff #fff var(--win-darker); font-size: 14px; }
+    .dc-ch { list-style: none; margin: 0; padding: 8px 6px; background: #2b2d31; color: #949ba4; }
+    .dc-ch li { padding: 2px 6px; }
+    .dc-ch li.on { background: #404249; color: #fff; }
+    .dc-main { display: flex; flex-direction: column; min-height: 240px; }
+    .dc-log { flex: 1; padding: 8px 10px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; max-height: 300px; overflow: hidden; }
+    .dc-msg b { color: #fff; margin-right: 6px; }
+    .dc-msg b.bot { color: #b5bac1; }
+    .dc-msg .tag { background: #5865f2; color: #fff; font-size: 10px; padding: 0 4px; border-radius: 3px; margin-right: 6px; vertical-align: 1px; }
+    .dc-embed { border-left: 4px solid #5865f2; background: #2b2d31; padding: 4px 8px; margin-top: 2px; }
+    .dc-cmds { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 10px; background: #383a40; }
+    .dc-cmds button { color: #000; }
+    /* ===== 示意：直播元件（沿用 live-demo.css，外框換成復古風） ===== */
+    #liveDemoMount .live-action, #liveDemoMount .live-reset, #liveDemoMount [data-live-select] { font: inherit; border-radius: 0; background: var(--win); color: #000; border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; box-shadow: none; }
+    #liveDemoMount [data-live-select][aria-pressed="true"] { border-color: var(--win-darker) #fff #fff var(--win-darker); background: #d4d0c8; font-weight: 700; }
+    @media (max-width: 760px) { .ib-cols, .dc { grid-template-columns: 1fr; } .dc-ch { display: flex; flex-wrap: wrap; gap: 4px; } }
     details.more { margin-top: 6px; font-size: 14px; }
     details.more summary { cursor: pointer; display: inline-block; background: var(--win); border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; padding: 0 8px; font-family: "DotGothic16", monospace; }
     details.more[open] summary { border-color: var(--win-darker) #fff #fff var(--win-darker); }
@@ -247,6 +281,7 @@
     }
     @media (prefers-reduced-motion: reduce) { .menu-dog, .new { animation: none; } .marquee span { animation: none; padding-left: 8px; } }
   </style>
+  <link rel="stylesheet" href="live-demo.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -285,7 +320,7 @@
             <a class="tile big" href="#animation"><video src="assets/geo3d_ski.webm" poster="assets/geo3d_ski_cover.jpg" muted autoplay playsinline preload="metadata" data-playlist="assets/geo3d_ski.webm assets/ski_kicker_types.webm assets/ski_kicker_anatomy.webm assets/ski_roller.webm assets/geo3d_terrain.webm" aria-label="赤倉觀光雪場 3D 動畫輪播：地形飛行、跳台軌跡、滾坡、衛星山體"></video><span>赤倉雪場 3D 動畫</span></a>
             <a class="tile tile-gif" href="#vtuber"><img src="assets/kissko_gif_happy.gif" alt="AI VTuber 親親子"><span>AI VTuber 親親子</span></a>
             <a class="tile" href="#editing"><img src="assets/yt_kangkang_cover.jpg" alt="九孔要變帥 康康篇畫面"><span>九孔要變帥 康康篇</span></a>
-            <a class="tile" href="#systems"><img src="assets/community_inbox_youtube.jpg" alt="社群管理站 YouTube 收件匣"><span>社群管理站</span></a>
+            <a class="tile" href="#animation"><video src="assets/after_train.webm" poster="assets/before_train.jpg" muted loop autoplay playsinline preload="metadata" aria-label="虛實整合合成成品"></video><span>虛實整合合成</span></a>
             <a class="tile" href="#events"><img src="assets/plan_yahoo_event.jpg" alt="新生高架橋下的鐵籠賽舞台"><span>新生橋鐵籠賽</span></a>
             <a class="tile" href="#events"><img src="assets/plan_yahoo_party.jpg" alt="Yahoo 電競名人爬梯 PARTY 主視覺"><span>爐石名人爬梯 Party</span></a>
             <a class="tile" href="#vtuber"><img src="assets/torako_live_cover.jpg" alt="VTuber 虎子直播畫面"><span>VTuber 虎子</span></a>
@@ -661,9 +696,55 @@
             </table>
           </div>
         </div>
-        <div class="gallery">
-          <figure><img src="assets/community_inbox_youtube.jpg" alt="社群管理站 YouTube 收件匣" loading="lazy"><figcaption>社群管理站・YouTube 收件匣</figcaption></figure>
-          <figure><img src="assets/community_inbox_ranking.jpg" alt="近 30 天回覆者排行" loading="lazy"><figcaption>近 30 天回覆者排行</figcaption></figure>
+        <p class="note">※ 以下三個都是示意版：名字與留言都是示範內容，可以直接點點看。</p>
+
+        <div class="box">
+          <h3 class="box-head">◆ 社群管理站（示意）</h3>
+          <div class="box-body">
+            <div class="ib" id="inboxDemo">
+              <div class="ib-bar">
+                <button type="button" class="ib-tab" data-ib-filter="all" aria-pressed="true">全部</button>
+                <button type="button" class="ib-tab" data-ib-filter="todo" aria-pressed="false">未回覆優先</button>
+                <span class="ib-count"></span>
+              </div>
+              <div class="ib-cols">
+                <table class="grid-table ib-list">
+                  <thead><tr><th>平台</th><th>留言者</th><th>留言</th><th>狀態</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+                <div class="ib-rank">
+                  <b>近 30 天最常留言</b>
+                  <ol></ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 class="box-head">◆ Discord 機器人（示意）</h3>
+          <div class="box-body">
+            <div class="dc" id="discordDemo">
+              <ul class="dc-ch" aria-label="頻道">
+                <li># 公告</li><li class="on"># 聊天室</li><li># 精華時間軸</li><li># 開台通知</li>
+              </ul>
+              <div class="dc-main">
+                <div class="dc-log" role="log" aria-live="polite"></div>
+                <div class="dc-cmds">
+                  <button type="button" data-dc="draw">/抽籤</button>
+                  <button type="button" data-dc="fortune">/占卜</button>
+                  <button type="button" data-dc="song">/點歌</button>
+                  <button type="button" data-dc="vod">VOD 時間軸</button>
+                  <button type="button" data-dc="live">開台通知</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 class="box-head">◆ 直播元件（示意）</h3>
+          <div class="box-body" id="liveDemoMount"></div>
         </div>
         <p class="pager"><a href="#gakey">← 上一項：AI 剪輯工作站 GAKEY</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#media">下一項：媒體編輯與新聞稿 →</a></p>
       </section>
@@ -677,14 +758,14 @@
           <div class="stat"><b>1,000+ 篇</b><span>新聞稿／公關稿</span></div>
           <div class="stat"><b>100+ 場</b><span>專訪</span></div>
           <div class="stat"><b>3,078 萬</b><span>Yahoo 奇摩電競平台<br>上線以來觀看（2017.07）</span></div>
-          <div class="stat"><b>4 大</b><span>國際現場採訪</span></div>
+          <div class="stat"><b>5 個</b><span>國際現場採訪<br>美・日・俄・世界賽</span></div>
         </div>
         <div class="box">
           <h3 class="box-head">◆ 經歷與成績</h3>
           <div class="box-body">
             <table class="grid-table">
               <tr><th>Yahoo 奇摩電競 主編</th><td>2016.12–2021。帶領 5 人編輯團隊：內容策略、任務分配、品質把關；從零建立電競社群平台，平台上線後觀看 3,078 萬次、觸及 311 萬人（2017.07 發表數據）；2019 亞洲電競大賞入圍「年度最佳電競報導獎」</td></tr>
-              <tr><th>國際採訪</th><td>美國 GDC 遊戲開發者大會、Valve（Steam）總部、東京電玩展 TGS、英雄聯盟世界賽</td></tr>
+              <tr><th>國際採訪</th><td>美國 GDC 遊戲開發者大會、Valve（Steam）總部、東京電玩展 TGS、英雄聯盟世界賽、俄羅斯《戰車世界》</td></tr>
               <tr><th>魔方網記者／蕃薯藤影音編輯</th><td>2013–2016。遊戲產業報導、影音內容產製</td></tr>
               <tr><th>撰稿實績</th><td>新聞稿／公關稿 1,000+ 篇、專訪 100+ 場；活動通稿、專訪與品牌敘事</td></tr>
             </table>
@@ -721,6 +802,7 @@
     </main>
   </div>
 
+  <script src="live-demo.js"></script>
   <script>
     (() => {
       const pages = [...document.querySelectorAll('.page')];
@@ -761,6 +843,80 @@
         let i = 0;
         setInterval(() => { imgs[i].classList.remove('on'); i = (i + 1) % imgs.length; imgs[i].classList.add('on'); }, 2800);
       });
+
+      // 直播元件示意：掛上 9/21 版的互動元件
+      const liveMount = document.getElementById('liveDemoMount');
+      if (liveMount && typeof liveDemoMarkup === 'function') { liveMount.innerHTML = liveDemoMarkup(); initLiveDemo(liveMount); }
+
+      // 社群管理站示意：五平台留言收件匣（名字與留言皆為示範）
+      const ib = document.getElementById('inboxDemo');
+      if (ib) {
+        const PF = { YT: ['YouTube', '#c4302b'], X: ['X', '#111'], TH: ['Threads', '#333'], IG: ['IG', '#c13584'], FB: ['FB', '#1877f2'] };
+        const rows = [
+          ['YT', '示範觀眾 A', '這集剪得超好笑，第 3 分鐘那段我笑到不行', false],
+          ['IG', '示範觀眾 B', '下次直播什麼時候？', false],
+          ['FB', '示範觀眾 C', '已分享給朋友了！', true],
+          ['X', '示範觀眾 D', '想看幕後花絮', false],
+          ['TH', '示範觀眾 E', '求出周邊', true],
+          ['YT', '示範觀眾 A', '片尾那首歌叫什麼？', false],
+        ];
+        const rank = [['示範觀眾 A', 12], ['示範觀眾 D', 9], ['示範觀眾 B', 7], ['示範觀眾 E', 5]];
+        let filter = 'all';
+        const render = () => {
+          const tb = ib.querySelector('tbody');
+          tb.innerHTML = '';
+          rows.map((r, i) => [r, i]).filter(([r]) => filter === 'all' || !r[3]).sort((a, b) => (filter === 'todo' ? 0 : a[0][3] - b[0][3])).forEach(([r, i]) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td><span class="ib-pf" style="background:${PF[r[0]][1]}">${PF[r[0]][0]}</span></td><td></td><td></td><td></td>`;
+            tr.children[1].textContent = r[1];
+            tr.children[2].textContent = r[2];
+            tr.children[3].innerHTML = r[3] ? '<span class="ib-done">已回覆</span>' : `<span class="ib-todo">未回覆</span> <button type="button" class="ib-reply" data-ib-reply="${i}">回覆</button>`;
+            tb.append(tr);
+          });
+          const todo = rows.filter((r) => !r[3]).length;
+          ib.querySelector('.ib-count').textContent = `共 ${rows.length} 則・未回覆 ${todo} 則`;
+        };
+        ib.querySelector('.ib-rank ol').innerHTML = rank.map(([n, c]) => `<li><span>${n}</span><b>${c} 則</b></li>`).join('');
+        ib.addEventListener('click', (e) => {
+          const b = e.target.closest('button');
+          if (!b) return;
+          if (b.dataset.ibFilter) { filter = b.dataset.ibFilter; ib.querySelectorAll('[data-ib-filter]').forEach((t) => t.setAttribute('aria-pressed', String(t === b))); }
+          if (b.dataset.ibReply) rows[Number(b.dataset.ibReply)][3] = true;
+          render();
+        });
+        render();
+      }
+
+      // Discord 機器人示意：成員下指令 → 機器人回覆
+      const dc = document.getElementById('discordDemo');
+      if (dc) {
+        const log = dc.querySelector('.dc-log');
+        const pick = (a) => a[Math.floor(Math.random() * a.length)];
+        const say = (who, html, bot) => {
+          const m = document.createElement('div');
+          m.className = 'dc-msg';
+          m.innerHTML = (bot ? '<span class="tag">BOT</span><b class="bot"></b>' : '<b></b>') + '<span></span>';
+          m.querySelector('b').textContent = who;
+          m.querySelector('span:last-child').innerHTML = html;
+          log.append(m);
+          while (log.children.length > 7) log.firstElementChild.remove();
+        };
+        const CMD = {
+          draw: ['/抽籤', () => `抽到了：<b>${pick(['大吉', '中吉', '小吉', '吉', '末吉'])}</b>！今天適合開台。`],
+          fortune: ['/占卜', () => `今日運勢：${pick(['排位連勝', '抽卡出金', '直播破台', '吃到好吃的便當'])}，幸運色是${pick(['紅色', '藍色', '金色'])}。`],
+          song: ['/點歌 晴天', () => '已加入點歌清單第 3 首：〈晴天〉，主播唱到時會通知你。'],
+          vod: ['/時間軸', () => '<div class="dc-embed">昨晚 VOD 精華時間軸<br>00:12:40 開場聊天<br>01:05:22 爆笑翻車<br>02:31:08 最後一把逆轉</div>'],
+          live: [null, () => '<div class="dc-embed"><span style="color:#f23f43">●</span> 開台通知：主播正在直播！<br>今晚：排位衝分＋觀眾連動</div>'],
+        };
+        dc.addEventListener('click', (e) => {
+          const b = e.target.closest('[data-dc]');
+          if (!b) return;
+          const [input, reply] = CMD[b.dataset.dc];
+          if (input) say('示範成員', input);
+          setTimeout(() => say(b.dataset.dc === 'live' ? 'Webhook 通知' : 'WelleW Bot', reply(), true), input ? 350 : 0);
+        });
+        say('WelleW Bot', '歡迎加入！點下面的指令試試看。', true);
+      }
 
       // 寬表格在手機上直排：每格前面補上欄名
       document.querySelectorAll('table.stack').forEach((t) => {
