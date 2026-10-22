@@ -7,9 +7,9 @@
       "role": "deliverable",
       "canonical_path": "index.html",
       "original_path": "index.html",
-      "provenance": "Redesigned in the canonical project; original dog identity and CSS mascot added on 2026-08-09; 2026-08-17 加入 AI VTuber 親親子／自動剪輯軟體兩幕、獨立遊戲改掛 PENGUIN CAN FIGHT，並把全站文案改成中性描述；2026-08-17 user 指示直接上線，據此標記 approved；2026-09-03 加入社群管理站（緣結五平台收件匣，YouTube 實接）與 GAKEY 演繹模式錄影（234 顆素材 AI 放 205／人工鎖 29）；自動剪輯軟體幕改為 AI 剪輯工作站 GAKEY；2026-09-03 去識別化：收件匣重新渲染為假名（小明/小華…）、斗內卡贊助者換名、親親子短影音聊天區馬賽克；下架獨立遊戲幕與三張遊戲圖；2026-09-03 去識別化：收件匣重新渲染為假名（小明/小華…）、斗內卡贊助者換名、親親子短影音聊天區馬賽克；下架獨立遊戲幕與三張遊戲圖；2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）；2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）；封面重裁（薛喜 Shorts 首頁格）",
-      "sha256": "FAF77DD7A7E3D69AFDA29587EEF19A47832FB998C9F49512271074FDC631EFCF",
-      "size": 57344,
+      "provenance": "Redesigned in the canonical project; original dog identity and CSS mascot added on 2026-08-09; 2026-08-17 加入 AI VTuber 親親子／自動剪輯軟體兩幕、獨立遊戲改掛 PENGUIN CAN FIGHT，並把全站文案改成中性描述；2026-08-17 user 指示直接上線，據此標記 approved；2026-09-03 加入社群管理站（緣結五平台收件匣，YouTube 實接）與 GAKEY 演繹模式錄影（234 顆素材 AI 放 205／人工鎖 29）；自動剪輯軟體幕改為 AI 剪輯工作站 GAKEY；2026-09-03 去識別化：收件匣重新渲染為假名（小明/小華…）、斗內卡贊助者換名、親親子短影音聊天區馬賽克；下架獨立遊戲幕與三張遊戲圖；2026-09-03 去識別化：收件匣重新渲染為假名（小明/小華…）、斗內卡贊助者換名、親親子短影音聊天區馬賽克；下架獨立遊戲幕與三張遊戲圖；2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）；2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）；封面重裁（薛喜 Shorts 首頁格）；2026-10-22 retro 第四批：親親子 GIF 縮小版（240px 透明）、虎子直播片段重轉",
+      "sha256": "E602FF85B8338161028D4A53F86625500178B5DF8C5859843E147BA629C72034",
+      "size": 60298,
       "approved": true,
       "status": "approved"
     },
@@ -398,61 +398,6 @@
       "approved": true,
       "status": "approved"
     },
-    "vt_kissko_angry": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/vt_kissko_angry.webm",
-      "original_path": "assets/vt_kissko_angry.webm",
-      "provenance": "2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
-      "sha256": "A6E91A789F4DA180A0446B79A8F2085F3FB41755D68DB4DB3AD51A4BDC89DF11",
-      "size": 1163495,
-      "approved": true,
-      "status": "approved"
-    },
-    "vt_kissko_cry": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/vt_kissko_cry.webm",
-      "original_path": "assets/vt_kissko_cry.webm",
-      "provenance": "2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
-      "sha256": "AD6FDCF9BBE5E24FB742A87EEDFCCC0E3572A11C9D0411EDA5AF6AEB97F97904",
-      "size": 1182511,
-      "approved": true,
-      "status": "approved"
-    },
-    "vt_kissko_idle": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/vt_kissko_idle.webm",
-      "original_path": "assets/vt_kissko_idle.webm",
-      "provenance": "2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
-      "sha256": "9A46476116ADAA13AB436EC1C30C783D1AAF6F60C3842D025BCF6DC35C9E0298",
-      "size": 1312857,
-      "approved": true,
-      "status": "approved"
-    },
-    "vt_kissko_normal": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/vt_kissko_normal.webm",
-      "original_path": "assets/vt_kissko_normal.webm",
-      "provenance": "2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
-      "sha256": "F7545376F93BD911CA0DA63FF9E09E26E4A9355C9820A2493F09AEB1DE56F386",
-      "size": 1348762,
-      "approved": true,
-      "status": "approved"
-    },
-    "vt_kissko_shy": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/vt_kissko_shy.webm",
-      "original_path": "assets/vt_kissko_shy.webm",
-      "provenance": "2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）",
-      "sha256": "8C296856A531CECF3AEE2B3D7979D704001772330D1F32310F1E736A0DBBD97D",
-      "size": 1088273,
-      "approved": true,
-      "status": "approved"
-    },
     "yt_kangkang_cover": {
       "kind": "image",
       "role": "portfolio_media",
@@ -505,6 +450,83 @@
       "provenance": "2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）",
       "sha256": "684C9719E763C43ED61E16206306E0191657F01B2F60915974C48C757D965E5C",
       "size": 232665,
+      "approved": true,
+      "status": "approved"
+    },
+    "kissko_gif_angry": {
+      "kind": "file",
+      "role": "portfolio_media",
+      "canonical_path": "assets/kissko_gif_angry.gif",
+      "original_path": "assets/kissko_gif_angry.gif",
+      "provenance": "2026-10-22 retro 第四批：親親子 GIF 縮小版（240px 透明）、虎子直播片段重轉",
+      "sha256": "E605C0337B1A4B34B2F43B24E5AFD25486C1D2853929E91AECB5653F04097329",
+      "size": 737824,
+      "approved": true,
+      "status": "approved"
+    },
+    "kissko_gif_celebrate": {
+      "kind": "file",
+      "role": "portfolio_media",
+      "canonical_path": "assets/kissko_gif_celebrate.gif",
+      "original_path": "assets/kissko_gif_celebrate.gif",
+      "provenance": "2026-10-22 retro 第四批：親親子 GIF 縮小版（240px 透明）、虎子直播片段重轉",
+      "sha256": "37F409A0AFEA03C48DD9FA9FDA163BDBC31190421674D706C4E3BD8289A0ADF1",
+      "size": 729751,
+      "approved": true,
+      "status": "approved"
+    },
+    "kissko_gif_cry": {
+      "kind": "file",
+      "role": "portfolio_media",
+      "canonical_path": "assets/kissko_gif_cry.gif",
+      "original_path": "assets/kissko_gif_cry.gif",
+      "provenance": "2026-10-22 retro 第四批：親親子 GIF 縮小版（240px 透明）、虎子直播片段重轉",
+      "sha256": "823C9C47B8A0796A22EB9120BE9BC56FBB5B5E28DD9D7B1189B0AB16AE022524",
+      "size": 696929,
+      "approved": true,
+      "status": "approved"
+    },
+    "kissko_gif_guitar": {
+      "kind": "file",
+      "role": "portfolio_media",
+      "canonical_path": "assets/kissko_gif_guitar.gif",
+      "original_path": "assets/kissko_gif_guitar.gif",
+      "provenance": "2026-10-22 retro 第四批：親親子 GIF 縮小版（240px 透明）、虎子直播片段重轉",
+      "sha256": "948890CDE10F78A511EC80A60A07E75BA307901769E5832406A68537F54EC8AC",
+      "size": 685875,
+      "approved": true,
+      "status": "approved"
+    },
+    "kissko_gif_happy": {
+      "kind": "file",
+      "role": "portfolio_media",
+      "canonical_path": "assets/kissko_gif_happy.gif",
+      "original_path": "assets/kissko_gif_happy.gif",
+      "provenance": "2026-10-22 retro 第四批：親親子 GIF 縮小版（240px 透明）、虎子直播片段重轉",
+      "sha256": "A037FA9A7F0DB1AB00465AE90EA7DC36E73C997B4733DFA4613AE891845C6711",
+      "size": 740866,
+      "approved": true,
+      "status": "approved"
+    },
+    "kissko_gif_shy": {
+      "kind": "file",
+      "role": "portfolio_media",
+      "canonical_path": "assets/kissko_gif_shy.gif",
+      "original_path": "assets/kissko_gif_shy.gif",
+      "provenance": "2026-10-22 retro 第四批：親親子 GIF 縮小版（240px 透明）、虎子直播片段重轉",
+      "sha256": "0B3E0F138D6A279B94458111B0841E0DE381659D8198DC9067C508383F07FA58",
+      "size": 675638,
+      "approved": true,
+      "status": "approved"
+    },
+    "torako_live": {
+      "kind": "video",
+      "role": "portfolio_media",
+      "canonical_path": "assets/torako_live.webm",
+      "original_path": "assets/torako_live.webm",
+      "provenance": "2026-10-22 retro 第四批：親親子 GIF 縮小版（240px 透明）、虎子直播片段重轉",
+      "sha256": "4F3B48CE42DEAF97599E1BD47E6E02B65578C12CB584761803143F79047E1CB3",
+      "size": 1710664,
       "approved": true,
       "status": "approved"
     }

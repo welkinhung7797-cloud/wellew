@@ -8,7 +8,7 @@
   <meta name="description" content="WelleW 是 Welkin 的一人影音製作工作室，提供節目與賽事企劃、剪輯、AI VTuber、3D 資訊動畫、AI 剪輯工作站、直播元件、社群系統與新聞稿服務。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&amp;family=Noto+Serif+TC:wght@400;700;900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&amp;family=VT323&amp;family=LXGW+WenKai+TC:wght@400;700&amp;family=Noto+Serif+TC:wght@400;700;900&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --paper: #f4ecd6;
@@ -138,28 +138,6 @@
     .compare input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
     .compare-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-soft); }
 
-    /* ===== 親親子直播間示意 ===== */
-    .kq { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 230px; background: #1e2133; border: 1px solid var(--ink-soft); color: #fff; overflow: hidden; }
-    .kq-stage { position: relative; aspect-ratio: 4 / 3; background: radial-gradient(circle at 50% 35%, #4a4f74, #1e2133 70%); overflow: hidden; }
-    .kq[data-full] .kq-stage { aspect-ratio: 16 / 9; }
-    .kq-stage video { position: absolute; left: 50%; bottom: 0; height: 100%; width: auto; max-width: none; transform: translateX(-50%); opacity: 0; border: 0; background: none; }
-    .kq-stage video.on { opacity: 1; }
-    .kq-live { position: absolute; top: 8px; left: 8px; z-index: 2; background: #e0201b; font-size: 11px; font-weight: 700; padding: 0 6px; letter-spacing: .1em; }
-    .kq-state { position: absolute; top: 8px; right: 8px; z-index: 2; background: rgba(0,0,0,.55); font-size: 12px; padding: 0 6px; }
-    .kq-sub { position: absolute; left: 6%; right: 6%; bottom: 6%; z-index: 2; background: rgba(255,250,240,.94); color: var(--ink); border: 2px solid var(--ink); padding: 4px 12px; font-size: 16px; font-family: "LXGW WenKai TC", serif; min-height: 2.2em; }
-    .kq-side { display: flex; flex-direction: column; border-left: 1px solid #444; font-size: 13px; }
-    .kq-side b { display: block; background: #2c3150; padding: 4px 8px; font-size: 12px; letter-spacing: .1em; }
-    .kq-chat { flex: 1; padding: 6px 8px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; }
-    .kq-chat p { margin: 0; line-height: 1.5; }
-    .kq-chat i { font-style: normal; color: var(--yellow); margin-right: 4px; }
-    .kq-op { border-top: 1px solid #444; padding: 6px 8px; min-height: 64px; color: #bfe3ff; }
-    .kq-op::after { content: "▍"; animation: blink 1s steps(1) infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
-    .tile .kq { position: absolute; inset: 0; display: block; border: 0; }
-    .tile .kq-stage { height: 100%; aspect-ratio: auto; }
-    .tile .kq-side, .tile .kq-state { display: none; }
-    .tile .kq-sub { font-size: 12px; bottom: 30px; padding: 2px 8px; min-height: 0; }
-
     .pager { text-align: center; margin: 30px 0 0; font-size: 15px; }
     .pager span { color: var(--ink-soft); margin: 0 6px; }
     .footer { text-align: center; font-size: 12px; color: var(--ink-soft); margin-top: 40px; }
@@ -197,11 +175,71 @@
       .grid-table th, .grid-table td { padding: 5px 6px; }
       .gallery.shorts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .work-title { font-size: 21px; }
-      .kq { grid-template-columns: 1fr; }
-      .kq-side { border-left: 0; border-top: 1px solid #444; }
-      .kq-chat { min-height: 110px; }
     }
-    @media (prefers-reduced-motion: reduce) { .menu-dog, .kq-op::after { animation: none; } }
+    /* ===== 復古電腦網頁：Win98 視窗框、點陣字、LCD 數字、跑馬燈、狀態列 ===== */
+    :root { --win: #c0c0c0; --win-dark: #808080; --win-darker: #404040; --title-a: #000080; --title-b: #1084d0; --lcd: #39ff14; }
+    body { font-family: "PMingLiU", "MingLiU", "Noto Serif TC", serif; font-size: 15px; }
+    h1, .work-title, .box-head, .menu-cat, .sub-head, .menu-logo, .marquee, .statusbar, .tile > span, .pager { font-family: "DotGothic16", "MS Gothic", monospace; }
+    .menu { background: var(--win); border-right: 3px solid; border-color: var(--win-darker); box-shadow: inset -1px 0 0 var(--win-dark), inset 1px 1px 0 #fff; }
+    .menu-cat { background: linear-gradient(90deg, var(--title-a), var(--title-b)); font-weight: 400; font-size: 13px; letter-spacing: .1em; }
+    .menu a[aria-current="page"] { background: var(--title-a); color: #fff; }
+    .menu-foot { color: var(--win-darker); }
+    h1 { font-weight: 400; color: var(--title-a); text-shadow: 2px 2px 0 #fff, 3px 3px 0 var(--win-dark); }
+    h1 small { font-family: "VT323", monospace; font-size: 20px; color: var(--win-darker); text-shadow: none; }
+    .box { background: var(--win); border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; box-shadow: 1px 1px 0 #000; padding: 3px; }
+    .box-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: linear-gradient(90deg, var(--title-a), var(--title-b)); font-weight: 400; font-size: 14px; padding: 2px 4px 2px 8px; }
+    .box-head::after { content: "_ □ ×"; flex: none; background: var(--win); color: #000; font-family: "VT323", monospace; font-size: 15px; line-height: 1; letter-spacing: 5px; padding: 1px 1px 1px 6px; border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; }
+    .box-head.center { justify-content: center; }
+    .box-head.center::after { position: absolute; right: 10px; }
+    .box:has(.box-head.center) { position: relative; }
+    .box-body { background: var(--paper-light); border: 2px solid; border-color: var(--win-dark) #fff #fff var(--win-dark); margin-top: 3px; }
+    .grid-table th, .grid-table td { border: 1px solid var(--win-dark); }
+    .grid-table th, .grid-table thead th { background: #d4d0c8; }
+    .work-title { font-weight: 400; font-size: 20px; color: #fff; background: linear-gradient(90deg, var(--title-a), var(--title-b)); border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; padding: 4px 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .work-title::after { content: "_ □ ×"; flex: none; background: var(--win); color: #000; font-family: "VT323", monospace; font-size: 17px; line-height: 1; letter-spacing: 5px; padding: 1px 1px 1px 6px; border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; }
+    .work-title .dot { display: none; }
+    .work-en { font-family: "VT323", monospace; font-size: 17px; letter-spacing: .12em; color: var(--win-darker); }
+    .sub-head { font-weight: 400; background: var(--win); border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; border-left-width: 2px; padding: 2px 10px; }
+    .sub-head::before { content: "▶ "; color: var(--title-a); }
+    .stat { background: #000; border: 3px solid; border-color: var(--win-darker) #fff #fff var(--win-darker); box-shadow: inset 0 0 0 2px #1a1a1a; }
+    .stat b { font-family: "VT323", "DotGothic16", monospace; font-weight: 400; font-size: 36px; color: var(--lcd); text-shadow: 0 0 6px rgba(57, 255, 20, .7); }
+    .stat span { color: #d0d0d0; }
+    figure img, figure video { border: 2px solid; border-color: var(--win-darker) #fff #fff var(--win-darker); }
+    .tile { border: 2px solid; border-color: var(--win-darker) #fff #fff var(--win-darker); }
+    .tile > span { background: var(--title-a); font-size: 12px; }
+    .rank td:last-child { font-family: "VT323", monospace; font-size: 19px; color: #c00000; }
+    .new { animation: blink 1s steps(1) infinite; }
+    .pager a { display: inline-block; color: #000; text-decoration: none; background: var(--win); border: 2px solid; border-color: #fff var(--win-darker) var(--win-darker) #fff; padding: 2px 10px; margin: 3px 0; }
+    .pager a:active { border-color: var(--win-darker) #fff #fff var(--win-darker); }
+    .pager span { display: none; }
+    .marquee { overflow: hidden; white-space: nowrap; background: #000; color: #ffde00; border: 2px solid; border-color: var(--win-darker) #fff #fff var(--win-darker); padding: 3px 0; margin: 0 auto 16px; max-width: 1240px; font-size: 14px; }
+    .marquee span { display: inline-block; padding-left: 100%; animation: marquee 28s linear infinite; }
+    @keyframes marquee { to { transform: translateX(-100%); } }
+    .statusbar { display: flex; gap: 3px; max-width: 1240px; margin: 28px auto 0; font-size: 12px; }
+    .statusbar span { flex: 1; background: var(--win); border: 2px solid; border-color: var(--win-dark) #fff #fff var(--win-dark); padding: 1px 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .statusbar span:first-child { flex: 0 0 auto; }
+    .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 1240px; margin: 12px auto 0; }
+    .badge { width: 88px; height: 31px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: "VT323", monospace; font-size: 15px; line-height: 1; border: 1px solid #000; box-shadow: inset 1px 1px 0 rgba(255,255,255,.6), inset -1px -1px 0 rgba(0,0,0,.4); }
+    .badge.a { background: var(--title-a); color: #fff; }
+    .badge.b { background: #000; color: var(--lcd); }
+    .badge.c { background: var(--yellow); color: #000; }
+    .badge.d { background: #d4689a; color: #fff; }
+    .tile-gif { background: repeating-conic-gradient(#e8e8e8 0 25%, #fff 0 50%) 0 0 / 16px 16px; }
+    .tile-gif > img { object-fit: contain; }
+    .gifs { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+    .gifs figure { background: #fff; border: 2px solid; border-color: var(--win-darker) #fff #fff var(--win-darker); padding: 4px; text-align: center; }
+    .gifs img { width: 100%; border: 0; background: repeating-conic-gradient(#eee 0 25%, #fff 0 50%) 0 0 / 16px 16px; }
+    .gifs figcaption { text-align: center; }
+    .gallery.torako-media { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr) minmax(0, .55fr); margin-top: 6px; }
+    @media (max-width: 760px) {
+      .menu ul { gap: 2px 8px; }
+      .statusbar { flex-wrap: wrap; }
+      .statusbar span { flex: 1 1 45%; }
+      .gallery.torako-media { grid-template-columns: 1fr 1fr; }
+      .gallery.torako-media figure:first-child { grid-column: 1 / -1; }
+      .box-head::after, .work-title::after { letter-spacing: 3px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .menu-dog, .new { animation: none; } .marquee span { animation: none; padding-left: 8px; } }
   </style>
   <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -230,6 +268,7 @@
     </nav>
 
     <main class="content" id="main">
+      <div class="marquee" aria-hidden="true"><span>★ 歡迎光臨 WelleW 影音製作工作室 ★ 賽事與社群活動・VTuber 企劃與經營・實況主與節目剪輯・3D 資訊動畫・AI 剪輯工具・直播與社群系統・媒體與新聞稿 ★ 工作委託請來信 welkinhung7797@gmail.com ★</span></div>
 
       <!-- ========== 首頁 ========== -->
       <section class="page" id="top" aria-labelledby="top-title">
@@ -238,7 +277,7 @@
           <h2 class="box-head">◆ 作品精選（點圖進作品頁）</h2>
           <div class="collage">
             <a class="tile big" href="#animation"><video src="assets/geo3d_ski.webm" poster="assets/geo3d_ski_cover.jpg" muted loop autoplay playsinline preload="metadata" aria-label="赤倉觀光雪場 3D 地形飛行"></video><span>赤倉雪場 3D 動畫</span></a>
-            <a class="tile" href="#vtuber"><div class="kq" data-kq aria-hidden="true"><div class="kq-stage"><span class="kq-live">LIVE</span><span class="kq-state"></span><div class="kq-sub"></div></div></div><span>AI VTuber 親親子</span></a>
+            <a class="tile tile-gif" href="#vtuber"><img src="assets/kissko_gif_happy.gif" alt="AI VTuber 親親子"><span>AI VTuber 親親子</span></a>
             <a class="tile" href="#editing"><img src="assets/yt_kangkang_cover.jpg" alt="九孔要變帥 康康篇畫面"><span>九孔要變帥 康康篇</span></a>
             <a class="tile" href="#events"><img src="assets/plan_yahoo_roster.jpg" alt="Yahoo 奇摩電競名人邀請賽參賽名單"><span>Yahoo 名人邀請賽</span></a>
             <a class="tile" href="#events"><img src="assets/plan_yahoo_event.jpg" alt="新生高架橋下的鐵籠賽舞台"><span>新生橋鐵籠賽</span></a>
@@ -389,24 +428,29 @@
             </ul>
           </div>
         </div>
+        <div class="gallery torako-media">
+          <figure><video src="assets/torako_live.webm" poster="assets/torako_live_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="虎子直播畫面與聊天室互動"></video><figcaption>直播畫面：聊天室互動</figcaption></figure>
+          <figure><img src="assets/plan_huzi_vtuber.jpg" alt="虎子跨界聯動節目縮圖" loading="lazy"><figcaption>跨界聯動節目</figcaption></figure>
+          <figure class="portrait"><video src="assets/yt_short_huzi.webm" muted loop playsinline controls preload="metadata" aria-label="虎子 Shorts，10 萬觀看"></video><figcaption>Shorts・10 萬觀看</figcaption></figure>
+        </div>
 
         <p class="sub-head" style="margin-top:22px">AI VTuber 親親子｜自製 AI 角色</p>
-        <div class="stats">
-          <div class="stat"><b>1,270</b><span>YouTube 訂閱</span></div>
-          <div class="stat"><b>247 支</b><span>影片＋Shorts<br>（61＋186）</span></div>
-          <div class="stat"><b>79 萬</b><span>頻道總觀看</span></div>
-          <div class="stat"><b>1.7 萬</b><span>單支最高觀看<br>（和 VT 連動直播）</span></div>
-        </div>
         <div class="box">
-          <h3 class="box-head">◆ 我的角色與成績</h3>
+          <h3 class="box-head">◆ 我做了什麼</h3>
           <div class="box-body">
             <table class="grid-table">
-              <tr><th>我的角色</th><td>角色企劃／立繪狀態機（14 種）／語音合成串接／跨平台推流／短影音經營</td></tr>
+              <tr><th>我的角色</th><td>角色企劃／PNGTuber 立繪狀態機設計／語音合成串接／直播推流系統</td></tr>
               <tr><th>運作方式</th><td>操作員打一行字，親親子在直播間用自己的聲音講出來，立繪依情緒切換</td></tr>
-              <tr><th>觀看</th><td>長影音 61 支共 17.8 萬、Shorts 186 支共 61.5 萬觀看</td></tr>
-              <tr><th>頻道</th><td><a href="https://www.youtube.com/channel/UCwv0HL1xjz7NgT4xecDcjwA" target="_blank" rel="noopener">YouTube「AI親親子」↗</a>｜<a href="https://www.youtube.com/watch?v=ocVkpD74MTI" target="_blank" rel="noopener">觀看最高的直播 ↗</a></td></tr>
             </table>
           </div>
+        </div>
+        <div class="gifs">
+          <figure><img src="assets/kissko_gif_happy.gif" alt="親親子 開心講話" loading="lazy"><figcaption>開心講話</figcaption></figure>
+          <figure><img src="assets/kissko_gif_angry.gif" alt="親親子 生氣跺腳" loading="lazy"><figcaption>生氣跺腳</figcaption></figure>
+          <figure><img src="assets/kissko_gif_shy.gif" alt="親親子 害羞講話" loading="lazy"><figcaption>害羞講話</figcaption></figure>
+          <figure><img src="assets/kissko_gif_cry.gif" alt="親親子 哭" loading="lazy"><figcaption>哭</figcaption></figure>
+          <figure><img src="assets/kissko_gif_celebrate.gif" alt="親親子 慶祝" loading="lazy"><figcaption>慶祝</figcaption></figure>
+          <figure><img src="assets/kissko_gif_guitar.gif" alt="親親子 彈吉他" loading="lazy"><figcaption>彈吉他</figcaption></figure>
         </div>
         <p class="pager"><a href="#events">← 上一項：賽事與社群活動</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#editing">下一項：實況主與節目剪輯 →</a></p>
       </section>
@@ -640,6 +684,8 @@
         <p class="footer">WELLEW / WELKIN PORTFOLIO © 2026</p>
       </section>
 
+      <div class="statusbar" aria-hidden="true"><span>完成</span><span>最終更新日 2026.10.22</span><span>建議解析度 1024×768 以上</span><span>WelleW Studio</span></div>
+      <div class="badges" aria-hidden="true"><span class="badge a">WelleW<br>STUDIO</span><span class="badge b">ESPORTS<br>EVENTS</span><span class="badge c">VTuber<br>PLANNING</span><span class="badge d">EDIT<br>&amp; 3D</span></div>
     </main>
   </div>
 
@@ -655,7 +701,7 @@
           const on = p === page;
           p.classList.toggle('on', on);
           // 進到該頁的影片靜音自動播，看的人想聽再用控制列開聲音；離開的頁全部暫停
-          p.querySelectorAll('video').forEach((v) => { if (on && !v.closest('.kq')) v.play().catch(() => {}); else if (!on) v.pause(); });
+          p.querySelectorAll('video').forEach((v) => { if (on) v.play().catch(() => {}); else if (!on) v.pause(); });
         });
         menuLinks.forEach((a) => {
           if (a.getAttribute('href') === '#' + page.id) a.setAttribute('aria-current', 'page');
@@ -686,68 +732,6 @@
         line.style.left = `${range.value}%`;
       });
 
-      // 親親子直播間示意：聊天室來一句 → 操作員打字 → 她用對應情緒開口 → 回待機
-      const STATES = { idle: '待機', normal: '講話', shy: '害羞', cry: '哭', angry: '生氣' };
-      const SCRIPT = [
-        { chat: ['小明', '晚安～'], op: '跟大家打招呼', state: 'normal', line: '大家晚安～今天也來陪你們聊天囉！' },
-        { chat: ['路過的貓', '親親子今天好可愛'], op: '被稱讚，害羞', state: 'shy', line: '欸…突然這樣說，人家會害羞啦…' },
-        { chat: ['阿哲', '剛剛那把輸了QQ'], op: '輸了很難過', state: 'cry', line: '嗚嗚…下一把一定會贏的…' },
-        { chat: ['老觀眾', '主播又在偷懶'], op: '被說偷懶，生氣', state: 'angry', line: '才沒有偷懶！我很認真好嗎！' },
-      ];
-      document.querySelectorAll('[data-kq]').forEach((root) => {
-        const stage = root.querySelector('.kq-stage');
-        const vids = {};
-        Object.keys(STATES).forEach((k) => {
-          const v = document.createElement('video');
-          v.src = `assets/vt_kissko_${k}.webm`;
-          v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto';
-          v.setAttribute('aria-hidden', 'true');
-          stage.insertBefore(v, stage.firstChild);
-          vids[k] = v;
-        });
-        const sub = root.querySelector('.kq-sub');
-        const tag = root.querySelector('.kq-state');
-        const chat = root.querySelector('.kq-chat');
-        const op = root.querySelector('.kq-op');
-        const visible = () => root.offsetParent !== null;
-        function setState(k) {
-          Object.entries(vids).forEach(([name, v]) => {
-            const on = name === k;
-            v.classList.toggle('on', on);
-            if (on && visible()) v.play().catch(() => {}); else v.pause();
-          });
-          tag.textContent = '狀態：' + STATES[k];
-        }
-        const wait = (ms) => new Promise((r) => setTimeout(r, ms));
-        async function typeInto(el, text, speed) {
-          el.textContent = '';
-          for (const ch of text) { el.textContent += ch; await wait(speed); }
-        }
-        async function run() {
-          setState('idle'); sub.textContent = '';
-          for (let i = 0; ; i = (i + 1) % SCRIPT.length) {
-            while (!visible()) await wait(500);
-            const s = SCRIPT[i];
-            if (chat) {
-              const p = document.createElement('p');
-              p.innerHTML = `<i></i>`; p.firstChild.textContent = s.chat[0]; p.append(s.chat[1]);
-              chat.append(p);
-              while (chat.children.length > 6) chat.firstChild.remove();
-              await wait(700);
-              await typeInto(op, s.op, 70);
-              await wait(400);
-              op.textContent = '';
-            }
-            setState(s.state);
-            await typeInto(sub, s.line, 90);
-            await wait(2200);
-            setState('idle');
-            sub.textContent = '';
-            await wait(1200);
-          }
-        }
-        run();
-      });
     })();
   </script>
 </body>
