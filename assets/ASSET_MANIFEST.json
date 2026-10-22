@@ -8,8 +8,8 @@
       "canonical_path": "index.html",
       "original_path": "index.html",
       "provenance": "Redesigned in the canonical project; original dog identity and CSS mascot added on 2026-08-09; 2026-08-17 加入 AI VTuber 親親子／自動剪輯軟體兩幕、獨立遊戲改掛 PENGUIN CAN FIGHT，並把全站文案改成中性描述；2026-08-17 user 指示直接上線，據此標記 approved；2026-09-03 加入社群管理站（緣結五平台收件匣，YouTube 實接）與 GAKEY 演繹模式錄影（234 顆素材 AI 放 205／人工鎖 29）；自動剪輯軟體幕改為 AI 剪輯工作站 GAKEY；2026-09-03 去識別化：收件匣重新渲染為假名（小明/小華…）、斗內卡贊助者換名、親親子短影音聊天區馬賽克；下架獨立遊戲幕與三張遊戲圖；2026-09-03 去識別化：收件匣重新渲染為假名（小明/小華…）、斗內卡贊助者換名、親親子短影音聊天區馬賽克；下架獨立遊戲幕與三張遊戲圖；2026-10-22 retro 改版：從成品截段轉 webm 的網頁預覽（親親子去背狀態、赤倉雪場、九孔康康、虎子、薛喜、緣結）；2026-10-22 retro 改版第二批：赤倉跳台軌跡動畫、親親子實際直播片段、薛喜／Eason 高觀看 Shorts（YouTube 自家作品下載轉檔）；封面重裁（薛喜 Shorts 首頁格）；2026-10-22 retro 第四批：親親子 GIF 縮小版（240px 透明）、虎子直播片段重轉；2026-10-22 retro 第五批：AI 生成影片（新兵日記 EP2、黑狗討飯兩支）與封面",
-      "sha256": "7E1985FD7DA284D2CFA91584F6EDF7A8118838EBF8354C4E9D71BBADF862DA4D",
-      "size": 66342,
+      "sha256": "B9D9D9E085FE9E4457FD60D0EED6FFB62676A6F8E3E01B12517B74A620F1AD39",
+      "size": 63998,
       "approved": true,
       "status": "approved"
     },
@@ -527,72 +527,6 @@
       "provenance": "2026-10-22 retro 第四批：親親子 GIF 縮小版（240px 透明）、虎子直播片段重轉",
       "sha256": "4F3B48CE42DEAF97599E1BD47E6E02B65578C12CB584761803143F79047E1CB3",
       "size": 1710664,
-      "approved": true,
-      "status": "approved"
-    },
-    "ai_blackdog_rice": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/ai_blackdog_rice.webm",
-      "original_path": "assets/ai_blackdog_rice.webm",
-      "provenance": "2026-10-22 retro 第五批：AI 生成影片（新兵日記 EP2、黑狗討飯兩支）與封面",
-      "sha256": "2CB964225707DA772A3D0C0C30F6B0BD66C5365CAABE2D635445FD7F903DBDA1",
-      "size": 182209,
-      "approved": true,
-      "status": "approved"
-    },
-    "ai_blackdog_rice_cover": {
-      "kind": "image",
-      "role": "portfolio_media",
-      "canonical_path": "assets/ai_blackdog_rice_cover.jpg",
-      "original_path": "assets/ai_blackdog_rice_cover.jpg",
-      "provenance": "2026-10-22 retro 第五批：AI 生成影片（新兵日記 EP2、黑狗討飯兩支）與封面",
-      "sha256": "6FC3C0F1CFF112F294E11E83A91A0BD338746D2BD1C1047FD16E53C3DD08EB97",
-      "size": 35527,
-      "approved": true,
-      "status": "approved"
-    },
-    "ai_blackdog_work": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/ai_blackdog_work.webm",
-      "original_path": "assets/ai_blackdog_work.webm",
-      "provenance": "2026-10-22 retro 第五批：AI 生成影片（新兵日記 EP2、黑狗討飯兩支）與封面",
-      "sha256": "41BD21F54A431FA0ECA730A4A278528E58D31F6B063E4D8EA10D0F8FD303B51E",
-      "size": 287643,
-      "approved": true,
-      "status": "approved"
-    },
-    "ai_blackdog_work_cover": {
-      "kind": "image",
-      "role": "portfolio_media",
-      "canonical_path": "assets/ai_blackdog_work_cover.jpg",
-      "original_path": "assets/ai_blackdog_work_cover.jpg",
-      "provenance": "2026-10-22 retro 第五批：AI 生成影片（新兵日記 EP2、黑狗討飯兩支）與封面",
-      "sha256": "91A7AC7261FB5ECB49214D0E8E9C46EF5102C47583E781A7E17A7E3D9128C3C2",
-      "size": 34813,
-      "approved": true,
-      "status": "approved"
-    },
-    "ai_recruit_diary_ep2": {
-      "kind": "video",
-      "role": "portfolio_media",
-      "canonical_path": "assets/ai_recruit_diary_ep2.webm",
-      "original_path": "assets/ai_recruit_diary_ep2.webm",
-      "provenance": "2026-10-22 retro 第五批：AI 生成影片（新兵日記 EP2、黑狗討飯兩支）與封面",
-      "sha256": "19E21A3190414782B6FF6BE5490254F905BC9F2AA2A0875424D507F775E843F9",
-      "size": 13275388,
-      "approved": true,
-      "status": "approved"
-    },
-    "ai_recruit_diary_ep2_cover": {
-      "kind": "image",
-      "role": "portfolio_media",
-      "canonical_path": "assets/ai_recruit_diary_ep2_cover.jpg",
-      "original_path": "assets/ai_recruit_diary_ep2_cover.jpg",
-      "provenance": "2026-10-22 retro 第五批：AI 生成影片（新兵日記 EP2、黑狗討飯兩支）與封面",
-      "sha256": "D44C17B141B051ED88D96A1FA18E86C721271CD4A9BA8718E2B44967E4121372",
-      "size": 71238,
       "approved": true,
       "status": "approved"
     }
