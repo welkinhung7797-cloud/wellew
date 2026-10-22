@@ -120,6 +120,12 @@
     figcaption { font-size: 13px; color: var(--ink-soft); margin-top: 3px; }
     .sub-head { font-weight: 700; margin: 4px 0 10px; padding: 3px 10px; background: var(--paper-deep); border-left: 6px solid var(--red); }
     .gallery + .sub-head { margin-top: 22px; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin: 0 0 18px; }
+    .stat { background: var(--paper-light); border: 2px ridge var(--paper-deep); text-align: center; padding: 10px 8px 8px; line-height: 1.4; }
+    .stat b { display: block; font-size: 26px; font-weight: 900; color: var(--red); margin-bottom: 4px; }
+    .stat span { font-size: 13px; color: var(--ink-soft); }
+    .gallery.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .rank td:last-child { white-space: nowrap; font-weight: 700; color: var(--red); text-align: right; }
     .src { margin: 0; padding-left: 1.2em; font-size: 13px; line-height: 1.7; word-break: break-all; }
     .note { font-size: 13px; color: var(--ink-soft); }
     .yt { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--ink-soft); background: #111; max-width: 960px; }
@@ -179,6 +185,16 @@
       .news-table td:first-child { display: inline; margin-right: 8px; }
       .news-table td:nth-child(2) { display: inline; white-space: normal; }
       .gallery, .gallery.three { grid-template-columns: 1fr; }
+      .gallery.four { grid-template-columns: 1fr 1fr; }
+      .stack thead { display: none; }
+      .stack, .stack tbody, .stack tr, .stack td { display: block; width: auto; }
+      .stack tr { border: 1px solid #b9ab88; margin-bottom: 8px; padding: 4px 8px; background: var(--paper-light); }
+      .stack td { border: 0; padding: 2px 0; }
+      .stack td::before { content: attr(data-label) "："; color: var(--ink-soft); font-size: 12px; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat b { font-size: 21px; }
+      .grid-table { font-size: 14px; }
+      .grid-table th, .grid-table td { padding: 5px 6px; }
       .gallery.shorts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .work-title { font-size: 21px; }
       .kq { grid-template-columns: 1fr; }
@@ -195,37 +211,18 @@
     <nav class="menu" aria-label="主要導覽">
       <a class="menu-logo" href="#top" aria-label="WelleW 回到首頁"><svg viewBox="0 0 36 36" aria-hidden="true"><path class="dog-logo-ear" d="M9 8C4 5 2 9 4 16c1 4 4 6 7 4Z"/><path class="dog-logo-ear" d="M27 8c5-3 7 1 5 8-1 4-4 6-7 4Z"/><path class="dog-logo-head" d="M8 13c1-6 6-9 10-9s9 3 10 9v8c0 7-4 11-10 11S8 28 8 21Z"/><circle class="dog-logo-eye" cx="14" cy="17" r="1.8"/><circle class="dog-logo-eye" cx="22" cy="17" r="1.8"/><path class="dog-logo-muzzle" d="M12 21c0-3 3-4 6-4s6 1 6 4-2 7-6 7-6-4-6-7Z"/><ellipse class="dog-logo-nose" cx="18" cy="20" rx="3.1" ry="2.2"/></svg>WelleW</a>
       <ul><li><span class="dot" style="color:#f2a7a0">●</span><a href="#top">首頁</a></li></ul>
-      <p class="menu-cat">賽事與節目企劃</p>
+      <p class="menu-cat">服務項目</p>
       <ul>
-        <li><span class="dot" style="color:var(--red)">●</span><a href="#invitational">Yahoo 名人邀請賽</a></li>
-        <li><span class="dot" style="color:#e58a3a">●</span><a href="#cage">新生橋鐵籠賽</a></li>
-        <li><span class="dot" style="color:var(--yellow)">●</span><a href="#ladder">爐石名人爬梯 Party</a></li>
-        <li><span class="dot" style="color:#d4689a">●</span><a href="#torako">VTuber 虎子</a></li>
-        <li><span class="dot" style="color:#f08bb0">●</span><a href="#kissko">AI VTuber 親親子</a></li>
-      </ul>
-      <p class="menu-cat">影音剪輯</p>
-      <ul>
-        <li><span class="dot" style="color:#8a5a35">●</span><a href="#kangkang">九孔要變帥 康康篇</a></li>
-        <li><span class="dot" style="color:#3fae8f">●</span><a href="#shaxy">薛喜 實況剪輯</a></li>
-        <li><span class="dot" style="color:#c9832e">●</span><a href="#eason">Eason 實況剪輯</a></li>
-        <li><span class="dot" style="color:#b0559a">●</span><a href="#enishi">緣結 直播剪輯</a></li>
-        <li><span class="dot" style="color:var(--ink-soft)">●</span><a href="#reel">其他剪輯作品</a></li>
-      </ul>
-      <p class="menu-cat">動畫與合成</p>
-      <ul>
-        <li><span class="dot" style="color:var(--green)">●</span><a href="#geo3d">赤倉雪場 3D 動畫</a></li>
-        <li><span class="dot" style="color:var(--blue)">●</span><a href="#virtual">虛實整合影片</a></li>
-      </ul>
-      <p class="menu-cat">系統與工具</p>
-      <ul>
+        <li><span class="dot" style="color:var(--red)">●</span><a href="#events">賽事與社群活動</a></li>
+        <li><span class="dot" style="color:#d4689a">●</span><a href="#vtuber">VTuber 企劃與經營</a></li>
+        <li><span class="dot" style="color:#3fae8f">●</span><a href="#editing">實況主與節目剪輯</a></li>
+        <li><span class="dot" style="color:var(--green)">●</span><a href="#animation">3D 資訊動畫・合成</a></li>
         <li><span class="dot" style="color:#7b55a8">●</span><a href="#gakey">AI 剪輯工作站 GAKEY</a></li>
-        <li><span class="dot" style="color:#4b5fb0">●</span><a href="#community">社群管理站</a></li>
-        <li><span class="dot" style="color:#5b9bd5">●</span><a href="#live">客製化直播元件</a></li>
-        <li><span class="dot" style="color:var(--blue-dark)">●</span><a href="#discord">Discord 架設</a></li>
+        <li><span class="dot" style="color:#4b5fb0">●</span><a href="#systems">直播與社群系統</a></li>
+        <li><span class="dot" style="color:#9a4040">●</span><a href="#media">媒體編輯與新聞稿</a></li>
       </ul>
-      <p class="menu-cat">文字</p>
+      <p class="menu-cat">聯絡</p>
       <ul>
-        <li><span class="dot" style="color:#9a4040">●</span><a href="#press">新聞稿撰寫</a></li>
         <li><span class="dot" style="color:var(--ink)">●</span><a href="#contact">聯絡我</a></li>
       </ul>
       <svg class="menu-dog" viewBox="0 0 80 56" aria-hidden="true"><path d="M60 22c8-6 12-2 10 4" fill="none" stroke="#8a5a35" stroke-width="4" stroke-linecap="round"/><rect x="18" y="20" width="44" height="20" rx="10" fill="#d79a5f"/><rect x="22" y="36" width="6" height="14" rx="3" fill="#b9793f"/><rect x="50" y="36" width="6" height="14" rx="3" fill="#b9793f"/><circle cx="18" cy="20" r="13" fill="#d79a5f"/><path d="M8 10c-5-1-6 6-3 12l5-2Z" fill="#8a5a35"/><path d="M26 9c5-2 7 4 5 10l-5-2Z" fill="#8a5a35"/><circle cx="14" cy="19" r="1.8" fill="#292720"/><circle cx="22" cy="19" r="1.8" fill="#292720"/><ellipse cx="18" cy="25" rx="5" ry="4" fill="#fffaf0"/><ellipse cx="18" cy="23.5" rx="2.4" ry="1.7" fill="#292720"/><rect x="28" y="28" width="7" height="5" rx="1" fill="#db6f5c"/></svg>
@@ -240,14 +237,14 @@
         <div class="box">
           <h2 class="box-head">◆ 作品精選（點圖進作品頁）</h2>
           <div class="collage">
-            <a class="tile big" href="#geo3d"><video src="assets/geo3d_ski.webm" poster="assets/geo3d_ski_cover.jpg" muted loop autoplay playsinline preload="metadata" aria-label="赤倉觀光雪場 3D 地形飛行"></video><span>赤倉雪場 3D 動畫</span></a>
-            <a class="tile" href="#kissko"><div class="kq" data-kq aria-hidden="true"><div class="kq-stage"><span class="kq-live">LIVE</span><span class="kq-state"></span><div class="kq-sub"></div></div></div><span>AI VTuber 親親子</span></a>
-            <a class="tile" href="#kangkang"><img src="assets/yt_kangkang_cover.jpg" alt="九孔要變帥 康康篇畫面"><span>九孔要變帥 康康篇</span></a>
-            <a class="tile" href="#invitational"><img src="assets/plan_yahoo_roster.jpg" alt="Yahoo 奇摩電競名人邀請賽參賽名單"><span>Yahoo 名人邀請賽</span></a>
-            <a class="tile" href="#cage"><img src="assets/plan_yahoo_event.jpg" alt="新生高架橋下的鐵籠賽舞台"><span>新生橋鐵籠賽</span></a>
-            <a class="tile" href="#ladder"><img src="assets/plan_yahoo_party.jpg" alt="Yahoo 電競名人爬梯 PARTY 主視覺"><span>爐石名人爬梯 Party</span></a>
-            <a class="tile" href="#torako"><img src="assets/torako_live_cover.jpg" alt="VTuber 虎子直播畫面"><span>VTuber 虎子</span></a>
-            <a class="tile" href="#shaxy"><img src="assets/shaxy_short_wasd_cover.jpg" alt="薛喜 Shorts 畫面"><span>薛喜 實況剪輯</span></a>
+            <a class="tile big" href="#animation"><video src="assets/geo3d_ski.webm" poster="assets/geo3d_ski_cover.jpg" muted loop autoplay playsinline preload="metadata" aria-label="赤倉觀光雪場 3D 地形飛行"></video><span>赤倉雪場 3D 動畫</span></a>
+            <a class="tile" href="#vtuber"><div class="kq" data-kq aria-hidden="true"><div class="kq-stage"><span class="kq-live">LIVE</span><span class="kq-state"></span><div class="kq-sub"></div></div></div><span>AI VTuber 親親子</span></a>
+            <a class="tile" href="#editing"><img src="assets/yt_kangkang_cover.jpg" alt="九孔要變帥 康康篇畫面"><span>九孔要變帥 康康篇</span></a>
+            <a class="tile" href="#events"><img src="assets/plan_yahoo_roster.jpg" alt="Yahoo 奇摩電競名人邀請賽參賽名單"><span>Yahoo 名人邀請賽</span></a>
+            <a class="tile" href="#events"><img src="assets/plan_yahoo_event.jpg" alt="新生高架橋下的鐵籠賽舞台"><span>新生橋鐵籠賽</span></a>
+            <a class="tile" href="#events"><img src="assets/plan_yahoo_party.jpg" alt="Yahoo 電競名人爬梯 PARTY 主視覺"><span>爐石名人爬梯 Party</span></a>
+            <a class="tile" href="#vtuber"><img src="assets/torako_live_cover.jpg" alt="VTuber 虎子直播畫面"><span>VTuber 虎子</span></a>
+            <a class="tile" href="#editing"><img src="assets/shaxy_short_wasd_cover.jpg" alt="薛喜 Shorts 畫面"><span>薛喜 實況剪輯</span></a>
             <a class="tile" href="#gakey"><img src="assets/tool_gakey_replay_cover.jpg" alt="AI 剪輯工作站 GAKEY 畫面"><span>AI 剪輯工作站 GAKEY</span></a>
           </div>
         </div>
@@ -288,15 +285,15 @@
             <h2 class="box-head center">★★★　服務項目　★★★</h2>
             <div class="box-body">
               <table class="grid-table news-table">
-                <thead><tr><th>服務</th><th>內容</th><th>代表作品</th></tr></thead>
+                <thead><tr><th>服務</th><th>內容</th><th>主要成績</th></tr></thead>
                 <tbody>
-                  <tr><td><b>賽事與活動企劃</b></td><td>電競賽事、線下活動、24 小時直播企劃，從企劃到現場執行</td><td><a href="#invitational">Yahoo 名人邀請賽</a>／<a href="#cage">新生橋鐵籠賽</a>／<a href="#ladder">名人爬梯 Party</a></td></tr>
-                  <tr><td><b>VTuber 企劃與經營</b></td><td>角色定位、直播內容、社群經營，AI VTuber 從人設到推流一條龍</td><td><a href="#torako">虎子</a>／<a href="#kissko">AI 親親子</a></td></tr>
-                  <tr><td><b>影音剪輯</b></td><td>綜藝節目、實況長片、Shorts</td><td><a href="#kangkang">九孔要變帥</a>／<a href="#shaxy">薛喜</a>／<a href="#eason">Eason</a>／<a href="#enishi">緣結</a></td></tr>
-                  <tr><td><b>3D 資訊動畫・合成</b></td><td>真實地形資料 3D 動畫、解說動畫、實拍合成</td><td><a href="#geo3d">赤倉雪場</a>／<a href="#virtual">虛實整合</a></td></tr>
-                  <tr><td><b>直播與社群系統</b></td><td>直播畫面元件、Discord 架設、多平台留言管理</td><td><a href="#live">直播元件</a>／<a href="#discord">Discord</a>／<a href="#community">社群管理站</a></td></tr>
-                  <tr><td><b>AI 剪輯工具</b></td><td>自製 AI 剪輯工作站，直播連結進去、AI 鋪字卡音效特效</td><td><a href="#gakey">GAKEY</a></td></tr>
-                  <tr><td><b>新聞稿撰寫</b></td><td>活動通稿、專訪、品牌敘事</td><td><a href="#press">新聞稿</a></td></tr>
+                  <tr><td><b><a href="#events">賽事與社群活動</a></b></td><td>電競賽事、線下活動、24 小時直播企劃，從邀請到現場執行</td><td>花博 WirForce 主舞台；20 位名人同台；6 國跨國賽；單屆獎金 NT$30 萬</td></tr>
+                  <tr><td><b><a href="#vtuber">VTuber 企劃與經營</a></b></td><td>角色定位、直播內容、社群經營；AI VTuber 從人設到推流</td><td>虎子 10.1 萬訂閱、Super Chat 累計 NT$523 萬、2025 台灣第 4 名</td></tr>
+                  <tr><td><b><a href="#editing">實況主與節目剪輯</a></b></td><td>實況長影音、Shorts、綜藝節目</td><td>總觀看 736 萬；10 萬以上 18 支；九孔康康篇 66 萬</td></tr>
+                  <tr><td><b><a href="#animation">3D 資訊動畫・合成</a></b></td><td>真實地形資料 3D 動畫、解說動畫、實拍合成</td><td>赤倉雪場 4K 60fps、41 個雪場標籤</td></tr>
+                  <tr><td><b><a href="#gakey">AI 剪輯工具</a></b></td><td>自製 AI 剪輯工作站，AI 自動鋪字卡、音效、特效</td><td>234 顆素材 25 秒落完</td></tr>
+                  <tr><td><b><a href="#systems">直播與社群系統</a></b></td><td>直播畫面元件、Discord 架設、多平台留言管理</td><td>5 平台留言收件匣；1,060 則留言實接</td></tr>
+                  <tr><td><b><a href="#media">媒體編輯與新聞稿</a></b></td><td>Yahoo 奇摩電競主編、國際採訪、新聞稿與專訪</td><td>帶領 5 人團隊；1,000+ 篇稿；100+ 場專訪</td></tr>
                 </tbody>
               </table>
             </div>
@@ -305,647 +302,324 @@
         <p class="footer">WELLEW / WELKIN PORTFOLIO © 2026</p>
       </section>
 
-      <!-- ========== Yahoo 名人邀請賽 ========== -->
-      <section class="page" id="invitational" aria-labelledby="invitational-title">
-        <h2 class="work-title" id="invitational-title"><span class="dot" style="color:var(--red)">●</span>Yahoo 奇摩電競名人邀請賽</h2>
-        <p class="work-en">ESPORTS EVENT / YAHOO CELEBRITY INVITATIONAL</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>主辦</th><td>Yahoo 奇摩電競</td></tr>
-                  <tr><th>期間</th><td>2018 年起，一年數屆</td></tr>
-                  <tr><th>項目</th><td>《爐石戰記》《快打旋風 V》《英雄聯盟》《絕地求生》（各屆不同）</td></tr>
-                  <tr><th>我的角色</th><td>賽事企劃／專案統籌（任 Yahoo 奇摩電競主編期間）</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>Yahoo 奇摩電競自辦的名人賽系列：邀請台灣知名選手與實況主，搭配素人預選，從線上一路打到線下決賽。2018 年 1 月首屆《爐石戰記》名人邀請賽是 Yahoo TV 第一次自辦電競賽事，之後擴大到格鬥、MOBA 與跨國賽。</p>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 歷屆紀錄</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <thead><tr><th>時間</th><th>內容</th></tr></thead>
-                  <tbody>
-                    <tr><td>2018.01</td><td>首屆《爐石戰記》名人邀請賽。總決賽超過百位粉絲到場，直播聊天室留言數成長近六倍。總獎金 NT$100,000，冠軍 Jay。</td></tr>
-                    <tr><td>2018.06</td><td>第二屆在新生高架橋下的鐵籠舞台舉行，1v1 單挑。詳見 <a href="#cage">新生橋鐵籠賽</a>。</td></tr>
-                    <tr><td>2018.12.08</td><td>線下決賽在 WirForce 2018（花博爭豔館）主舞台舉行，項目為《快打旋風 V》與《爐石戰記》：Tom60229、羅杰率領的台灣藍、紅兩隊，迎戰香港 HGG 亞運金牌與日本選手組成的聯軍。</td></tr>
-                    <tr><td>2019.06–07</td><td>第五屆《爐石戰記》與《絕地求生》跨國賽：爐石邀請 Tom60229、羅杰、薛喜等台灣選手，對上香港、韓國、新加坡、泰國、菲律賓隊伍，總獎金 US$15,000；絕地求生 64 位日韓、東南亞、台港澳選手雙排參賽。</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">賽事素材</p>
-            <div class="gallery">
-              <figure class="wide"><img src="assets/plan_yahoo_roster.jpg" alt="Yahoo 奇摩電競名人邀請賽 12/8 線下決賽參賽名單" loading="lazy"><figcaption>12/8 線下決賽參賽名單</figcaption></figure>
-              <figure class="wide"><img src="assets/plan_yahoo_award.jpg" alt="名人邀請賽頒獎，新台幣 210,000 元獎金看板" loading="lazy"><figcaption>名人邀請賽頒獎（照片：4Gamers）</figcaption></figure>
-            </div>
-            <div class="box" style="margin-top:18px">
-              <h3 class="box-head">◆ 報導來源</h3>
-              <div class="box-body">
-                <ul class="src">
-                  <li><a href="https://www.ctee.com.tw/news/20180402700084-439901" target="_blank" rel="noopener">工商時報｜Yahoo TV 走出螢幕 自辦電競賽</a></li>
-                  <li><a href="https://www.esportsearnings.com/tournaments/26629-yahoo-gaming-celebrity-invitational-2018" target="_blank" rel="noopener">Esports Earnings｜Yahoo! Gaming Celebrity Invitational 2018</a></li>
-                  <li><a href="https://www.nownews.com/news/3107557" target="_blank" rel="noopener">NOWnews｜WirForce 2018 名人邀請賽</a></li>
-                  <li><a href="https://newtalk.tw/news/view/2019-06-13/259371" target="_blank" rel="noopener">新頭殼｜第五屆 Yahoo 名人邀請賽</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
+      <!-- ========== 賽事與社群活動 ========== -->
+      <section class="page" id="events" aria-labelledby="events-title">
+        <h2 class="work-title" id="events-title"><span class="dot" style="color:var(--red)">●</span>賽事與社群活動</h2>
+        <p class="work-en">ESPORTS EVENTS &amp; COMMUNITY ACTIVATIONS — YAHOO 奇摩電競</p>
+        <div class="stats">
+          <div class="stat"><b>20 位</b><span>名人選手同台<br>（WirForce 決賽）</span></div>
+          <div class="stat"><b>花博</b><span>爭豔館 WirForce 2018<br>主舞台</span></div>
+          <div class="stat"><b>6 國</b><span>跨國對抗<br>台港韓新泰菲</span></div>
+          <div class="stat"><b>64 位</b><span>日韓東南亞港澳選手<br>（第五屆絕地求生）</span></div>
+          <div class="stat"><b>NT$30 萬</b><span>單屆總獎金<br>（新生橋鐵籠賽）</span></div>
+          <div class="stat"><b>24 小時</b><span>不間斷直播<br>（名人爬梯 Party）</span></div>
         </div>
-        <p class="pager"><a href="#top">← 首頁</a><span>｜</span><a href="#cage">下一件：新生橋鐵籠賽 →</a></p>
-      </section>
-
-      <!-- ========== 新生橋鐵籠賽 ========== -->
-      <section class="page" id="cage" aria-labelledby="cage-title">
-        <h2 class="work-title" id="cage-title"><span class="dot" style="color:#e58a3a">●</span>新生橋鐵籠賽（第二屆 Yahoo 名人邀請賽）</h2>
-        <p class="work-en">ESPORTS EVENT / CAGE MATCH UNDER THE XINSHENG VIADUCT</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>時間</th><td>2018 年 6 月 2–3 日（線下鐵籠挑戰賽）</td></tr>
-                  <tr><th>地點</th><td>台北 新生高架橋下</td></tr>
-                  <tr><th>項目</th><td>《英雄聯盟》單挑／《爐石戰記》／《快打旋風 V》</td></tr>
-                  <tr><th>冠軍</th><td>英雄聯盟 M17 Dee／爐石戰記 FW Tom60229／快打旋風 V RB</td></tr>
-                  <tr><th>獎金</th><td>總獎金 NT$300,000，各項冠軍 4 萬、亞軍 2 萬</td></tr>
-                  <tr><th>我的角色</th><td>創意發想／企劃執行</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>第二屆名人邀請賽主打「單挑 1 on 1」。把比賽搬到新生高架橋下，搭一座鐵籠舞台，讓選手在籠子裡一對一對決，觀眾在籠外近距離看。把街頭格鬥的感覺接到電競，做出衝突感強、有話題的賽事場景。素人先經線上預選，晉級者再進線下鐵籠挑戰名人。</p>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 報導來源</h3>
-              <div class="box-body">
-                <ul class="src">
-                  <li><a href="https://gnn.gamer.com.tw/detail.php?sn=163526" target="_blank" rel="noopener">巴哈姆特｜選手 Dee、RB、燙大哥分別奪冠</a></li>
-                  <li><a href="https://technews.tw/2018/06/02/yahoo-esport-battle/" target="_blank" rel="noopener">科技新報｜素人好手來過招，Yahoo 電競名人邀請賽本周末登場</a></li>
-                  <li><a href="https://tw.tv.yahoo.com/invitational-s2-sfv" target="_blank" rel="noopener">Yahoo TV｜第二屆 Yahoo 電競名人邀請賽：快打旋風 V</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">賽事素材</p>
-            <figure><img src="assets/plan_yahoo_event.jpg" alt="新生高架橋下的鐵籠舞台與名人邀請賽看板" loading="lazy"><figcaption>新生高架橋下的鐵籠舞台</figcaption></figure>
-          </div>
-        </div>
-        <p class="pager"><a href="#invitational">← 上一件：Yahoo 名人邀請賽</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#ladder">下一件：爐石名人爬梯 Party →</a></p>
-      </section>
-
-      <!-- ========== 爐石名人爬梯 Party ========== -->
-      <section class="page" id="ladder" aria-labelledby="ladder-title">
-        <h2 class="work-title" id="ladder-title"><span class="dot" style="color:var(--yellow)">●</span>Yahoo 奇摩電競《爐石戰記》名人爬梯 Party</h2>
-        <p class="work-en">LIVE STREAM EVENT / 24-HOUR LADDER MARATHON</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>首屆時間</th><td>2018 年 4 月 14 日 22:00 – 4 月 15 日 22:00（24 小時）</td></tr>
-                  <tr><th>形式</th><td>兩人一組，用全新帳號從零爬天梯，比 24 小時內誰爬最高</td></tr>
-                  <tr><th>參賽</th><td>A 隊 Tom60229、薛喜／B 隊 紹安、羅杰／C 隊 Uzra、偷米</td></tr>
-                  <tr><th>結果</th><td>B 隊以傳說 3273 名奪冠；獎金 7 萬／2 萬／1 萬</td></tr>
-                  <tr><th>延續</th><td>辦到第三屆（2019 年 4 月，羅杰與 Eason 的 B 隊奪冠）</td></tr>
-                  <tr><th>我的角色</th><td>活動企劃／內容統籌</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>配合《爐石戰記》新資料片「黑巫森林」上線，把平常看不到的爬梯過程變成 24 小時直播：觀眾看得到選手怎麼分配粉塵、怎麼組牌。中間穿插 DJ 點歌、早餐時段、神秘來賓問答送卡包，讓一整天的直播有節奏。首屆六位選手都在一天內爬上傳說，B 隊還打出一套牌組 20 連勝的紀錄。</p>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 報導來源</h3>
-              <div class="box-body">
-                <ul class="src">
-                  <li><a href="https://gnn.gamer.com.tw/detail.php?sn=161361" target="_blank" rel="noopener">巴哈姆特｜名人爬梯 Party 14 日晚間登場</a></li>
-                  <li><a href="https://sports.ltn.com.tw/news/breakingnews/2397167" target="_blank" rel="noopener">自由體育｜奇摩《爐石》名人爬梯賽落幕 Roger、紹安稱霸</a></li>
-                  <li><a href="https://newtalk.tw/news/view/2018-04-14/120852" target="_blank" rel="noopener">新頭殼｜看誰爬最快！24 小時名人爬梯 Party 開打</a></li>
-                  <li><a href="https://tw.news.yahoo.com/4535054-095628724.html" target="_blank" rel="noopener">Yahoo 新聞｜爐石名人爬梯 Party 第 3 屆</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">賽事素材</p>
-            <figure><img src="assets/plan_yahoo_party.jpg" alt="Yahoo 電競名人爬梯 PARTY 主視覺" loading="lazy"><figcaption>名人爬梯 PARTY 主視覺</figcaption></figure>
-          </div>
-        </div>
-        <p class="pager"><a href="#cage">← 上一件：新生橋鐵籠賽</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#torako">下一件：VTuber 虎子 →</a></p>
-      </section>
-
-      <!-- ========== VTuber 虎子 ========== -->
-      <section class="page" id="torako" aria-labelledby="torako-title">
-        <h2 class="work-title" id="torako-title"><span class="dot" style="color:#d4689a">●</span>VTuber 虎子（何虎子 Torako Ho）</h2>
-        <p class="work-en">VTUBER / CONTENT STRATEGY</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>頻道</th><td>YouTube「虎子 Channel」，約 10 萬訂閱</td></tr>
-                  <tr><th>Super Chat</th><td>台灣全頻道年度排行：2024 年第 8 名、2025 年第 4 名，連續 2 年進入前 10（Playboard）</td></tr>
-                  <tr><th>累計</th><td>Super Chat 累計逾 NT$520 萬（Playboard）</td></tr>
-                  <tr><th>我的角色</th><td>品牌定位／直播內容企劃／社群經營</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>虎子是 Yahoo 旗下的台灣 VTuber，設定是精通多國語言、愛上台灣食物和啤酒而留在台灣的日本女孩。我負責她的品牌定位、直播內容節奏與粉絲經營：遊戲台、雜談、轉盤企劃、跨界聯動節目，以及直播精華與 Shorts 的經營。</p>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 資料來源</h3>
-              <div class="box-body">
-                <ul class="src">
-                  <li><a href="https://playboard.co/en/youtube-ranking/most-superchatted-all-channels-in-taiwan-yearly?period=1735689600" target="_blank" rel="noopener">Playboard｜2025 台灣 Super Chat 年度排行</a></li>
-                  <li><a href="https://playboard.co/en/youtube-ranking/most-superchatted-all-channels-in-taiwan-yearly?period=1704067200" target="_blank" rel="noopener">Playboard｜2024 台灣 Super Chat 年度排行</a></li>
-                  <li><a href="https://playboard.co/en/channel/UCbeVJYbz9TkCdqRH6nuqTZA" target="_blank" rel="noopener">Playboard｜虎子 Channel 頻道資料</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">直播與節目</p>
-            <div class="gallery">
-              <figure class="wide"><video src="assets/torako_live.webm" poster="assets/torako_live_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="虎子直播畫面與聊天室互動"></video><figcaption>直播畫面：聊天室互動</figcaption></figure>
-              <figure><img src="assets/plan_huzi_vtuber.jpg" alt="虎子跨界聯動節目 TORAKO PODCAST 縮圖" loading="lazy"><figcaption>跨界聯動節目</figcaption></figure>
-              <figure class="portrait" style="max-width:220px"><video src="assets/yt_short_huzi.webm" muted loop playsinline controls preload="metadata" aria-label="虎子 Shorts"></video><figcaption>Shorts・10 萬觀看</figcaption></figure>
-            </div>
-          </div>
-        </div>
-        <p class="pager"><a href="#ladder">← 上一件：爐石名人爬梯 Party</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#kissko">下一件：AI VTuber 親親子 →</a></p>
-      </section>
-
-      <!-- ========== AI VTuber 親親子 ========== -->
-      <section class="page" id="kissko" aria-labelledby="kissko-title">
-        <h2 class="work-title" id="kissko-title"><span class="dot" style="color:#f08bb0">●</span>AI VTuber 親親子</h2>
-        <p class="work-en">AI VTUBER / CHARACTER × VOICE × LIVE</p>
-        <p class="sub-head">實際直播（YouTube「AI親親子」頻道）</p>
-        <figure style="max-width:960px"><video src="assets/vt_kissko_stream.webm" poster="assets/vt_kissko_stream_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="AI親親子實際直播片段：觀眾在聊天室發問，親親子即時回答"></video><figcaption>實際直播片段（20 秒）：觀眾在聊天室發問，親親子即時回答｜<a href="https://www.youtube.com/watch?v=ocVkpD74MTI" target="_blank" rel="noopener">看完整直播（約 1.7 萬觀看）↗</a>｜<a href="https://www.youtube.com/channel/UCwv0HL1xjz7NgT4xecDcjwA" target="_blank" rel="noopener">AI親親子頻道 ↗</a></figcaption></figure>
-        <p class="sub-head" style="margin-top:18px">直播間互動示意</p>
-        <div class="kq" data-kq data-full>
-          <div class="kq-stage">
-            <span class="kq-live">LIVE</span><span class="kq-state"></span>
-            <div class="kq-sub"></div>
-          </div>
-          <div class="kq-side">
-            <b>聊天室</b>
-            <div class="kq-chat"></div>
-            <b>操作員輸入</b>
-            <div class="kq-op"></div>
-          </div>
-        </div>
-        <p class="note">※ 互動流程示意：台詞為示範內容；立繪與情緒狀態切換是親親子實際使用的素材。</p>
-        <div class="work-cols" style="margin-top:18px">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>類型</th><td>AI VTuber（PNGTuber 立繪＋語音合成）</td></tr>
-                  <tr><th>狀態</th><td>14 種立繪狀態：待機、講話、生氣、害羞、哭、唱歌…</td></tr>
-                  <tr><th>直播</th><td>跨平台同步推流</td></tr>
-                  <tr><th>頻道</th><td>YouTube「AI親親子」：1,270 訂閱，61 支影片、186 支 Shorts</td></tr>
-                  <tr><th>成績</th><td>直播影片最高約 1.7 萬觀看；Shorts 最高約 1.1 萬觀看</td></tr>
-                  <tr><th>我的角色</th><td>角色企劃／狀態機設計／語音合成串接／直播與短影音經營</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>操作員打一行字，親親子在直播間用自己的聲音講出來，立繪依照台詞的情緒切換表情。人設、立繪狀態機、語音合成到推流都是我一條龍串起來的。</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">素材</p>
-            <div class="gallery">
-              <figure><video src="assets/plan_kissko_short.webm" muted loop playsinline controls preload="metadata" aria-label="親親子直播剪輯短影音"></video><figcaption>直播剪輯・短影音</figcaption></figure>
-              <figure><video src="assets/vt_kissko_taishan.webm" muted loop playsinline controls preload="metadata" aria-label="泰山 VS 親親子 互動短片"></video><figcaption>泰山 VS 親親子</figcaption></figure>
-              <figure class="wide"><img src="assets/vt_kissko_states.jpg" alt="親親子 14 種立繪狀態對照表" loading="lazy"><figcaption>14 種立繪狀態對照表</figcaption></figure>
-            </div>
-          </div>
-        </div>
-        <p class="pager"><a href="#torako">← 上一件：VTuber 虎子</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#kangkang">下一件：九孔要變帥 康康篇 →</a></p>
-      </section>
-
-      <!-- ========== 九孔要變帥 康康篇 ========== -->
-      <section class="page" id="kangkang" aria-labelledby="kangkang-title">
-        <h2 class="work-title" id="kangkang-title"><span class="dot" style="color:#8a5a35">●</span>九孔要變帥 康康篇</h2>
-        <p class="work-en">VARIETY SHOW EDITING</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>節目</th><td>《九孔要變帥》</td></tr>
-                  <tr><th>來賓</th><td>康康</td></tr>
-                  <tr><th>片長</th><td>20 分 33 秒（16:9）</td></tr>
-                  <tr><th>上架</th><td>2026.09.03，YouTube「九孔要變帥」頻道</td></tr>
-                  <tr><th>成績</th><td>66 萬觀看</td></tr>
-                  <tr><th>我的角色</th><td>剪輯／字卡與音效／特效包裝</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>九孔穿上廚師服做菜招待康康，兩人邊吃邊聊。剪輯用綜藝節目的節奏：重點台詞上字卡、笑點配音效、插入演唱會等回憶畫面，讓 20 分鐘的對談一路有梗。全集用自製的 AI 剪輯工作站 GAKEY 完成。</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">節目片段</p>
-            <figure><video src="assets/yt_kangkang.webm" poster="assets/yt_kangkang_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="九孔要變帥 康康篇片段"></video><figcaption>節目片段（15 秒）｜<a href="https://www.youtube.com/watch?v=QeMjmWNY0jk" target="_blank" rel="noopener">到 YouTube 看完整集 ↗</a></figcaption></figure>
-          </div>
-        </div>
-        <p class="pager"><a href="#kissko">← 上一件：AI VTuber 親親子</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#shaxy">下一件：薛喜 實況剪輯 →</a></p>
-      </section>
-
-      <!-- ========== 薛喜 實況剪輯 ========== -->
-      <section class="page" id="shaxy" aria-labelledby="shaxy-title">
-        <h2 class="work-title" id="shaxy-title"><span class="dot" style="color:#3fae8f">●</span>薛喜 實況剪輯</h2>
-        <p class="work-en">STREAM EDITING / SHORTS</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>頻道</th><td>YouTube「天梯小旋風薛喜」</td></tr>
-                  <tr><th>作品</th><td>虧皮龜狗第一次看到有人 WASD 可以按到手指打結（Shorts）</td></tr>
-                  <tr><th>上架</th><td>2026.10.17</td></tr>
-                  <tr><th>成績</th><td>17.5 萬觀看</td></tr>
-                  <tr><th>我的角色</th><td>挑段／剪輯／字幕與音效</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>從薛喜的 Twitch 實況裡挑出一個梗，剪成一支 Shorts：前三秒就進笑點，只留這一個梗。</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">Shorts</p>
-            <figure class="portrait" style="max-width:300px"><video src="assets/shaxy_short_wasd.webm" muted loop playsinline controls preload="metadata" aria-label="薛喜 Shorts：虧皮龜狗第一次看到有人 WASD 可以按到手指打結"></video><figcaption>17.5 萬觀看｜<a href="https://www.youtube.com/shorts/NsznL2S410g" target="_blank" rel="noopener">YouTube ↗</a></figcaption></figure>
-          </div>
-        </div>
-        <p class="pager"><a href="#kangkang">← 上一件：九孔要變帥 康康篇</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#eason">下一件：Eason 實況剪輯 →</a></p>
-      </section>
-
-      <!-- ========== Eason 實況剪輯 ========== -->
-      <section class="page" id="eason" aria-labelledby="eason-title">
-        <h2 class="work-title" id="eason-title"><span class="dot" style="color:#c9832e">●</span>Eason 實況剪輯</h2>
-        <p class="work-en">STREAM EDITING / SHORTS</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>頻道</th><td>YouTube「禿頭博士Eason」</td></tr>
-                  <tr><th>作品</th><td>【Eason】系列 Shorts</td></tr>
-                  <tr><th>成績</th><td>向子午計畫，開戰！11.3 萬／遊戲橘子所有單位都是羅傑的人 9 萬／羅傑說麻將打十塊二十塊不如去旁邊跳舞 7.7 萬觀看</td></tr>
-                  <tr><th>我的角色</th><td>挑段／剪輯／字幕與音效</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>從 Eason 的實況中挑出好笑的對話，剪成一支一個梗的直式 Shorts。</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">Shorts（觀看前三名）</p>
-            <div class="gallery three">
-              <figure class="portrait"><video src="assets/eason_short_meridian.webm" muted loop playsinline controls preload="metadata" aria-label="Eason Shorts：向子午計畫，開戰！"></video><figcaption>11.3 萬觀看｜<a href="https://www.youtube.com/shorts/g0D8aXtQQuM" target="_blank" rel="noopener">YouTube ↗</a></figcaption></figure>
-              <figure class="portrait"><video src="assets/eason_short_roger.webm" muted loop playsinline controls preload="metadata" aria-label="Eason Shorts：遊戲橘子所有單位都是羅傑的人"></video><figcaption>9 萬觀看｜<a href="https://www.youtube.com/shorts/-3XQcp7vGIM" target="_blank" rel="noopener">YouTube ↗</a></figcaption></figure>
-              <figure class="portrait"><video src="assets/eason_short_mahjong.webm" muted loop playsinline controls preload="metadata" aria-label="Eason Shorts：羅傑說麻將打十塊二十塊不如去旁邊跳舞"></video><figcaption>7.7 萬觀看｜<a href="https://www.youtube.com/shorts/4jHnrstDJCU" target="_blank" rel="noopener">YouTube ↗</a></figcaption></figure>
-            </div>
-          </div>
-        </div>
-        <p class="pager"><a href="#shaxy">← 上一件：薛喜 實況剪輯</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#enishi">下一件：緣結 直播剪輯 →</a></p>
-      </section>
-
-      <!-- ========== 緣結 直播剪輯 ========== -->
-      <section class="page" id="enishi" aria-labelledby="enishi-title">
-        <h2 class="work-title" id="enishi-title"><span class="dot" style="color:#b0559a">●</span>緣結 直播剪輯</h2>
-        <p class="work-en">VTUBER STREAM EDITING / SHORTS &amp; EVENT</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>對象</th><td>VTuber 緣結</td></tr>
-                  <tr><th>內容</th><td>直播精華 Shorts（9:16）／巴哈姆特 30 週年星據點活動開場素材</td></tr>
-                  <tr><th>期間</th><td>2026 年 10 月</td></tr>
-                  <tr><th>我的角色</th><td>挑段／剪輯／字卡／活動影片製作</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>從緣結的直播中挑出有梗的片段做成 Shorts：臉部特寫、立體字卡、聊天室留言疊字，讓沒看直播的人也看得懂當下在笑什麼。另外為巴哈姆特 30 週年星據點的線下活動，製作現場播放的開場素材。</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">活動開場素材</p>
-            <figure><video src="assets/enishi_baha_opening.webm" muted loop playsinline controls preload="metadata" aria-label="緣結 巴哈姆特 30 週年星據點活動開場素材"></video><figcaption>巴哈姆特 30 週年星據點・活動開場（23 秒）</figcaption></figure>
-          </div>
-        </div>
-        <p class="sub-head" style="margin-top:22px">直播 Shorts</p>
-        <div class="gallery shorts">
-          <figure class="portrait"><video src="assets/enishi_short_highlight.webm" muted loop playsinline controls preload="metadata" aria-label="緣結 Shorts：可以剪精華嗎"></video><figcaption>可以剪精華嗎</figcaption></figure>
-          <figure class="portrait"><video src="assets/enishi_short_scold.webm" muted loop playsinline controls preload="metadata" aria-label="緣結 Shorts：初見就叫我罵你"></video><figcaption>初見就叫我罵你</figcaption></figure>
-        </div>
-        <p class="pager"><a href="#eason">← 上一件：Eason 實況剪輯</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#reel">下一件：其他剪輯作品 →</a></p>
-      </section>
-
-      <!-- ========== 其他剪輯作品 ========== -->
-      <section class="page" id="reel" aria-labelledby="reel-title">
-        <h2 class="work-title" id="reel-title"><span class="dot" style="color:var(--ink-soft)">●</span>其他剪輯作品</h2>
-        <p class="work-en">EDITING / SELECTED WORKS</p>
         <div class="box">
-          <h3 class="box-head">◆ 作品資料</h3>
+          <h3 class="box-head">◆ 我的角色</h3>
+          <div class="box-body"><p>任 Yahoo 奇摩電競主編期間，負責旗下自辦賽事與社群活動的企劃與專案統籌：選手與名人邀請、日港台三地協調、場地與贊助商對接、賽制設計、直播與現場執行。</p></div>
+        </div>
+        <div class="box">
+          <h3 class="box-head">◆ 活動成績</h3>
           <div class="box-body">
-            <table class="grid-table">
-              <thead><tr><th>作品</th><th>類型</th><th>成績</th></tr></thead>
+            <table class="grid-table stack">
+              <thead><tr><th>活動</th><th>時間</th><th>地點</th><th>規模／邀請</th><th>成績</th></tr></thead>
               <tbody>
-                <tr><td>實況精華剪輯</td><td>16:9</td><td>95.5 萬觀看</td></tr>
-                <tr><td>腳本規劃影片</td><td>16:9</td><td>26.3 萬觀看</td></tr>
-                <tr><td>醫療器材產品影片</td><td>16:9</td><td>—</td></tr>
-                <tr><td>Shorts 兩支</td><td>9:16</td><td>11 萬／6.7 萬觀看</td></tr>
+                <tr><td><b>Yahoo《爐石戰記》名人邀請賽</b>（首屆）</td><td>2018.01</td><td>台北</td><td>8 位台灣名人選手</td><td>Yahoo TV 首度自辦電競賽；總決賽超過百位粉絲到場，直播留言數成長近 6 倍；總獎金 NT$10 萬</td></tr>
+                <tr><td><b>《爐石戰記》名人爬梯 Party</b></td><td>2018.04.14–15</td><td>24 小時線上直播</td><td>Tom60229、薛喜、紹安、羅杰、Uzra、偷米 6 位名人分 3 隊</td><td>獎金 NT$10 萬；6 人一天內全數爬上傳說；精華影片 6.5 萬觀看；延續辦到第三屆（2019）</td></tr>
+                <tr><td><b>新生橋鐵籠賽</b>（第二屆名人邀請賽）</td><td>2018.06.02–03</td><td>台北 新生高架橋下 鐵籠舞台</td><td>英雄聯盟／爐石戰記／快打旋風 V 三項 1v1；素人預選晉級挑戰名人</td><td>總獎金 NT$30 萬；冠軍 M17 Dee、FW Tom60229、RB</td></tr>
+                <tr><td><b>名人邀請賽 線下決賽</b></td><td>2018.12.08</td><td>花博爭豔館 WirForce 2018 主舞台</td><td>20 位日港台名人選手（GamerBee、Tom60229、RB、羅杰…）</td><td>台灣藍、紅兩隊迎戰香港 HGG 亞運金牌與日本選手聯軍；快打旋風 V＋爐石戰記雙項目</td></tr>
+                <tr><td><b>第五屆名人邀請賽</b></td><td>2019.06.20–07.20</td><td>跨國線上＋決賽</td><td>爐石：台灣 6 位選手對上港韓新泰菲隊伍；絕地求生：64 位選手雙排</td><td>爐石總獎金 US$15,000</td></tr>
               </tbody>
             </table>
           </div>
         </div>
+        <p class="sub-head">現場與主視覺</p>
+        <div class="gallery four">
+          <figure><img src="assets/plan_yahoo_roster.jpg" alt="名人邀請賽 12/8 線下決賽 20 位參賽名人" loading="lazy"><figcaption>12/8 決賽 20 位名人</figcaption></figure>
+          <figure><img src="assets/plan_yahoo_event.jpg" alt="新生高架橋下的鐵籠舞台" loading="lazy"><figcaption>新生高架橋下鐵籠舞台</figcaption></figure>
+          <figure><img src="assets/plan_yahoo_award.jpg" alt="名人邀請賽頒獎" loading="lazy"><figcaption>頒獎（照片：4Gamers）</figcaption></figure>
+          <figure><img src="assets/plan_yahoo_party.jpg" alt="名人爬梯 PARTY 主視覺" loading="lazy"><figcaption>名人爬梯 Party 主視覺</figcaption></figure>
+        </div>
+        <div class="box" style="margin-top:18px">
+          <h3 class="box-head">◆ 報導來源</h3>
+          <div class="box-body">
+            <ul class="src">
+              <li><a href="https://www.ctee.com.tw/news/20180402700084-439901" target="_blank" rel="noopener">工商時報｜Yahoo TV 走出螢幕 自辦電競賽</a></li>
+              <li><a href="https://www.esportsearnings.com/tournaments/26629-yahoo-gaming-celebrity-invitational-2018" target="_blank" rel="noopener">Esports Earnings｜Yahoo! Gaming Celebrity Invitational 2018</a></li>
+              <li><a href="https://sports.ltn.com.tw/news/breakingnews/2397167" target="_blank" rel="noopener">自由體育｜奇摩《爐石》名人爬梯賽落幕</a></li>
+              <li><a href="https://gnn.gamer.com.tw/detail.php?sn=161361" target="_blank" rel="noopener">巴哈姆特｜名人爬梯 Party 24 小時天梯馬拉松</a></li>
+              <li><a href="https://www.youtube.com/watch?v=Uf1Tu9wwd9w" target="_blank" rel="noopener">YouTube｜奇摩爐石爬梯賽精華（6.5 萬觀看）</a></li>
+              <li><a href="https://gnn.gamer.com.tw/detail.php?sn=163526" target="_blank" rel="noopener">巴哈姆特｜第二屆名人邀請賽 Dee、RB、Tom60229 奪冠</a></li>
+              <li><a href="https://technews.tw/2018/06/02/yahoo-esport-battle/" target="_blank" rel="noopener">科技新報｜素人好手來過招，Yahoo 電競名人邀請賽登場</a></li>
+              <li><a href="https://www.nownews.com/news/3107557" target="_blank" rel="noopener">NOWnews｜WirForce 2018 名人邀請賽</a></li>
+              <li><a href="https://newtalk.tw/news/view/2019-06-13/259371" target="_blank" rel="noopener">新頭殼｜第五屆 Yahoo 名人邀請賽</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="pager"><a href="#top">← 首頁</a><span>｜</span><a href="#vtuber">下一項：VTuber 企劃與經營 →</a></p>
+      </section>
+
+      <!-- ========== VTuber 企劃與經營 ========== -->
+      <section class="page" id="vtuber" aria-labelledby="vtuber-title">
+        <h2 class="work-title" id="vtuber-title"><span class="dot" style="color:#d4689a">●</span>VTuber 企劃與經營</h2>
+        <p class="work-en">VTUBER STRATEGY &amp; AI VTUBER</p>
+
+        <p class="sub-head">虎子（何虎子 Torako Ho）｜Yahoo 旗下台灣 VTuber</p>
+        <div class="stats">
+          <div class="stat"><b>10.1 萬</b><span>YouTube 訂閱</span></div>
+          <div class="stat"><b>NT$523 萬</b><span>Super Chat 累計</span></div>
+          <div class="stat"><b>第 4 名</b><span>2025 台灣 Super Chat<br>年度排行（全頻道）</span></div>
+          <div class="stat"><b>第 8 名</b><span>2024 台灣 Super Chat<br>年度排行（全頻道）</span></div>
+          <div class="stat"><b>第 3 名</b><span>2024 台灣 VTuber<br>Super Chat 排行</span></div>
+        </div>
+        <div class="box">
+          <h3 class="box-head">◆ 我的角色與成績</h3>
+          <div class="box-body">
+            <table class="grid-table">
+              <tr><th>我的角色</th><td>品牌定位／直播內容企劃／社群經營</td></tr>
+              <tr><th>年度排行</th><td>2025 台灣全頻道 Super Chat 第 4 名（約 NT$223 萬）；2024 第 8 名（NT$164 萬）——連續 2 年台灣前 10</td></tr>
+              <tr><th>VTuber 排行</th><td>2024 台灣 VTuber Super Chat 第 3 名（US$50,654）</td></tr>
+              <tr><th>頻道</th><td><a href="https://www.youtube.com/channel/UCbeVJYbz9TkCdqRH6nuqTZA" target="_blank" rel="noopener">YouTube「Torako Channel」↗</a></td></tr>
+            </table>
+            <ul class="src" style="margin-top:8px">
+              <li><a href="https://playboard.co/en/youtube-ranking/most-superchatted-all-channels-in-taiwan-yearly?period=1735689600" target="_blank" rel="noopener">Playboard｜2025 台灣 Super Chat 年度排行</a></li>
+              <li><a href="https://playboard.co/en/youtube-ranking/most-superchatted-all-channels-in-taiwan-yearly?period=1704067200" target="_blank" rel="noopener">Playboard｜2024 台灣 Super Chat 年度排行</a></li>
+              <li><a href="https://playboard.co/en/channel/UCbeVJYbz9TkCdqRH6nuqTZA" target="_blank" rel="noopener">Playboard｜Torako Channel 頻道資料（累計 Super Chat）</a></li>
+              <li><a href="https://blog.vive.com/us/best-vtubers-of-2024-watch-hours-and-superchat-wrap-up" target="_blank" rel="noopener">VIVE Blog｜2024 台灣 VTuber Super Chat 排行</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="sub-head" style="margin-top:22px">AI VTuber 親親子｜自製 AI 角色</p>
+        <div class="stats">
+          <div class="stat"><b>1,270</b><span>YouTube 訂閱</span></div>
+          <div class="stat"><b>247 支</b><span>影片＋Shorts<br>（61＋186）</span></div>
+          <div class="stat"><b>79 萬</b><span>頻道總觀看</span></div>
+          <div class="stat"><b>1.7 萬</b><span>單支最高觀看<br>（和 VT 連動直播）</span></div>
+        </div>
+        <div class="box">
+          <h3 class="box-head">◆ 我的角色與成績</h3>
+          <div class="box-body">
+            <table class="grid-table">
+              <tr><th>我的角色</th><td>角色企劃／立繪狀態機（14 種）／語音合成串接／跨平台推流／短影音經營</td></tr>
+              <tr><th>運作方式</th><td>操作員打一行字，親親子在直播間用自己的聲音講出來，立繪依情緒切換</td></tr>
+              <tr><th>觀看</th><td>長影音 61 支共 17.8 萬、Shorts 186 支共 61.5 萬觀看</td></tr>
+              <tr><th>頻道</th><td><a href="https://www.youtube.com/channel/UCwv0HL1xjz7NgT4xecDcjwA" target="_blank" rel="noopener">YouTube「AI親親子」↗</a>｜<a href="https://www.youtube.com/watch?v=ocVkpD74MTI" target="_blank" rel="noopener">觀看最高的直播 ↗</a></td></tr>
+            </table>
+          </div>
+        </div>
+        <p class="pager"><a href="#events">← 上一項：賽事與社群活動</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#editing">下一項：實況主與節目剪輯 →</a></p>
+      </section>
+
+      <!-- ========== 實況主與節目剪輯 ========== -->
+      <section class="page" id="editing" aria-labelledby="editing-title">
+        <h2 class="work-title" id="editing-title"><span class="dot" style="color:#3fae8f">●</span>實況主與節目剪輯</h2>
+        <p class="work-en">STREAMER &amp; SHOW EDITING — RESULTS</p>
+        <div class="stats">
+          <div class="stat"><b>736 萬</b><span>剪輯作品總觀看</span></div>
+          <div class="stat"><b>110 支</b><span>長影音＋Shorts</span></div>
+          <div class="stat"><b>18 支</b><span>單支 10 萬觀看以上</span></div>
+          <div class="stat"><b>95.5 萬</b><span>單支最高觀看</span></div>
+        </div>
+        <div class="box">
+          <h3 class="box-head">◆ 各實況主／節目成績</h3>
+          <div class="box-body">
+            <table class="grid-table stack">
+              <thead><tr><th>實況主／節目</th><th>範圍</th><th>支數</th><th>總觀看</th><th>10 萬以上</th><th>最高</th></tr></thead>
+              <tbody>
+                <tr><td><b>薛喜</b><br><a href="https://www.youtube.com/channel/UC8HEPIYKmwS3Wj2xWpILcBQ" target="_blank" rel="noopener">天梯小旋風薛喜 ↗</a></td><td>2026.08.23–10.22<br>長影音＋Shorts</td><td>44</td><td>347 萬</td><td>13 支</td><td>22 萬</td></tr>
+                <tr><td><b>Eason</b><br><a href="https://www.youtube.com/channel/UCI6Jd0VxKWyfCK5TsEqQMPA" target="_blank" rel="noopener">禿頭博士Eason ↗</a></td><td>【Eason】系列 Shorts</td><td>61</td><td>183 萬</td><td>1 支</td><td>11.4 萬</td></tr>
+                <tr><td><b>九孔要變帥</b><br><a href="https://www.youtube.com/channel/UCm9BsxL23ZrG3a-ye7Dz0wg" target="_blank" rel="noopener">九孔要變帥 ↗</a></td><td>康康篇（綜藝長片）</td><td>1</td><td>66.1 萬</td><td>1 支</td><td>66.1 萬</td></tr>
+                <tr><td><b>其他剪輯</b></td><td>實況精華、腳本影片、Shorts</td><td>4</td><td>139.5 萬</td><td>3 支</td><td>95.5 萬</td></tr>
+              </tbody>
+            </table>
+            <p class="note" style="margin:8px 0 0">觀看數為 2026.10.22 YouTube 頁面數字。</p>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 class="box-head">◆ 薛喜｜近兩個月觀看前幾名</h3>
+          <div class="box-body">
+            <table class="grid-table rank">
+              <thead><tr><th>類型</th><th>標題</th><th>上架</th><th>觀看</th></tr></thead>
+              <tbody>
+                <tr><td>Shorts</td><td><a href="https://www.youtube.com/shorts/gLKo1xsT_YY" target="_blank" rel="noopener">特戰英豪 把手放在椅子上 擦桌子我懂</a></td><td>09.10</td><td>22.0 萬</td></tr>
+                <tr><td>Shorts</td><td><a href="https://www.youtube.com/shorts/WLSj-OrGGig" target="_blank" rel="noopener">薛喜看歪逆說為什麼不噴他</a></td><td>10.06</td><td>20.6 萬</td></tr>
+                <tr><td>Shorts</td><td><a href="https://www.youtube.com/shorts/NsznL2S410g" target="_blank" rel="noopener">虧皮龜狗第一次看到有人 WASD 可以按到手指打結</a></td><td>10.17</td><td>17.5 萬</td></tr>
+                <tr><td>Shorts</td><td><a href="https://www.youtube.com/shorts/BthAvz_gXA4" target="_blank" rel="noopener">與熊哥哥霓虹的差別 還想教人</a></td><td>09.27</td><td>16.4 萬</td></tr>
+                <tr><td>Shorts</td><td><a href="https://www.youtube.com/shorts/EG5jc73aVUM" target="_blank" rel="noopener">高雄孝子薛喜：不可以罵我媽</a></td><td>10.02</td><td>14.9 萬</td></tr>
+                <tr><td>長影音</td><td><a href="https://www.youtube.com/watch?v=Db8vyZGFjBc" target="_blank" rel="noopener">龜狗、虧皮診斷出病因了！大清早手把手教薛喜怎按 WASD</a></td><td>10.15</td><td>10.0 萬</td></tr>
+                <tr><td>長影音</td><td><a href="https://www.youtube.com/watch?v=ysgFNnIUM84" target="_blank" rel="noopener">有人跟我一樣用三根手指頭在玩嗎</a></td><td>09.19</td><td>9.3 萬</td></tr>
+                <tr><td>長影音</td><td><a href="https://www.youtube.com/watch?v=Ep1xRULexuw" target="_blank" rel="noopener">這一世我悟了！射擊遊戲原來不用這麼多按鍵</a></td><td>10.01</td><td>8.0 萬</td></tr>
+              </tbody>
+            </table>
+            <p class="note" style="margin:8px 0 0">近兩個月 Shorts 34 支共 286 萬觀看（10 萬以上 12 支）；長影音 10 支共 61 萬觀看。</p>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 class="box-head">◆ Eason｜【Eason】Shorts 觀看前三名</h3>
+          <div class="box-body">
+            <table class="grid-table rank">
+              <thead><tr><th>標題</th><th>上架</th><th>觀看</th></tr></thead>
+              <tbody>
+                <tr><td><a href="https://www.youtube.com/shorts/g0D8aXtQQuM" target="_blank" rel="noopener">向子午計畫，開戰！</a></td><td>2026.05.22</td><td>11.4 萬</td></tr>
+                <tr><td><a href="https://www.youtube.com/shorts/-3XQcp7vGIM" target="_blank" rel="noopener">遊戲橘子所有單位都是羅傑的人 你怎麼和他鬥？</a></td><td>2026.08.22</td><td>9.1 萬</td></tr>
+                <tr><td><a href="https://www.youtube.com/shorts/4jHnrstDJCU" target="_blank" rel="noopener">羅傑說麻將打十塊二十塊不如去旁邊跳舞</a></td><td>2026.05.06</td><td>7.7 萬</td></tr>
+              </tbody>
+            </table>
+            <p class="note" style="margin:8px 0 0">【Eason】系列 Shorts 61 支共 183 萬觀看，5 萬以上 12 支。</p>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 class="box-head">◆ 九孔要變帥｜康康篇</h3>
+          <div class="box-body">
+            <table class="grid-table">
+              <tr><th>標題</th><td><a href="https://www.youtube.com/watch?v=QeMjmWNY0jk" target="_blank" rel="noopener">康康的幹話，九孔真的扛不住...</a></td></tr>
+              <tr><th>成績</th><td>66.1 萬觀看・4,439 讚・196 則留言</td></tr>
+              <tr><th>頻道排名</th><td>「九孔要變帥」頻道 13 支長影音中觀看第 1（第 2 名 34.1 萬）</td></tr>
+              <tr><th>上架</th><td>2026.09.03・20 分 33 秒</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 class="box-head">◆ 其他剪輯作品</h3>
+          <div class="box-body">
+            <table class="grid-table rank">
+              <thead><tr><th>作品</th><th>類型</th><th>觀看</th></tr></thead>
+              <tbody>
+                <tr><td>實況精華剪輯</td><td>16:9</td><td>95.5 萬</td></tr>
+                <tr><td>腳本規劃影片</td><td>16:9</td><td>26.3 萬</td></tr>
+                <tr><td>Shorts</td><td>9:16</td><td>11.0 萬</td></tr>
+                <tr><td>Shorts</td><td>9:16</td><td>6.7 萬</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p class="pager"><a href="#vtuber">← 上一項：VTuber 企劃與經營</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#animation">下一項：3D 資訊動畫・合成 →</a></p>
+      </section>
+
+      <!-- ========== 3D 資訊動畫・合成 ========== -->
+      <section class="page" id="animation" aria-labelledby="animation-title">
+        <h2 class="work-title" id="animation-title"><span class="dot" style="color:var(--green)">●</span>3D 資訊動畫・合成</h2>
+        <p class="work-en">3D DATA VISUALIZATION &amp; COMPOSITING</p>
+        <div class="stats">
+          <div class="stat"><b>4K 60fps</b><span>成片規格</span></div>
+          <div class="stat"><b>41 個</b><span>雪場標籤<br>（真實座標）</span></div>
+          <div class="stat"><b>7 段</b><span>3D 地形與解說動畫</span></div>
+        </div>
+        <div class="box">
+          <h3 class="box-head">◆ 赤倉觀光雪場（日本新潟）資訊動畫</h3>
+          <div class="box-body">
+            <table class="grid-table">
+              <tr><th>內容</th><td>全日本俯瞰／雪場簡介連續地形飛行／衛星實景山體／交通比較地圖／跳台與滾坡飛行軌跡解說</td></tr>
+              <tr><th>資料</th><td>真實座標與高程、衛星影像、路線考據</td></tr>
+              <tr><th>我的角色</th><td>資料整理／3D 地形與鏡頭設計／動畫製作</td></tr>
+            </table>
+          </div>
+        </div>
         <div class="gallery">
-          <figure><video src="assets/yt_yahoo_react.webm" muted loop playsinline controls preload="metadata" aria-label="實況精華剪輯，95.5 萬觀看"></video><figcaption>實況精華剪輯・95.5 萬觀看</figcaption></figure>
-          <figure><video src="assets/yt_script_film_clip.webm" poster="assets/yt_script_film_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="腳本規劃影片，26.3 萬觀看"></video><figcaption>腳本規劃影片・26.3 萬觀看</figcaption></figure>
-          <figure><video src="assets/yt_ugym.webm" muted loop playsinline controls preload="metadata" aria-label="醫療器材產品影片"></video><figcaption>醫療器材產品影片</figcaption></figure>
+          <figure class="wide"><video src="assets/geo3d_ski.webm" poster="assets/geo3d_ski_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="赤倉觀光雪場簡介 3D 地形飛行"></video><figcaption>雪場簡介・連續地形飛行（37 秒）</figcaption></figure>
         </div>
-        <div class="gallery shorts" style="margin-top:18px">
-          <figure class="portrait"><video src="assets/yt_short_top1.webm" muted loop playsinline controls preload="metadata" aria-label="11 萬觀看 Shorts"></video><figcaption>Shorts・11 萬觀看</figcaption></figure>
-          <figure class="portrait"><video src="assets/yt_short_top2.webm" muted loop playsinline controls preload="metadata" aria-label="6.7 萬觀看 Shorts"></video><figcaption>Shorts・6.7 萬觀看</figcaption></figure>
+        <div class="gallery three" style="margin-top:18px">
+          <figure><video src="assets/ski_kicker_types.webm" muted loop playsinline controls preload="metadata" aria-label="三種跳台類型與飛行軌跡"></video><figcaption>三種跳台與飛行軌跡</figcaption></figure>
+          <figure><video src="assets/ski_kicker_anatomy.webm" muted loop playsinline controls preload="metadata" aria-label="跳台部位解說"></video><figcaption>跳台部位 Ramp／Deck／Knuckle</figcaption></figure>
+          <figure><video src="assets/ski_roller.webm" muted loop playsinline controls preload="metadata" aria-label="滾坡 Roller 的兩種通過方式"></video><figcaption>滾坡 Roller</figcaption></figure>
+          <figure><video src="assets/geo3d_japan.webm" muted loop playsinline controls preload="metadata" aria-label="全日本俯瞰五層地形接力"></video><figcaption>全日本俯瞰</figcaption></figure>
+          <figure><video src="assets/geo3d_terrain.webm" muted loop playsinline controls preload="metadata" aria-label="衛星實景山體與雪場範圍"></video><figcaption>衛星實景山體</figcaption></figure>
+          <figure><video src="assets/geo3d_transit.webm" muted loop playsinline controls preload="metadata" aria-label="剪紙風交通比較地圖"></video><figcaption>交通比較地圖</figcaption></figure>
         </div>
-        <p class="pager"><a href="#enishi">← 上一件：緣結 直播剪輯</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#geo3d">下一件：赤倉雪場 3D 動畫 →</a></p>
-      </section>
-
-      <!-- ========== 赤倉雪場 3D 動畫 ========== -->
-      <section class="page" id="geo3d" aria-labelledby="geo3d-title">
-        <h2 class="work-title" id="geo3d-title"><span class="dot" style="color:var(--green)">●</span>赤倉觀光雪場 3D 資訊動畫</h2>
-        <p class="work-en">3D DATA VISUALIZATION / SKI RESORT</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>主題</th><td>日本新潟 赤倉觀光雪場與周邊雪場</td></tr>
-                  <tr><th>規格</th><td>4K 60fps</td></tr>
-                  <tr><th>資料</th><td>真實座標與高程、衛星影像、路線考據</td></tr>
-                  <tr><th>段落</th><td>全日本俯瞰／雪場簡介地形飛行（41 個雪場標籤）／衛星實景山體／交通比較地圖／跳台與地形解說（飛行軌跡）</td></tr>
-                  <tr><th>我的角色</th><td>資料整理／3D 地形與鏡頭設計／動畫製作</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>介紹赤倉觀光雪場的影片需要讓觀眾看懂「雪場在哪、旁邊有什麼、怎麼去」。地形、雪場範圍和路線都用真實座標與高程資料算出來，再用連續的 3D 鏡頭從全日本一路飛進雪場，最後用剪紙風地圖比較交通方式。</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">雪場簡介 3D 地形飛行</p>
-            <figure><video src="assets/geo3d_ski.webm" poster="assets/geo3d_ski_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="赤倉觀光雪場簡介 3D 地形飛行"></video><figcaption>雪場簡介・連續地形飛行（37 秒）</figcaption></figure>
-          </div>
+        <div class="box" style="margin-top:18px">
+          <h3 class="box-head">◆ 虛實整合合成｜汐科站月台</h3>
+          <div class="box-body"><p>實拍月台照片當底，合成虛擬角色與進站列車。拉中間的線比對前後。</p></div>
         </div>
-        <p class="sub-head" style="margin-top:22px">跳台與地形解說：滑雪飛行軌跡動畫</p>
-        <div class="gallery three">
-          <figure><video src="assets/ski_kicker_types.webm" muted loop playsinline controls preload="metadata" aria-label="三種跳台類型與飛行軌跡：下降式、向上式、平頂式"></video><figcaption>三種跳台：下降式／向上式／平頂式（17 秒）</figcaption></figure>
-          <figure><video src="assets/ski_kicker_anatomy.webm" muted loop playsinline controls preload="metadata" aria-label="跳台部位解說：Ramp、Deck、Knuckle、Landing area"></video><figcaption>跳台部位：Ramp／Deck／Knuckle／落地區（23 秒）</figcaption></figure>
-          <figure><video src="assets/ski_roller.webm" muted loop playsinline controls preload="metadata" aria-label="滾坡 Roller 的兩種通過方式"></video><figcaption>滾坡 Roller 的兩種通過方式（13 秒）</figcaption></figure>
+        <div class="compare" id="compare" style="max-width:860px">
+          <img src="assets/before_train.jpg" alt="汐科站月台實拍原始照片">
+          <video class="compare-after" src="assets/after_train.webm" muted loop playsinline preload="metadata" aria-label="合成後成品"></video>
+          <span class="compare-line" aria-hidden="true"></span>
+          <input type="range" min="0" max="100" value="50" aria-label="拖曳比較虛實整合前後">
         </div>
-        <p class="sub-head" style="margin-top:22px">其他段落</p>
-        <div class="gallery three">
-          <figure><video src="assets/geo3d_japan.webm" muted loop playsinline controls preload="metadata" aria-label="全日本俯瞰五層地形接力"></video><figcaption>全日本俯瞰・五層地形接力</figcaption></figure>
-          <figure><video src="assets/geo3d_terrain.webm" muted loop playsinline controls preload="metadata" aria-label="衛星實景山體與雪場範圍"></video><figcaption>衛星實景山體・雪場範圍</figcaption></figure>
-          <figure><video src="assets/geo3d_transit.webm" muted loop playsinline controls preload="metadata" aria-label="剪紙風交通比較地圖"></video><figcaption>剪紙風地圖・交通比較</figcaption></figure>
-        </div>
-        <p class="pager"><a href="#reel">← 上一件：其他剪輯作品</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#virtual">下一件：虛實整合影片 →</a></p>
-      </section>
-
-      <!-- ========== 虛實整合 ========== -->
-      <section class="page" id="virtual" aria-labelledby="virtual-title">
-        <h2 class="work-title" id="virtual-title"><span class="dot" style="color:var(--blue)">●</span>虛實整合影片</h2>
-        <p class="work-en">VIRTUAL × REAL COMPOSITING</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>素材</th><td>汐科站月台實拍</td></tr>
-                  <tr><th>內容</th><td>實拍場景合成虛擬角色與列車動畫</td></tr>
-                  <tr><th>我的角色</th><td>合成／動畫</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>把實拍的月台照片當底，合成虛擬角色和進站列車，讓角色像真的站在現場。右邊可以拉中間的線，左右比對合成前後。</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">合成前後對照</p>
-            <div class="compare" id="compare">
-              <img src="assets/before_train.jpg" alt="汐科站月台實拍原始照片">
-              <video class="compare-after" src="assets/after_train.webm" muted loop playsinline preload="metadata" aria-label="合成後成品"></video>
-              <span class="compare-line" aria-hidden="true"></span>
-              <input type="range" min="0" max="100" value="50" aria-label="拖曳比較虛實整合前後">
-            </div>
-            <div class="compare-label"><span>← 合成後</span><span>實拍原始 →</span></div>
-          </div>
-        </div>
-        <p class="pager"><a href="#geo3d">← 上一件：赤倉雪場 3D 動畫</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#gakey">下一件：AI 剪輯工作站 GAKEY →</a></p>
+        <div class="compare-label" style="max-width:860px"><span>← 合成後</span><span>實拍原始 →</span></div>
+        <p class="pager"><a href="#editing">← 上一項：實況主與節目剪輯</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#gakey">下一項：AI 剪輯工作站 GAKEY →</a></p>
       </section>
 
       <!-- ========== GAKEY ========== -->
       <section class="page" id="gakey" aria-labelledby="gakey-title">
         <h2 class="work-title" id="gakey-title"><span class="dot" style="color:#7b55a8">●</span>AI 剪輯工作站 GAKEY</h2>
         <p class="work-en">AI EDITING WORKSTATION</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>類型</th><td>自製剪輯軟體</td></tr>
-                  <tr><th>功能</th><td>直播自動下載／逐字稿自動生成／AI 自動鋪素材／多軌時間軸／毫秒級拖曳／一鍵出片</td></tr>
-                  <tr><th>實績</th><td>一集 20 分鐘節目，AI 鋪 234 顆字卡、音效與特效，人只鎖定 29 顆</td></tr>
-                  <tr><th>我的角色</th><td>產品設計／開發</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>貼一條直播連結進去，影片、聊天室與逐字稿一起抓回來。人挑段，AI 鋪素材：字卡、音效與特效由 AI 照規則落到軌道上，每一顆都能拖、能改字、能重生。九孔要變帥、薛喜、緣結的剪輯都是用它做的。</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">AI 鋪素材過程</p>
-            <figure><video src="assets/tool_gakey_replay.webm" poster="assets/tool_gakey_replay_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="GAKEY 演繹模式：AI 把 234 顆素材一顆一顆放上軌道"></video><figcaption>看 AI 怎麼放・234 顆素材 25 秒落完</figcaption></figure>
-          </div>
+        <div class="stats">
+          <div class="stat"><b>234 顆</b><span>字卡／音效／特效<br>由 AI 自動鋪上</span></div>
+          <div class="stat"><b>29 顆</b><span>人工鎖定修改</span></div>
+          <div class="stat"><b>25 秒</b><span>AI 落完全部素材</span></div>
+          <div class="stat"><b>20 分鐘</b><span>一集節目的素材量</span></div>
         </div>
-        <p class="sub-head" style="margin-top:22px">介面</p>
+        <div class="box">
+          <h3 class="box-head">◆ 說明</h3>
+          <div class="box-body"><p>自製剪輯軟體。貼一條直播連結進去，影片、聊天室與逐字稿一起抓回來；人挑段，AI 照規則把字卡、音效與特效落到多軌時間軸上，每一顆都能拖、能改字、能重生，一鍵出片。</p></div>
+        </div>
         <div class="gallery">
-          <figure><img src="assets/tool_edit_main.jpg" alt="剪輯工作站主畫面：PIP 圈、9:16 裁切框與多軌時間軸" loading="lazy"><figcaption>主畫面・標記與時間軸</figcaption></figure>
-          <figure><img src="assets/tool_edit_triage.jpg" alt="卡片式整理挑段與成品清單" loading="lazy"><figcaption>挑段整理・成品清單</figcaption></figure>
+          <figure class="wide"><video src="assets/tool_gakey_replay.webm" poster="assets/tool_gakey_replay_cover.jpg" muted loop playsinline controls preload="metadata" aria-label="GAKEY 演繹模式：AI 把 234 顆素材一顆一顆放上軌道"></video><figcaption>AI 鋪素材過程・234 顆 25 秒落完</figcaption></figure>
         </div>
-        <p class="pager"><a href="#virtual">← 上一件：虛實整合影片</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#community">下一件：社群管理站 →</a></p>
+        <p class="pager"><a href="#animation">← 上一項：3D 資訊動畫・合成</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#systems">下一項：直播與社群系統 →</a></p>
       </section>
 
-      <!-- ========== 社群管理站 ========== -->
-      <section class="page" id="community" aria-labelledby="community-title">
-        <h2 class="work-title" id="community-title"><span class="dot" style="color:#4b5fb0">●</span>社群管理站</h2>
-        <p class="work-en">COMMUNITY OPS INBOX</p>
-        <div class="work-cols">
-          <div>
-            <div class="box">
-              <h3 class="box-head">◆ 作品資料</h3>
-              <div class="box-body">
-                <table class="grid-table">
-                  <tr><th>平台</th><td>YouTube／X／Threads／Instagram／Facebook</td></tr>
-                  <tr><th>功能</th><td>五平台留言收件匣／未回覆優先／回覆者排行／統一發文／邀請制登入</td></tr>
-                  <tr><th>實接</th><td>YouTube 頻道 1,060 則留言</td></tr>
-                  <tr><th>我的角色</th><td>產品設計／開發</td></tr>
-                </table>
-              </div>
-            </div>
-            <div class="box">
-              <h3 class="box-head">◆ 說明</h3>
-              <div class="box-body">
-                <p>五個平台的留言收進同一個收件匣：一站看、一站回，統一發文一次送多平台。誰最常來留言、哪些還沒回，打開就看到。</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="sub-head">介面</p>
-            <div class="gallery">
-              <figure class="wide"><img src="assets/community_inbox_youtube.jpg" alt="社群管理站 YouTube 收件匣：未回覆留言清單與近 30 天回覆者排行" loading="lazy"><figcaption>YouTube 收件匣</figcaption></figure>
-              <figure class="wide"><img src="assets/community_inbox_ranking.jpg" alt="近 30 天最常回覆的留言者排行" loading="lazy"><figcaption>近 30 天回覆者排行</figcaption></figure>
-            </div>
-          </div>
-        </div>
-        <p class="pager"><a href="#gakey">← 上一件：AI 剪輯工作站 GAKEY</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#live">下一件：客製化直播元件 →</a></p>
-      </section>
-
-      <!-- ========== 直播元件 ========== -->
-      <section class="page" id="live" aria-labelledby="live-title">
-        <h2 class="work-title" id="live-title"><span class="dot" style="color:#5b9bd5">●</span>客製化直播元件</h2>
-        <p class="work-en">LIVE STREAM OVERLAYS</p>
-        <div class="box">
-          <h3 class="box-head">◆ 說明</h3>
-          <div class="box-body"><p>依直播內容製作需要的畫面元件，直接掛進 OBS 使用。</p></div>
+      <!-- ========== 直播與社群系統 ========== -->
+      <section class="page" id="systems" aria-labelledby="systems-title">
+        <h2 class="work-title" id="systems-title"><span class="dot" style="color:#4b5fb0">●</span>直播與社群系統</h2>
+        <p class="work-en">LIVE OVERLAYS / DISCORD / COMMUNITY OPS</p>
+        <div class="stats">
+          <div class="stat"><b>5 平台</b><span>留言收進同一個收件匣</span></div>
+          <div class="stat"><b>1,060 則</b><span>YouTube 留言實接</span></div>
+          <div class="stat"><b>5 種</b><span>客製直播元件</span></div>
+          <div class="stat"><b>7 項</b><span>Discord 架設服務</span></div>
         </div>
         <div class="box">
-          <h3 class="box-head">◆ 元件清單</h3>
+          <h3 class="box-head">◆ 項目</h3>
           <div class="box-body">
             <table class="grid-table">
-              <tr><th>01</th><td>聊天室留言疊圖</td></tr>
-              <tr><th>02</th><td>即時投票系統</td></tr>
-              <tr><th>03</th><td>斗內目標進度條</td></tr>
-              <tr><th>04</th><td>洗版留言→HYPE 計數</td></tr>
-              <tr><th>05</th><td>斗內跑馬燈</td></tr>
+              <tr><th>社群管理站</th><td>YouTube、X、Threads、Instagram、Facebook 留言一站看、一站回；未回覆優先、回覆者排行、統一發文、邀請制登入</td></tr>
+              <tr><th>直播元件</th><td>聊天室留言疊圖／即時投票／斗內目標進度條／洗版留言→HYPE 計數／斗內跑馬燈</td></tr>
+              <tr><th>Discord</th><td>身分組與權限架構／頻道結構／留言互動指令／表情機器人／掛機養成遊戲／精華時間軸整合／Webhook 自動化</td></tr>
             </table>
           </div>
         </div>
-        <p class="pager"><a href="#community">← 上一件：社群管理站</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#discord">下一件：Discord 架設 →</a></p>
+        <div class="gallery">
+          <figure><img src="assets/community_inbox_youtube.jpg" alt="社群管理站 YouTube 收件匣" loading="lazy"><figcaption>社群管理站・YouTube 收件匣</figcaption></figure>
+          <figure><img src="assets/community_inbox_ranking.jpg" alt="近 30 天回覆者排行" loading="lazy"><figcaption>近 30 天回覆者排行</figcaption></figure>
+        </div>
+        <p class="pager"><a href="#gakey">← 上一項：AI 剪輯工作站 GAKEY</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#media">下一項：媒體編輯與新聞稿 →</a></p>
       </section>
 
-      <!-- ========== Discord ========== -->
-      <section class="page" id="discord" aria-labelledby="discord-title">
-        <h2 class="work-title" id="discord-title"><span class="dot" style="color:var(--blue-dark)">●</span>Discord 架設</h2>
-        <p class="work-en">DISCORD COMMUNITY</p>
-        <div class="box">
-          <h3 class="box-head">◆ 說明</h3>
-          <div class="box-body"><p>身分組、頻道結構、互動指令與自動化。</p></div>
+      <!-- ========== 媒體編輯與新聞稿 ========== -->
+      <section class="page" id="media" aria-labelledby="media-title">
+        <h2 class="work-title" id="media-title"><span class="dot" style="color:#9a4040">●</span>媒體編輯與新聞稿</h2>
+        <p class="work-en">MEDIA &amp; PRESS</p>
+        <div class="stats">
+          <div class="stat"><b>5 人</b><span>帶領 Yahoo 奇摩電競<br>編輯團隊</span></div>
+          <div class="stat"><b>1,000+ 篇</b><span>新聞稿／公關稿</span></div>
+          <div class="stat"><b>100+ 場</b><span>專訪</span></div>
+          <div class="stat"><b>3,078 萬</b><span>Yahoo 奇摩電競平台<br>上線以來觀看（2017.07）</span></div>
+          <div class="stat"><b>4 大</b><span>國際現場採訪</span></div>
         </div>
         <div class="box">
-          <h3 class="box-head">◆ 服務項目</h3>
+          <h3 class="box-head">◆ 經歷與成績</h3>
           <div class="box-body">
             <table class="grid-table">
-              <tr><th>權</th><td>身分組與權限架構設計：對應不同社群動線。</td></tr>
-              <tr><th>頻</th><td>頻道結構規劃：公開／內部／分眾頻道分流。</td></tr>
-              <tr><th>令</th><td>留言互動指令：抽籤、佔卜、點歌，成員打一行字就有回應。</td></tr>
-              <tr><th>應</th><td>表情機器人：關鍵字自動蓋章、投票統計、活動簽到。</td></tr>
-              <tr><th>養</th><td>掛機養成遊戲：伺服器內建長期經營的 RPG 系統。</td></tr>
-              <tr><th>軸</th><td>精華時間軸整合：VOD 上架後自動整理分段時間軸，主播不用自己重看一次直播才能剪。</td></tr>
-              <tr><th>通</th><td>Webhook 自動化：開台通知、新片上架、排程廣播。</td></tr>
+              <tr><th>Yahoo 奇摩電競 主編</th><td>2016.12–2021。帶領 5 人編輯團隊：內容策略、任務分配、品質把關；從零建立電競社群平台，平台上線後觀看 3,078 萬次、觸及 311 萬人（2017.07 發表數據）；2019 亞洲電競大賞入圍「年度最佳電競報導獎」</td></tr>
+              <tr><th>國際採訪</th><td>美國 GDC 遊戲開發者大會、Valve（Steam）總部、東京電玩展 TGS、英雄聯盟世界賽</td></tr>
+              <tr><th>魔方網記者／蕃薯藤影音編輯</th><td>2013–2016。遊戲產業報導、影音內容產製</td></tr>
+              <tr><th>撰稿實績</th><td>新聞稿／公關稿 1,000+ 篇、專訪 100+ 場；活動通稿、專訪與品牌敘事</td></tr>
             </table>
+            <ul class="src" style="margin-top:8px">
+              <li><a href="https://www.inside.com.tw/article/9972-yahoo-esports-party" target="_blank" rel="noopener">INSIDE｜Yahoo 奇摩電競派對與電玩大調查數據</a></li>
+              <li><a href="https://technews.tw/2017/07/05/yahootw-esports/" target="_blank" rel="noopener">科技新報｜Yahoo 奇摩電競平台上線</a></li>
+              <li><a href="https://www.4gamers.com.tw/news/detail/41009/2019-asia-esports-awards-taiwan-nominees-announced" target="_blank" rel="noopener">4Gamers｜2019 亞洲電競大賞台灣站入圍名單</a></li>
+            </ul>
           </div>
         </div>
-        <p class="pager"><a href="#live">← 上一件：客製化直播元件</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#press">下一件：新聞稿撰寫 →</a></p>
-      </section>
-
-      <!-- ========== 新聞稿 ========== -->
-      <section class="page" id="press" aria-labelledby="press-title">
-        <h2 class="work-title" id="press-title"><span class="dot" style="color:#9a4040">●</span>新聞稿撰寫</h2>
-        <p class="work-en">PRESS WRITING</p>
-        <div class="box">
-          <h3 class="box-head">◆ 說明</h3>
-          <div class="box-body"><p>活動通稿、專訪與品牌敘事。</p></div>
-        </div>
-        <div class="box">
-          <h3 class="box-head">◆ 經歷與實績</h3>
-          <div class="box-body">
-            <table class="grid-table">
-              <tr><th>經歷</th><td>Yahoo 奇摩電競主編</td></tr>
-              <tr><th>經歷</th><td>魔方網遊戲編輯</td></tr>
-              <tr><th>專訪</th><td>100+ 場</td></tr>
-              <tr><th>撰稿</th><td>1,000+ 篇新聞稿／公關稿</td></tr>
-            </table>
-          </div>
-        </div>
-        <p class="pager"><a href="#discord">← 上一件：Discord 架設</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#contact">聯絡我 →</a></p>
+        <p class="pager"><a href="#systems">← 上一項：直播與社群系統</a><span>｜</span><a href="#top">首頁</a><span>｜</span><a href="#contact">聯絡我 →</a></p>
       </section>
 
       <!-- ========== 聯絡 ========== -->
@@ -962,7 +636,7 @@
             </table>
           </div>
         </div>
-        <p class="pager"><a href="#press">← 上一件：新聞稿撰寫</a><span>｜</span><a href="#top">首頁</a></p>
+        <p class="pager"><a href="#media">← 上一項：媒體編輯與新聞稿</a><span>｜</span><a href="#top">首頁</a></p>
         <p class="footer">WELLEW / WELKIN PORTFOLIO © 2026</p>
       </section>
 
@@ -996,6 +670,12 @@
 
       window.addEventListener('hashchange', () => show(location.hash.slice(1), true));
       show(location.hash.slice(1), false);
+
+      // 寬表格在手機上直排：每格前面補上欄名
+      document.querySelectorAll('table.stack').forEach((t) => {
+        const heads = [...t.querySelectorAll('thead th')].map((th) => th.textContent);
+        t.querySelectorAll('tbody tr').forEach((tr) => [...tr.children].forEach((td, i) => td.setAttribute('data-label', heads[i] || '')));
+      });
 
       const compare = document.getElementById('compare');
       const range = compare.querySelector('input');
